@@ -2,48 +2,99 @@ import { Link } from "react-router-dom";
 
 const LOGO = "https://media.base44.com/images/public/69caab40b61d6ee7c5b75332/9d7fead75_generated_image.png";
 
+const NAV_LINKS = [
+  ["HOME", "/"],
+  ["EVENTS", "/events"],
+  ["HOW WE WORK", "/process"],
+  ["ABOUT", "/about"],
+  ["GALLERY", "/gallery"],
+  ["CONTACT", "/contact"],
+];
+
 const events = [
   {
     title: "Destination Celebrations",
     tagline: "Life's greatest moments deserve an extraordinary stage.",
-    description: "We plan and produce destination celebrations that are as unique as the occasion itself. From first conversation to final toast, every element is curated — the venue, the florals, the cuisine, the music, the lighting. We've brought people together in Tuscan villas, Greek island estates, Swiss chalet retreats, and beyond.",
-    highlights: ["Full destination event planning & design", "Venue sourcing across 30+ countries", "Bespoke chef-designed menus", "Accommodation & logistics coordination", "Day-of execution & full team management", "Custom décor & floral arrangements"],
+    description: "We plan and produce destination celebrations that are as unique as the occasion itself. From the first conversation to the final toast, every element is curated with intention — the venue, the florals, the entertainment, the lighting, the flow of the day. We've brought people together in Tuscan villas, Greek island estates, Swiss chalet retreats, and beyond.",
+    highlights: [
+      "Full destination event planning & design",
+      "Venue sourcing across 30+ countries",
+      "Accommodation & guest logistics coordination",
+      "Day-of execution & full team management",
+      "Custom décor, florals & production",
+      "Entertainment, music & programming"
+    ],
     img: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1200&q=80"
   },
   {
-    title: "Private Dining Experiences",
-    tagline: "Restaurant-quality execution. Personal intimacy.",
-    description: "Our private dining experiences bring world-class culinary execution directly into your villa, home, yacht, or exclusive venue. Whether hosting a formal seated dinner for twelve or a relaxed gathering under the stars, we design menus and service that reflect your palate and the destination around you.",
-    highlights: ["In-villa & private home dining", "Yacht & outdoor estate dinners", "Custom multi-course chef menus", "Professional service staff", "Wine pairing & sommelier service", "Complete setup & cleanup included"],
-    img: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80"
-  },
-  {
     title: "Milestone Celebrations",
-    tagline: "Every milestone deserves to be extraordinary.",
-    description: "Whether it's a landmark birthday, an anniversary, a coming-of-age celebration, or a family reunion — we create experiences that honour the gravity and joy of the moment. From intimate family gatherings to larger destination celebrations, we handle everything so you can be fully present.",
-    highlights: ["Worldwide venue selection", "Complete event design & styling", "Private chef catering services", "Entertainment & programming", "Family accommodation coordination", "Multi-day event programs available"],
+    tagline: "Every milestone deserves to be remembered forever.",
+    description: "Whether it's a landmark birthday, an anniversary, a coming-of-age celebration, or a family reunion — we create events that honour the gravity and joy of the moment. From intimate family gatherings to large-scale destination celebrations, we handle everything so you can be fully present.",
+    highlights: [
+      "Worldwide venue selection & curation",
+      "Complete event design & styling",
+      "Entertainment & live performance",
+      "Family accommodation coordination",
+      "Multi-day event programs",
+      "Bespoke personal touches throughout"
+    ],
     img: "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=1200&q=80"
   },
   {
     title: "Corporate & VIP Events",
-    tagline: "Elevate your company's most important moments.",
-    description: "We produce high-end corporate events and VIP gatherings that leave lasting impressions. Whether it's an executive retreat in a private Alpine chalet, a product launch dinner, or a team culinary experience in a world-class destination, we bring the same standard of excellence to every engagement.",
-    highlights: ["Executive retreats & offsites", "VIP dinner experiences", "Product launch events", "Team culinary workshops & tastings", "Conference & gala dinners", "Full AV & technical production"],
+    tagline: "Your company's most important moments, elevated.",
+    description: "We produce high-end corporate events and VIP gatherings that leave lasting impressions. Whether it's an executive retreat in a private Alpine chalet, a product launch event, an incentive trip, or a gala evening — we bring the same standard of excellence and discretion to every engagement.",
+    highlights: [
+      "Executive retreats & private offsites",
+      "Product launches & brand activations",
+      "Incentive trips & reward experiences",
+      "Conference & gala evenings",
+      "VIP guest experiences & hospitality",
+      "Full production, AV & technical support"
+    ],
     img: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80"
   },
   {
     title: "Private Villa Programs",
-    tagline: "Weeks crafted entirely around your vision.",
-    description: "Our private villa programs are the ultimate expression of luxury private events. We take over a stunning estate — in Tuscany, Greece, Morocco, the Caribbean — and build an entire week or more around your group. Morning cooking sessions, afternoon excursions, evening feasts under the stars.",
-    highlights: ["Full villa buyout & staffing", "Daily curated programming", "In-residence private chef & team", "Curated local excursions", "Celebration dinners & special evenings", "Families, multi-generational groups & friend gatherings"],
+    tagline: "Weeks crafted entirely around your group.",
+    description: "Our private villa programs are the ultimate expression of a curated group event. We take over a stunning estate — in Tuscany, Greece, Morocco, the Caribbean — and build an entire week or more around your group. Daily programming, excursions, celebrations, and exceptional evenings in extraordinary settings.",
+    highlights: [
+      "Full villa buyout & staffing",
+      "Daily curated programming & activities",
+      "Curated local excursions & experiences",
+      "Celebration evenings & special events",
+      "Families, multi-generational & friend groups",
+      "Custom themes & personalised touches"
+    ],
     img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80"
   },
   {
-    title: "Chef-Led Culinary Retreats",
-    tagline: "Gather. Cook. Taste. Connect.",
-    description: "Avicam personally leads immersive culinary retreats that blend the joy of cooking with the pleasure of discovery. Groups visit local markets, cook with regional ingredients, and sit down each evening to share meals that celebrate the culture around them.",
-    highlights: ["Market visits & local ingredient sourcing", "Hands-on cooking workshops", "Wine pairings & local tastings", "Cultural destination excursions", "Chef-curated multi-course dinners", "Intimate groups of 8–20 guests"],
-    img: "https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?w=1200&q=80"
+    title: "Sailing & Charter Events",
+    tagline: "The sea as your venue.",
+    description: "Private sailing charters through crystal-clear Mediterranean waters — hosting your event aboard a private yacht between Greek islands or along Croatia's iconic coastline. Swimming stops, secluded coves, sunset celebrations, and vibrant evenings at sea.",
+    highlights: [
+      "Private yacht & sailing charter events",
+      "Greek Islands & Adriatic Sea routes",
+      "Fully crewed & personalised itineraries",
+      "Onboard celebration programming",
+      "Perfect for couples, families & small groups",
+      "Day charters or multi-day voyages"
+    ],
+    img: "https://images.unsplash.com/photo-1493854994231-2d87b09e3890?w=1200&q=80"
+  },
+  {
+    title: "Heritage & Cultural Journeys",
+    tagline: "Meaningful travel. Shared stories.",
+    description: "A powerful group event built around history, memory, and renewal. Travellers visit historic sites, cultural landmarks, and communities with expert educators — creating a shared experience that goes far beyond the ordinary. Thoughtfully paced and deeply meaningful.",
+    highlights: [
+      "Expert historian & educator guides",
+      "Historic sites & cultural landmarks",
+      "Curated group programs & ceremonies",
+      "Meaningful and educational pacing",
+      "Comfortable accommodation & logistics",
+      "Ideal for families & heritage groups"
+    ],
+    img: "https://images.unsplash.com/photo-1548013146-72479768bada?w=1200&q=80"
   }
 ];
 
@@ -58,12 +109,9 @@ export default function Events() {
             <span className="text-xl tracking-[0.25em] text-[#c9a84c] font-light hidden sm:block">AVICAM GITLIN</span>
           </Link>
           <div className="hidden md:flex gap-8 text-xs tracking-[0.2em] text-gray-300">
-            <Link to="/" className="hover:text-[#c9a84c] transition-colors">HOME</Link>
-            <Link to="/services" className="hover:text-[#c9a84c] transition-colors">SERVICES</Link>
-            <Link to="/events" className="text-[#c9a84c]">EVENTS</Link>
-            <Link to="/about" className="hover:text-[#c9a84c] transition-colors">ABOUT</Link>
-            <Link to="/gallery" className="hover:text-[#c9a84c] transition-colors">GALLERY</Link>
-            <Link to="/contact" className="hover:text-[#c9a84c] transition-colors">CONTACT</Link>
+            {NAV_LINKS.map(([l, h]) => (
+              <Link key={l} to={h} className={`hover:text-[#c9a84c] transition-colors ${l === "EVENTS" ? "text-[#c9a84c]" : ""}`}>{l}</Link>
+            ))}
           </div>
           <Link to="/contact" className="hidden md:block px-5 py-2 border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[0.2em] hover:bg-[#c9a84c]/10 transition-colors">INQUIRE</Link>
         </div>
@@ -72,16 +120,16 @@ export default function Events() {
       {/* Hero */}
       <section
         className="relative pt-32 pb-24 px-6 text-center"
-        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1510076857177-7470076d4098?w=1920&q=80')", backgroundSize: "cover", backgroundPosition: "center" }}
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80')", backgroundSize: "cover", backgroundPosition: "center" }}
       >
-        <div className="absolute inset-0 bg-black/75" />
+        <div className="absolute inset-0 bg-black/72" />
         <div className="relative z-10 max-w-3xl mx-auto">
           <p className="text-[#c9a84c] tracking-[0.5em] text-xs mb-6">PRIVATE EVENTS WORLDWIDE</p>
-          <h1 className="text-5xl md:text-6xl font-light mb-6">Events & Experiences</h1>
+          <h1 className="text-5xl md:text-6xl font-light mb-6">Events & Celebrations</h1>
           <div className="w-12 h-px bg-[#c9a84c] mx-auto mb-8" />
-          <p className="text-gray-400 text-lg font-light leading-relaxed">
-            From intimate private dinners to grand destination celebrations —
-            every event is designed to be entirely yours.
+          <p className="text-gray-400 text-lg font-light leading-relaxed max-w-2xl mx-auto">
+            From intimate private gatherings to grand destination celebrations —
+            every event is designed from scratch to be entirely, unmistakably yours.
           </p>
         </div>
       </section>
@@ -155,8 +203,8 @@ export default function Events() {
             <img src={LOGO} alt="logo" className="h-10 w-10 object-contain" />
             <span className="text-[#c9a84c] text-lg tracking-[0.3em] font-light">AVICAM GITLIN</span>
           </div>
-          <div className="flex gap-8 text-xs text-gray-500 tracking-[0.2em]">
-            {[["Services", "/services"], ["Events", "/events"], ["About", "/about"], ["Contact", "/contact"]].map(([l, h]) => (
+          <div className="flex gap-6 text-xs text-gray-500 tracking-[0.2em]">
+            {[["Events", "/events"], ["How We Work", "/process"], ["About", "/about"], ["Gallery", "/gallery"], ["Contact", "/contact"]].map(([l, h]) => (
               <Link key={l} to={h} className="hover:text-[#c9a84c] transition-colors">{l.toUpperCase()}</Link>
             ))}
           </div>

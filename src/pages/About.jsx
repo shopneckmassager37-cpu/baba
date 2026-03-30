@@ -15,7 +15,7 @@ export default function About() {
           </Link>
           <div className="hidden md:flex gap-8 text-xs tracking-[0.2em] text-gray-300">
             <Link to="/" className="hover:text-[#c9a84c] transition-colors">HOME</Link>
-            <Link to="/services" className="hover:text-[#c9a84c] transition-colors">SERVICES</Link>
+            <Link to="/process" className="hover:text-[#c9a84c] transition-colors">HOW WE WORK</Link>
             <Link to="/events" className="hover:text-[#c9a84c] transition-colors">EVENTS</Link>
             <Link to="/about" className="text-[#c9a84c]">ABOUT</Link>
             <Link to="/gallery" className="hover:text-[#c9a84c] transition-colors">GALLERY</Link>
@@ -175,7 +175,7 @@ export default function About() {
             <span className="text-[#c9a84c] text-lg tracking-[0.3em] font-light">AVICAM GITLIN</span>
           </div>
           <div className="flex gap-8 text-xs text-gray-500 tracking-[0.2em]">
-            {[["Services", "/services"], ["Events", "/events"], ["About", "/about"], ["Contact", "/contact"]].map(([l, h]) => (
+            {[["How We Work", "/process"], ["Events", "/events"], ["About", "/about"], ["Contact", "/contact"]].map(([l, h]) => (
               <Link key={l} to={h} className="hover:text-[#c9a84c] transition-colors">{l.toUpperCase()}</Link>
             ))}
           </div>

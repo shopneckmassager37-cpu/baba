@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 
 const LOGO = "https://media.base44.com/images/public/69caab40b61d6ee7c5b75332/9d7fead75_generated_image.png";
+const AVICAM_PHOTO = "https://base44.app/api/apps/69caab40b61d6ee7c5b75332/files/mp/public/69caab40b61d6ee7c5b75332/129dab6d3_avicam_photo.jpg";
+const CHEF_PHOTO = "https://base44.app/api/apps/69caab40b61d6ee7c5b75332/files/mp/public/69caab40b61d6ee7c5b75332/14656185e_chef_photo.jpg";
 
 export default function About() {
   return (
@@ -14,7 +16,7 @@ export default function About() {
           <div className="hidden md:flex gap-8 text-xs tracking-[0.2em] text-gray-300">
             <Link to="/" className="hover:text-[#c9a84c] transition-colors">HOME</Link>
             <Link to="/services" className="hover:text-[#c9a84c] transition-colors">SERVICES</Link>
-            <Link to="/experiences" className="hover:text-[#c9a84c] transition-colors">EXPERIENCES</Link>
+            <Link to="/events" className="hover:text-[#c9a84c] transition-colors">EVENTS</Link>
             <Link to="/about" className="text-[#c9a84c]">ABOUT</Link>
             <Link to="/gallery" className="hover:text-[#c9a84c] transition-colors">GALLERY</Link>
             <Link to="/contact" className="hover:text-[#c9a84c] transition-colors">CONTACT</Link>
@@ -23,10 +25,17 @@ export default function About() {
         </div>
       </nav>
 
-      <section className="relative overflow-hidden" style={{ minHeight: "80vh" }}>
-        <img src="https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?w=1920&q=80" alt="Chef Avicam" className="w-full h-full object-cover absolute inset-0" style={{ minHeight: "80vh" }} />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-[#0a0a0a]" />
-        <div className="relative z-10 flex items-end min-h-[80vh] pb-20 px-6">
+      {/* Hero with Avicam photo */}
+      <section className="relative overflow-hidden" style={{ minHeight: "85vh" }}>
+        <img
+          src={AVICAM_PHOTO}
+          alt="Avicam Gitlin"
+          className="w-full h-full object-cover object-top absolute inset-0"
+          style={{ minHeight: "85vh" }}
+          onError={(e) => { e.target.src = CHEF_PHOTO; }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-[#0a0a0a]" />
+        <div className="relative z-10 flex items-end min-h-[85vh] pb-20 px-6">
           <div className="max-w-4xl">
             <p className="text-[#c9a84c] tracking-[0.6em] text-xs mb-5">THE PERSON BEHIND THE EXPERIENCE</p>
             <h1 className="text-6xl md:text-8xl font-light leading-none mb-4">Avicam Gitlin</h1>
@@ -35,6 +44,7 @@ export default function About() {
         </div>
       </section>
 
+      {/* Story */}
       <section className="py-28 px-6">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-start">
           <div>
@@ -47,20 +57,27 @@ export default function About() {
               the scent of cypress trees in the Mediterranean warmth. Everyone shared the same dream.
             </p>
             <p className="text-gray-400 font-light leading-relaxed mb-6">
-              That evening was the seed of everything that followed. Avicam realised he could build something that
-              didn't exist — a way for people to experience the world's most extraordinary places through food,
+              That evening was the seed of everything that followed. Avicam realised he could build something
+              that didn't exist — a way for people to experience the world's most extraordinary places through food,
               culture, and genuine hospitality, without compromise.
             </p>
-            <p className="text-gray-400 font-light leading-relaxed italic">
+            <p className="text-gray-400 font-light leading-relaxed italic border-l-2 border-[#c9a84c]/40 pl-4">
               "Great ideas are born when good friends and great wine come together."
             </p>
           </div>
-          <div>
-            <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=800&q=80" alt="Chef at work" className="w-full h-[580px] object-cover" />
+          <div className="relative">
+            <img
+              src={CHEF_PHOTO}
+              alt="Avicam in the kitchen"
+              className="w-full h-[580px] object-cover"
+              onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=800&q=80"; }}
+            />
+            <div className="absolute -bottom-4 -left-4 w-32 h-32 border border-[#c9a84c]/30 pointer-events-none" />
           </div>
         </div>
       </section>
 
+      {/* Philosophy */}
       <section className="py-28 px-6 bg-[#0d0d0d]">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
@@ -84,6 +101,7 @@ export default function About() {
         </div>
       </section>
 
+      {/* Quote */}
       <section className="py-28 px-6 text-center">
         <div className="max-w-3xl mx-auto">
           <div className="text-[#c9a84c] text-6xl font-light mb-6">"</div>
@@ -97,37 +115,48 @@ export default function About() {
         </div>
       </section>
 
+      {/* Second photo + expertise */}
       <section className="py-24 px-6 bg-[#0d0d0d]">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          <div>
             <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-4">EXPERTISE & REACH</p>
-            <h2 className="text-3xl font-light">Built Over a Decade. Refined Through Every Event.</h2>
+            <h2 className="text-3xl font-light mb-10">Built Over a Decade.<br />Refined Through Every Event.</h2>
+            <div className="space-y-0">
+              <div className="mb-8">
+                <h3 className="text-lg font-light mb-5 text-[#c9a84c] tracking-wide">Culinary Mastery</h3>
+                <ul className="space-y-4">
+                  {["Private chef specialising in international cuisine","Custom menu design for every occasion and guest","Experience from intimate dinners to grand celebrations","Deep knowledge of seasonal, local ingredients","Expertise across all dietary requirements"].map((item, i) => (
+                    <li key={i} className="flex items-start gap-4 text-gray-400 text-sm font-light border-b border-gray-800 pb-4">
+                      <span className="text-[#c9a84c] mt-0.5">→</span>{item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-lg font-light mb-5 text-[#c9a84c] tracking-wide">Event Curation</h3>
+                <ul className="space-y-4">
+                  {["15+ years producing private events worldwide","Destination celebrations & family milestones","Private villa programs & multi-week event stays","Global network of venues, vendors & local partners","Personal, hands-on approach from concept to execution"].map((item, i) => (
+                    <li key={i} className="flex items-start gap-4 text-gray-400 text-sm font-light border-b border-gray-800 pb-4">
+                      <span className="text-[#c9a84c] mt-0.5">→</span>{item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-            <div>
-              <h3 className="text-xl font-light mb-8 text-[#c9a84c] tracking-wide">Culinary Mastery</h3>
-              <ul className="space-y-5">
-                {["Private chef specialising in international cuisine","Deep knowledge of fresh, local, seasonal ingredients","Custom menu design for every occasion and guest","Experience across intimate dinners to grand celebrations","Expertise in dietary requirements & global food culture"].map((item, i) => (
-                  <li key={i} className="flex items-start gap-4 text-gray-400 text-sm font-light border-b border-gray-800 pb-4">
-                    <span className="text-[#c9a84c] mt-0.5">→</span>{item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-xl font-light mb-8 text-[#c9a84c] tracking-wide">Event & Travel Curation</h3>
-              <ul className="space-y-5">
-                {["15+ years curating private events worldwide","Destination celebrations, family milestones & corporate events","Private villa programs & multi-week travel experiences","Global network of venues, vendors & local partners","Hands-on, personal approach from concept to execution"].map((item, i) => (
-                  <li key={i} className="flex items-start gap-4 text-gray-400 text-sm font-light border-b border-gray-800 pb-4">
-                    <span className="text-[#c9a84c] mt-0.5">→</span>{item}
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className="relative">
+            <img
+              src={AVICAM_PHOTO}
+              alt="Avicam Gitlin"
+              className="w-full h-[640px] object-cover object-top"
+              onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?w=800&q=80"; }}
+            />
+            <div className="absolute top-4 right-4 border border-[#c9a84c]/30 w-24 h-24 pointer-events-none" />
           </div>
         </div>
       </section>
 
+      {/* CTA */}
       <section className="py-28 px-6 text-center">
         <div className="max-w-xl mx-auto">
           <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-6">WORK WITH AVICAM</p>
@@ -138,6 +167,7 @@ export default function About() {
         </div>
       </section>
 
+      {/* Footer */}
       <footer className="bg-[#070707] border-t border-[#c9a84c]/15 pt-16 pb-8 px-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-3">
@@ -145,7 +175,7 @@ export default function About() {
             <span className="text-[#c9a84c] text-lg tracking-[0.3em] font-light">AVICAM GITLIN</span>
           </div>
           <div className="flex gap-8 text-xs text-gray-500 tracking-[0.2em]">
-            {[["Services", "/services"], ["Experiences", "/experiences"], ["About", "/about"], ["Contact", "/contact"]].map(([l, h]) => (
+            {[["Services", "/services"], ["Events", "/events"], ["About", "/about"], ["Contact", "/contact"]].map(([l, h]) => (
               <Link key={l} to={h} className="hover:text-[#c9a84c] transition-colors">{l.toUpperCase()}</Link>
             ))}
           </div>

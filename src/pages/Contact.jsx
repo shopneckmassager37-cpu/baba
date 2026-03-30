@@ -41,7 +41,7 @@ export default function Contact() {
           <div className="hidden md:flex gap-8 text-xs tracking-[0.2em] text-gray-300">
             <Link to="/" className="hover:text-[#c9a84c] transition-colors">HOME</Link>
             <Link to="/services" className="hover:text-[#c9a84c] transition-colors">SERVICES</Link>
-            <Link to="/experiences" className="hover:text-[#c9a84c] transition-colors">EXPERIENCES</Link>
+            <Link to="/events" className="hover:text-[#c9a84c] transition-colors">EVENTS</Link>
             <Link to="/about" className="hover:text-[#c9a84c] transition-colors">ABOUT</Link>
             <Link to="/gallery" className="hover:text-[#c9a84c] transition-colors">GALLERY</Link>
             <Link to="/contact" className="text-[#c9a84c]">CONTACT</Link>
@@ -204,7 +204,7 @@ export default function Contact() {
             <div>
               <p className="text-gray-600 text-xs tracking-[0.3em] mb-4">NAVIGATION</p>
               <div className="space-y-2">
-                {[["Home", "/"], ["Services", "/services"], ["Experiences", "/experiences"], ["About", "/about"], ["Gallery", "/gallery"], ["Contact", "/contact"]].map(([l, h]) => (
+                {[["Home", "/"], ["Services", "/services"], ["Events", "/events"], ["About", "/about"], ["Gallery", "/gallery"], ["Contact", "/contact"]].map(([l, h]) => (
                   <div key={l}><Link to={h} className="text-gray-400 text-sm font-light hover:text-[#c9a84c] transition-colors">{l}</Link></div>
                 ))}
               </div>

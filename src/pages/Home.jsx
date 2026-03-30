@@ -2,6 +2,23 @@ import { Link } from "react-router-dom";
 
 const LOGO = "https://media.base44.com/images/public/69caab40b61d6ee7c5b75332/9d7fead75_generated_image.png";
 
+const NAV = (active) => (
+  <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-md border-b border-[#c9a84c]/20">
+    <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+      <Link to="/" className="flex items-center gap-3">
+        <img src={LOGO} alt="Avicam Gitlin" className="h-12 w-12 object-contain" />
+        <span className="text-xl tracking-[0.25em] text-[#c9a84c] font-light hidden sm:block">AVICAM GITLIN</span>
+      </Link>
+      <div className="hidden md:flex gap-8 text-xs tracking-[0.2em] text-gray-300">
+        {[["HOME","/"],["SERVICES","/services"],["EVENTS","/events"],["ABOUT","/about"],["GALLERY","/gallery"],["CONTACT","/contact"]].map(([l,h])=>(
+          <Link key={l} to={h} className={`hover:text-[#c9a84c] transition-colors ${active===l?"text-[#c9a84c]":""}`}>{l}</Link>
+        ))}
+      </div>
+      <Link to="/contact" className="hidden md:block px-5 py-2 border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[0.2em] hover:bg-[#c9a84c]/10 transition-colors">INQUIRE</Link>
+    </div>
+  </nav>
+);
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
@@ -13,22 +30,20 @@ export default function Home() {
             <span className="text-xl tracking-[0.25em] text-[#c9a84c] font-light hidden sm:block">AVICAM GITLIN</span>
           </Link>
           <div className="hidden md:flex gap-8 text-xs tracking-[0.2em] text-gray-300">
-            <Link to="/" className="hover:text-[#c9a84c] transition-colors">HOME</Link>
+            <Link to="/" className="text-[#c9a84c]">HOME</Link>
             <Link to="/services" className="hover:text-[#c9a84c] transition-colors">SERVICES</Link>
-            <Link to="/experiences" className="hover:text-[#c9a84c] transition-colors">EXPERIENCES</Link>
+            <Link to="/events" className="hover:text-[#c9a84c] transition-colors">EVENTS</Link>
             <Link to="/about" className="hover:text-[#c9a84c] transition-colors">ABOUT</Link>
             <Link to="/gallery" className="hover:text-[#c9a84c] transition-colors">GALLERY</Link>
             <Link to="/contact" className="hover:text-[#c9a84c] transition-colors">CONTACT</Link>
           </div>
-          <Link to="/contact" className="hidden md:block px-5 py-2 border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[0.2em] hover:bg-[#c9a84c]/10 transition-colors">
-            INQUIRE
-          </Link>
+          <Link to="/contact" className="hidden md:block px-5 py-2 border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[0.2em] hover:bg-[#c9a84c]/10 transition-colors">INQUIRE</Link>
         </div>
       </nav>
 
       {/* Hero */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80')` }} />
+        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80')` }} />
         <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/45 to-[#0a0a0a]" />
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
           <p className="text-[#c9a84c] tracking-[0.6em] text-xs mb-6 font-light">PRIVATE EVENTS · BESPOKE EXPERIENCES · WORLDWIDE</p>
@@ -41,12 +56,8 @@ export default function Home() {
             designed exclusively for those who demand the remarkable.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="px-10 py-4 bg-[#c9a84c] text-black text-xs tracking-[0.3em] hover:bg-[#e0c070] transition-colors font-semibold">
-              BEGIN YOUR JOURNEY
-            </Link>
-            <Link to="/services" className="px-10 py-4 border border-white/40 text-white text-xs tracking-[0.3em] hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors">
-              EXPLORE SERVICES
-            </Link>
+            <Link to="/contact" className="px-10 py-4 bg-[#c9a84c] text-black text-xs tracking-[0.3em] hover:bg-[#e0c070] transition-colors font-semibold">BEGIN YOUR JOURNEY</Link>
+            <Link to="/events" className="px-10 py-4 border border-white/40 text-white text-xs tracking-[0.3em] hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors">EXPLORE EVENTS</Link>
           </div>
         </div>
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
@@ -55,11 +66,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Marquee strip */}
+      {/* Gold marquee strip */}
       <div className="bg-[#c9a84c] py-3 overflow-hidden">
-        <div className="flex gap-12 animate-pulse">
-          {["Destination Weddings", "Private Dining", "Corporate Retreats", "Villa Programs", "Culinary Journeys", "Sailing Charters", "Heritage Tours", "Milestone Celebrations"].map((t, i) => (
-            <span key={i} className="text-black text-xs tracking-[0.3em] whitespace-nowrap px-6">✦ {t.toUpperCase()}</span>
+        <div className="flex gap-0">
+          {["Destination Events","Private Dining","Corporate Retreats","Villa Programs","Culinary Retreats","Sailing Charters","Milestone Celebrations","VIP Experiences"].map((t, i) => (
+            <span key={i} className="text-black text-xs tracking-[0.3em] whitespace-nowrap px-8">✦ {t.toUpperCase()}</span>
           ))}
         </div>
       </div>
@@ -81,7 +92,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Preview */}
+      {/* Services preview */}
       <section className="pb-20 px-6 bg-[#0d0d0d]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 pt-20">
@@ -90,23 +101,11 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-1">
             {[
-              {
-                title: "Destination Events",
-                desc: "Celebrate life's greatest milestones in the world's most breathtaking settings — Tuscany, Greek islands, Swiss Alps, and beyond.",
-                img: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80",
-              },
-              {
-                title: "Private Dining",
-                desc: "Restaurant-quality execution in the intimacy of your villa, home, or exclusive venue. Chef-led, fully personalised.",
-                img: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80",
-              },
-              {
-                title: "Culinary Retreats",
-                desc: "Chef-led journeys where cooking, culture, and extraordinary destinations come together for an unforgettable experience.",
-                img: "https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?w=800&q=80",
-              }
+              { title: "Destination Events", desc: "Celebrate life's greatest milestones in the world's most breathtaking settings — Tuscany, Greek islands, Swiss Alps, and beyond.", img: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80" },
+              { title: "Private Dining", desc: "Restaurant-quality execution in the intimacy of your villa, home, or exclusive venue. Chef-led, fully personalised.", img: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" },
+              { title: "Culinary Retreats", desc: "Chef-led experiences where cooking, culture, and extraordinary places come together for an unforgettable gathering.", img: "https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?w=800&q=80" }
             ].map((s, i) => (
-              <Link key={i} to="/services" className="group relative overflow-hidden block" style={{ height: "460px" }}>
+              <Link key={i} to="/events" className="group relative overflow-hidden block" style={{ height: "460px" }}>
                 <img src={s.img} alt={s.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-8 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
@@ -118,9 +117,7 @@ export default function Home() {
             ))}
           </div>
           <div className="text-center mt-8">
-            <Link to="/services" className="inline-block px-10 py-4 border border-[#c9a84c]/40 text-[#c9a84c] text-xs tracking-[0.3em] hover:bg-[#c9a84c]/10 transition-colors">
-              VIEW ALL SERVICES
-            </Link>
+            <Link to="/events" className="inline-block px-10 py-4 border border-[#c9a84c]/40 text-[#c9a84c] text-xs tracking-[0.3em] hover:bg-[#c9a84c]/10 transition-colors">VIEW ALL EVENTS</Link>
           </div>
         </div>
       </section>
@@ -128,12 +125,7 @@ export default function Home() {
       {/* Stats */}
       <section className="py-20 px-6 border-y border-[#c9a84c]/10">
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {[
-            { num: "15+", label: "Years of Excellence" },
-            { num: "500+", label: "Events Worldwide" },
-            { num: "30+", label: "Destinations" },
-            { num: "100%", label: "Bespoke Service" }
-          ].map((s, i) => (
+          {[{ num: "15+", label: "Years of Excellence" }, { num: "500+", label: "Events Worldwide" }, { num: "30+", label: "Destinations" }, { num: "100%", label: "Bespoke Service" }].map((s, i) => (
             <div key={i}>
               <div className="text-4xl md:text-5xl text-[#c9a84c] font-light mb-2">{s.num}</div>
               <div className="text-gray-500 text-xs tracking-[0.3em]">{s.label}</div>
@@ -142,33 +134,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Global Destinations */}
+      {/* Avicam intro + global reach */}
       <section className="py-28 px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
           <div>
-            <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-6">GLOBAL REACH</p>
+            <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-6">MEET AVICAM</p>
             <h2 className="text-3xl md:text-4xl font-light leading-tight mb-8">
-              From Alpine villas to<br />Mediterranean coastlines —<br />
-              <span className="text-gray-500">the world is your venue.</span>
+              The person behind<br />every extraordinary event.
             </h2>
-            <p className="text-gray-400 font-light leading-relaxed mb-10">
-              We've curated extraordinary events in Tuscany, the Greek Isles, Morocco, the Caribbean, Montana, Croatia, and beyond.
-              Wherever you envision your celebration, we bring the expertise, the team, and the magic.
+            <div className="w-10 h-px bg-[#c9a84c]/50 mb-8" />
+            <p className="text-gray-400 font-light leading-relaxed mb-6">
+              Avicam Gitlin is a private chef, travel curator, and event architect with over 15 years of experience
+              creating bespoke private events across the world's most spectacular destinations.
             </p>
-            <div className="grid grid-cols-2 gap-3 mb-10 text-xs text-gray-400 tracking-wide">
-              {["Italy · Tuscany", "Greece · All Isles", "Morocco", "USA · Montana", "Croatia · Adriatic", "Swiss Alps", "Caribbean", "Israel & Beyond"].map((d, i) => (
-                <div key={i} className="flex items-center gap-2"><span className="text-[#c9a84c]">→</span>{d}</div>
-              ))}
-            </div>
-            <Link to="/experiences" className="inline-block px-8 py-3 border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[0.2em] hover:bg-[#c9a84c]/10 transition-colors">
-              VIEW ALL EXPERIENCES
-            </Link>
+            <p className="text-gray-400 font-light leading-relaxed mb-10">
+              His philosophy is simple: food is connection, every event is personal, and the world is your venue.
+              From Alpine chalets to Mediterranean coastlines — wherever you envision your celebration, Avicam makes it happen.
+            </p>
+            <Link to="/about" className="inline-block px-8 py-3 border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[0.2em] hover:bg-[#c9a84c]/10 transition-colors">MEET AVICAM</Link>
           </div>
-          <div className="grid grid-cols-2 gap-2">
-            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Alps" className="w-full h-60 object-cover" />
-            <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=600&q=80" alt="Greece" className="w-full h-60 object-cover mt-8" />
-            <img src="https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=600&q=80" alt="Morocco" className="w-full h-60 object-cover" />
-            <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80" alt="Mountains" className="w-full h-60 object-cover mt-8" />
+          <div className="relative">
+            <img
+              src="https://base44.app/api/apps/69caab40b61d6ee7c5b75332/files/mp/public/69caab40b61d6ee7c5b75332/129dab6d3_avicam_photo.jpg"
+              alt="Avicam Gitlin"
+              className="w-full h-[600px] object-cover"
+              onError={(e) => { e.target.src = "https://base44.app/api/apps/69caab40b61d6ee7c5b75332/files/mp/public/69caab40b61d6ee7c5b75332/14656185e_chef_photo.jpg"; }}
+            />
+            <div className="absolute bottom-6 left-6 bg-black/70 backdrop-blur-sm border border-[#c9a84c]/30 px-5 py-3">
+              <p className="text-[#c9a84c] text-xs tracking-[0.3em]">AVICAM GITLIN</p>
+              <p className="text-gray-400 text-xs mt-1">Private Chef · Event Architect</p>
+            </div>
           </div>
         </div>
       </section>
@@ -200,18 +195,17 @@ export default function Home() {
       </section>
 
       {/* Full-bleed CTA */}
-      <section className="relative py-36 px-6 text-center overflow-hidden" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1510076857177-7470076d4098?w=1920&q=80')", backgroundSize: "cover", backgroundAttachment: "fixed", backgroundPosition: "center" }}>
+      <section
+        className="relative py-36 px-6 text-center overflow-hidden"
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1510076857177-7470076d4098?w=1920&q=80')", backgroundSize: "cover", backgroundAttachment: "fixed", backgroundPosition: "center" }}
+      >
         <div className="absolute inset-0 bg-black/72" />
         <div className="relative z-10 max-w-2xl mx-auto">
           <p className="text-[#c9a84c] tracking-[0.5em] text-xs mb-6">LET'S CREATE TOGETHER</p>
           <h2 className="text-4xl md:text-6xl font-light mb-8">Ready to Begin?</h2>
           <div className="w-12 h-px bg-[#c9a84c] mx-auto mb-8" />
-          <p className="text-gray-300 font-light leading-relaxed mb-12 text-lg">
-            Every extraordinary event starts with a conversation. Tell us your vision — we'll craft something truly unforgettable.
-          </p>
-          <Link to="/contact" className="inline-block px-14 py-5 bg-[#c9a84c] text-black text-xs tracking-[0.4em] hover:bg-[#e0c070] transition-colors font-semibold">
-            START THE CONVERSATION
-          </Link>
+          <p className="text-gray-300 font-light leading-relaxed mb-12 text-lg">Every extraordinary event starts with a conversation. Tell us your vision — we'll craft something truly unforgettable.</p>
+          <Link to="/contact" className="inline-block px-14 py-5 bg-[#c9a84c] text-black text-xs tracking-[0.4em] hover:bg-[#e0c070] transition-colors font-semibold">START THE CONVERSATION</Link>
         </div>
       </section>
 
@@ -222,14 +216,12 @@ export default function Home() {
             <div className="md:col-span-2">
               <img src={LOGO} alt="Avicam Gitlin" className="h-16 w-16 object-contain mb-4" />
               <p className="text-[#c9a84c] text-lg tracking-[0.3em] font-light mb-3">AVICAM GITLIN</p>
-              <p className="text-gray-500 text-sm font-light leading-relaxed max-w-xs">
-                Bespoke private events and extraordinary culinary experiences, crafted for discerning individuals worldwide.
-              </p>
+              <p className="text-gray-500 text-sm font-light leading-relaxed max-w-xs">Bespoke private events and extraordinary culinary experiences, crafted for discerning individuals worldwide.</p>
             </div>
             <div>
               <p className="text-gray-500 text-xs tracking-[0.3em] mb-4">NAVIGATION</p>
               <div className="space-y-2">
-                {[["Home", "/"], ["Services", "/services"], ["Experiences", "/experiences"], ["About", "/about"], ["Gallery", "/gallery"], ["Contact", "/contact"]].map(([l, h]) => (
+                {[["Home","/"],["Services","/services"],["Events","/events"],["About","/about"],["Gallery","/gallery"],["Contact","/contact"]].map(([l,h])=>(
                   <div key={l}><Link to={h} className="text-gray-400 text-sm font-light hover:text-[#c9a84c] transition-colors">{l}</Link></div>
                 ))}
               </div>

@@ -172,7 +172,6 @@ export default function Contact() {
               { quote: "From the first call to the final dance, Avicam was present, attentive, and flawless. An experience we'll cherish forever.", name: "James & Miriam", location: "Santorini, Greece" }
             ].map((t, i) => (
               <div key={i} className="bg-[#0f0e0c] border border-[#c9a84c]/15 p-7 rounded-2xl flex flex-col">
-                <div className="text-[#c9a84c] text-3xl font-light mb-4 leading-none">{String.fromCharCode(8220)}</div>
                 <p className="text-[#a09888] font-light text-sm leading-relaxed italic flex-1 mb-6">{t.quote}</p>
                 <div className="border-t border-[#c9a84c]/15 pt-4">
                   <p className="text-[#e8e2d9] text-sm font-light">{t.name}</p>
@@ -211,8 +210,8 @@ export default function Contact() {
             </div>
           </div>
           <div className="relative overflow-hidden rounded-2xl">
-            <img src="https://images.unsplash.com/photo-1522083165195-3424ed129620?w=800&q=80" alt="New York" className="w-full h-[400px] object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+            <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800&q=80" alt="New York" className="w-full h-[400px] object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
             <div className="absolute bottom-6 left-6">
               <p className="text-[#c9a84c] text-xs tracking-[0.3em]">NEW YORK CITY</p>
               <p className="text-white text-sm font-light mt-1">Our home base</p>
@@ -225,7 +224,7 @@ export default function Contact() {
       <section className="relative py-20 px-6 text-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1920&q=80')", backgroundSize: "cover", backgroundPosition: "center" }}>
         <div className="absolute inset-0 bg-black/82" />
         <div className="relative z-10 max-w-2xl mx-auto">
-          <p className="text-[#c9a84c] text-4xl font-light mb-4">{String.fromCharCode(8220)}</p>
+          <div className="w-8 h-px bg-[#c9a84c] mx-auto mb-6" />
           <p className="text-xl md:text-2xl font-light text-white leading-relaxed italic mb-6">The finest events are not stumbled upon — they are crafted, with care, by someone who truly cares.</p>
           <div className="w-8 h-px bg-[#c9a84c] mx-auto mb-4" />
           <p className="text-[#c9a84c] tracking-[0.4em] text-xs">— AVICAM GITLIN</p>

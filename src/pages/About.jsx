@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import ChatWidget from "./ChatWidget";
 
 const LOGO = "https://media.base44.com/images/public/69caab40b61d6ee7c5b75332/9d7fead75_generated_image.png";
 const AVICAM = "https://base44.app/api/apps/69caab40b61d6ee7c5b75332/files/mp/public/69caab40b61d6ee7c5b75332/129dab6d3_avicam_photo.jpg";
-const CHEF = "https://base44.app/api/apps/69caab40b61d6ee7c5b75332/files/mp/public/69caab40b61d6ee7c5b75332/14656185e_chef_photo.jpg";
+const KITCHEN_IMG = "https://media.base44.com/images/public/69caab40b61d6ee7c5b75332/45a3420cd_image.png";
 const NAV = [["HOME","/"],["EVENTS","/events"],["HOW WE WORK","/process"],["ABOUT","/about"],["CONTACT","/contact"]];
 
 function Navbar({ active }) {
@@ -38,6 +39,7 @@ function Footer() {
             <p className="text-gray-500 text-xs tracking-[0.3em] mb-4">NAVIGATION</p>
             <div className="flex flex-col gap-2">
               {NAV.map(([l,h]) => <Link key={l} to={h} className="text-gray-400 text-sm font-light hover:text-[#c9a84c] transition-colors">{l}</Link>)}
+              <Link to="/terms" className="text-gray-400 text-sm font-light hover:text-[#c9a84c] transition-colors">Terms & Policies</Link>
             </div>
           </div>
           <div>
@@ -58,8 +60,9 @@ function Footer() {
             </div>
           </div>
         </div>
-        <div className="border-t border-[#c9a84c]/10 pt-6 text-center">
+        <div className="border-t border-[#c9a84c]/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-2">
           <p className="text-gray-600 text-xs tracking-wide">© 2025 Avicam Gitlin Private Events. All rights reserved.</p>
+          <Link to="/terms" className="text-gray-600 text-xs hover:text-[#c9a84c] transition-colors">Terms & Cancellation Policy</Link>
         </div>
       </div>
     </footer>
@@ -71,7 +74,7 @@ export default function About() {
     <div className="min-h-screen bg-[#0a0a0a] text-white" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
       <Navbar active="ABOUT" />
 
-      {/* Hero — stunning event image, NOT Avicam photo */}
+      {/* Hero */}
       <section className="relative overflow-hidden" style={{ minHeight: "80vh" }}>
         <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80" alt="Private event" className="absolute inset-0 w-full h-full object-cover object-center" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/40 to-[#0a0a0a]" />
@@ -107,6 +110,35 @@ export default function About() {
         </div>
       </section>
 
+      {/* Kitchen photo — the new image */}
+      <section className="py-0 px-6 pb-28">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div className="relative overflow-hidden">
+              <img
+                src={KITCHEN_IMG}
+                alt="Avicam in the kitchen"
+                className="w-full h-[480px] object-cover object-center hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent px-6 py-5">
+                <p className="text-[#c9a84c] text-xs tracking-[0.3em]">IN THE HEART OF IT ALL</p>
+              </div>
+            </div>
+            <div>
+              <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-6">WHERE IT ALL COMES TOGETHER</p>
+              <h2 className="text-3xl font-light mb-6 leading-relaxed">More than events.<br />Experiences lived from the inside out.</h2>
+              <div className="w-10 h-px bg-[#c9a84c]/40 mb-6" />
+              <p className="text-gray-400 font-light leading-relaxed mb-5">
+                Every extraordinary event begins long before the guests arrive. It starts in conversations, in creative sessions, in the quiet hours of preparation where every detail is considered and every decision is made with purpose.
+              </p>
+              <p className="text-gray-400 font-light leading-relaxed">
+                Avicam and his team bring the same passion and precision to every element of the experience — from the broadest vision to the smallest detail. This is the standard we hold ourselves to, every time.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Philosophy */}
       <section className="py-24 px-6 bg-[#0d0d0d]">
         <div className="max-w-6xl mx-auto">
@@ -116,7 +148,7 @@ export default function About() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {[
-              { icon: "✦", title: "Every Event is Personal", text: "Avicam's approach starts from who you are, not a template. He wants to understand how you live, what you love, and what this event means to you — then build something that's unmistakably yours." },
+              { icon: "✦", title: "Every Event is Personal", text: "Avicam's approach starts from who you are, not a template. He wants to understand how you live, what you love, and what this event means to you — then build something unmistakably yours." },
               { icon: "◆", title: "Bespoke by Nature", text: "No two events are the same, because no two clients are the same. Every venue, every design direction, every piece of programming is chosen specifically for you." },
               { icon: "🌍", title: "The World is Your Venue", text: "The finest venues in the world are available — a Tuscan hillside, a yacht deck, a lantern-lit courtyard in Marrakech. You just need the right person to open the door." }
             ].map((p,i) => (
@@ -131,21 +163,16 @@ export default function About() {
         </div>
       </section>
 
-      {/* Meet Avicam — photo + text, photo BELOW story */}
+      {/* Meet Avicam */}
       <section className="py-28 px-6">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
           <div className="relative">
-            <img
-              src={AVICAM}
-              alt="Avicam Gitlin"
-              className="w-full h-[650px] object-cover object-top"
-              onError={(e) => { e.target.src = CHEF; }}
-            />
+            <img src={AVICAM} alt="Avicam Gitlin" className="w-full h-[650px] object-cover object-top"
+              onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?w=800&q=80"; }} />
             <div className="absolute bottom-6 left-6 bg-black/75 backdrop-blur-sm border border-[#c9a84c]/30 px-5 py-3">
               <p className="text-[#c9a84c] text-xs tracking-[0.3em]">AVICAM GITLIN</p>
               <p className="text-gray-400 text-xs mt-1">Event Producer · Travel Curator</p>
             </div>
-            <div className="absolute top-4 right-4 border border-[#c9a84c]/20 w-20 h-20 pointer-events-none" />
           </div>
           <div>
             <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-6">THE MAN BEHIND IT ALL</p>
@@ -154,20 +181,11 @@ export default function About() {
             <p className="text-gray-400 font-light leading-relaxed mb-6">
               Avicam Gitlin is a private event producer and travel curator with over 15 years of experience creating bespoke celebrations across the world's most spectacular destinations.
             </p>
-            <p className="text-gray-400 font-light leading-relaxed mb-6">
+            <p className="text-gray-400 font-light leading-relaxed mb-10">
               He has produced weddings, Bar and Bat Mitzvahs, fundraising galas, corporate retreats, and milestone celebrations — from New York ballrooms to Greek island estates, from Moroccan riads to Alpine chalets.
             </p>
-            <p className="text-gray-400 font-light leading-relaxed mb-10">
-              His philosophy is simple: every event deserves the same level of care, every client deserves the same personal attention, and the world deserves to be the backdrop for your most important moments.
-            </p>
             <div className="space-y-0">
-              {[
-                "15+ years producing private events worldwide",
-                "Weddings, galas, B'nei Mitzvah & corporate events",
-                "Trusted network in 30+ countries",
-                "Personally involved in every event",
-                "Complete discretion, always"
-              ].map((item,i) => (
+              {["15+ years producing private events worldwide","Weddings, galas, B'nei Mitzvah & corporate events","Trusted network in 30+ countries","Personally involved in every event","Complete discretion, always"].map((item,i) => (
                 <div key={i} className="flex items-center gap-4 py-3 border-b border-[#c9a84c]/10">
                   <span className="text-[#c9a84c] text-xs">→</span>
                   <span className="text-gray-400 text-sm font-light">{item}</span>
@@ -202,6 +220,7 @@ export default function About() {
       </section>
 
       <Footer />
+      <ChatWidget />
     </div>
   );
 }

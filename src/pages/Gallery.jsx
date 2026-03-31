@@ -1,3 +1,4 @@
+import ChatWidget from "./ChatWidget";
 import { Link } from "react-router-dom";
 
 const LOGO = "https://media.base44.com/images/public/69caab40b61d6ee7c5b75332/9d7fead75_generated_image.png";
@@ -195,6 +196,7 @@ export default function Gallery() {
       </section>
 
       <Footer />
+      <ChatWidget />
     </div>
   );
 }

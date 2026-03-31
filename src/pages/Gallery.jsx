@@ -18,6 +18,7 @@ const items = [
   {cat:"CORPORATE",img:"https://images.unsplash.com/photo-1578474846511-04ba529f0b88?w=800&q=80",caption:"Private VIP Event · Provence"},
 ];
 export default function Gallery() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const [active,setActive] = useState("ALL");
   const [lb,setLb] = useState(null);
   const filtered = active==="ALL"?items:items.filter(g=>g.cat===active);
@@ -28,7 +29,18 @@ export default function Gallery() {
           <Link to="/" className="flex items-center gap-3"><img src={LOGO} className="h-12 w-12 object-contain"/><span className="text-xl tracking-[0.25em] text-[#c9a84c] font-light hidden sm:block">AVICAM GITLIN</span></Link>
           <div className="hidden md:flex gap-8 text-xs tracking-[0.2em] text-gray-300">{NAV.map(([l,h])=><Link key={l} to={h} className={`hover:text-[#c9a84c] transition-colors ${l==="GALLERY"?"text-[#c9a84c]":""}`}>{l}</Link>)}</div>
           <Link to="/contact" className="hidden md:block px-5 py-2 border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[0.2em] hover:bg-[#c9a84c]/10 transition-colors">INQUIRE</Link>
+          <button className="md:hidden text-gray-300 hover:text-[#c9a84c] p-1" onClick={()=>setMenuOpen(!menuOpen)}>
+            {menuOpen
+              ? <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              : <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>}
+          </button>
         </div>
+        {menuOpen && (
+          <div className="md:hidden bg-[#0a0a0a] border-t border-[#c9a84c]/10 px-6 py-4 flex flex-col gap-4">
+            {NAV.map(([l,h])=><Link key={l} to={h} onClick={()=>setMenuOpen(false)} className="text-gray-300 hover:text-[#c9a84c] transition-colors text-sm tracking-[0.2em] py-1">{l}</Link>)}
+            <Link to="/contact" onClick={()=>setMenuOpen(false)} className="mt-2 px-5 py-3 border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[0.2em] text-center hover:bg-[#c9a84c]/10 transition-colors">INQUIRE</Link>
+          </div>
+        )}
       </nav>
       <section className="pt-36 pb-16 px-6 text-center">
         <p className="text-[#c9a84c] tracking-[0.5em] text-xs mb-6">OUR WORK</p>

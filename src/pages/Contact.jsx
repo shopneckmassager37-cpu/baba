@@ -5,6 +5,7 @@ const LOGO = "https://media.base44.com/images/public/69caab40b61d6ee7c5b75332/9d
 const NAV = [["HOME","/"],["EVENTS","/events"],["HOW WE WORK","/process"],["ABOUT","/about"],["GALLERY","/gallery"],["CONTACT","/contact"]];
 const eventTypes = ["Destination Celebration","Milestone Event","Corporate / VIP Event","Villa Program","Sailing / Charter Event","Heritage Journey","Other"];
 export default function Contact() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const [form,setForm] = useState({name:"",email:"",phone:"",eventType:"",destination:"",date:"",guests:"",message:""});
   const [submitted,setSubmitted] = useState(false);
   const [loading,setLoading] = useState(false);
@@ -26,7 +27,18 @@ export default function Contact() {
           <Link to="/" className="flex items-center gap-3"><img src={LOGO} className="h-12 w-12 object-contain"/><span className="text-xl tracking-[0.25em] text-[#c9a84c] font-light hidden sm:block">AVICAM GITLIN</span></Link>
           <div className="hidden md:flex gap-8 text-xs tracking-[0.2em] text-gray-300">{NAV.map(([l,h])=><Link key={l} to={h} className={`hover:text-[#c9a84c] transition-colors ${l==="CONTACT"?"text-[#c9a84c]":""}`}>{l}</Link>)}</div>
           <Link to="/contact" className="hidden md:block px-5 py-2 border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[0.2em] hover:bg-[#c9a84c]/10 transition-colors">INQUIRE</Link>
+          <button className="md:hidden text-gray-300 hover:text-[#c9a84c] p-1" onClick={()=>setMenuOpen(!menuOpen)}>
+            {menuOpen
+              ? <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              : <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>}
+          </button>
         </div>
+        {menuOpen && (
+          <div className="md:hidden bg-[#0a0a0a] border-t border-[#c9a84c]/10 px-6 py-4 flex flex-col gap-4">
+            {[['HOME','/'],['EVENTS','/events'],['HOW WE WORK','/process'],['ABOUT','/about'],['GALLERY','/gallery'],['CONTACT','/contact']].map(([l,h])=><Link key={l} to={h} onClick={()=>setMenuOpen(false)} className="text-gray-300 hover:text-[#c9a84c] transition-colors text-sm tracking-[0.2em] py-1">{l}</Link>)}
+            <Link to="/contact" onClick={()=>setMenuOpen(false)} className="mt-2 px-5 py-3 border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[0.2em] text-center hover:bg-[#c9a84c]/10 transition-colors">INQUIRE</Link>
+          </div>
+        )}
       </nav>
       <section className="relative pt-32 pb-24 px-6 text-center" style={{backgroundImage:"url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920&q=80')",backgroundSize:"cover",backgroundPosition:"center"}}>
         <div className="absolute inset-0 bg-black/75"/>

@@ -158,6 +158,80 @@ export default function Contact() {
         </div>
       </section>
 
+      {/* Testimonials */}
+      <section className="py-16 px-6 bg-[#141210]">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-[#c9a84c] tracking-[0.5em] text-xs mb-3">WHAT CLIENTS SAY</p>
+            <h2 className="text-3xl font-light text-[#e8e2d9]">Their Words</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { quote: "Avicam turned our wedding in Tuscany into something beyond our wildest dreams. Every single detail was perfect.", name: "Sarah & Daniel", location: "Tuscany, Italy" },
+              { quote: "Our gala raised more than ever before. The atmosphere, the production, the experience — guests are still talking about it.", name: "Rebecca Cohen", location: "New York, USA" },
+              { quote: "From the first call to the final dance, Avicam was present, attentive, and flawless. An experience we'll cherish forever.", name: "James & Miriam", location: "Santorini, Greece" }
+            ].map((t, i) => (
+              <div key={i} className="bg-[#0f0e0c] border border-[#c9a84c]/15 p-7 rounded-2xl flex flex-col">
+                <div className="text-[#c9a84c] text-3xl font-light mb-4 leading-none">{String.fromCharCode(8220)}</div>
+                <p className="text-[#a09888] font-light text-sm leading-relaxed italic flex-1 mb-6">{t.quote}</p>
+                <div className="border-t border-[#c9a84c]/15 pt-4">
+                  <p className="text-[#e8e2d9] text-sm font-light">{t.name}</p>
+                  <p className="text-[#c9a84c] text-xs tracking-widest mt-1">{t.location}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact info strip */}
+      <section className="py-16 px-6 bg-[#0f0e0c]">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div>
+            <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-4">WHERE WE ARE</p>
+            <h2 className="text-3xl font-light text-[#e8e2d9] mb-6">Based in New York.<br />Working Worldwide.</h2>
+            <div className="w-10 h-px bg-[#c9a84c]/40 mb-6" />
+            <p className="text-[#a09888] font-light text-sm leading-relaxed mb-8">Our team is based in New York City, but our events span the globe — from the hills of Tuscany to the shores of the Aegean.</p>
+            <div className="space-y-4">
+              {[
+                { icon: "M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.9 12.4 19.79 19.79 0 0 1 1.85 3.82 2 2 0 0 1 3.82 1.64h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l.97-.97a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z", label: "+1 (347) 994-9284", sub: "Available by appointment" },
+                { icon: "M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z M22 6l-10 7L2 6", label: "avicam@kosherculinarytravel.com", sub: "Response within 24 hours" },
+                { icon: "M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z", label: "New York, USA", sub: "Events in 30+ countries" }
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-4">
+                  <div className="w-8 h-8 border border-[#c9a84c]/30 flex items-center justify-center flex-shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" stroke="#c9a84c" strokeWidth="1.5" viewBox="0 0 24 24"><path d={item.icon}/></svg>
+                  </div>
+                  <div>
+                    <p className="text-[#e8e2d9] text-sm font-light">{item.label}</p>
+                    <p className="text-[#a09888] text-xs">{item.sub}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="relative overflow-hidden rounded-2xl">
+            <img src="https://images.unsplash.com/photo-1522083165195-3424ed129620?w=800&q=80" alt="New York" className="w-full h-[400px] object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+            <div className="absolute bottom-6 left-6">
+              <p className="text-[#c9a84c] text-xs tracking-[0.3em]">NEW YORK CITY</p>
+              <p className="text-white text-sm font-light mt-1">Our home base</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Quote */}
+      <section className="relative py-20 px-6 text-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1920&q=80')", backgroundSize: "cover", backgroundPosition: "center" }}>
+        <div className="absolute inset-0 bg-black/82" />
+        <div className="relative z-10 max-w-2xl mx-auto">
+          <p className="text-[#c9a84c] text-4xl font-light mb-4">{String.fromCharCode(8220)}</p>
+          <p className="text-xl md:text-2xl font-light text-white leading-relaxed italic mb-6">The finest events are not stumbled upon — they are crafted, with care, by someone who truly cares.</p>
+          <div className="w-8 h-px bg-[#c9a84c] mx-auto mb-4" />
+          <p className="text-[#c9a84c] tracking-[0.4em] text-xs">— AVICAM GITLIN</p>
+        </div>
+      </section>
+
       <Footer />
       <ChatWidget />
     </div>

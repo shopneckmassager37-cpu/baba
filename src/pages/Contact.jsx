@@ -158,31 +158,6 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-16 px-6 bg-[#141210]">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <p className="text-[#c9a84c] tracking-[0.5em] text-xs mb-3">WHAT CLIENTS SAY</p>
-            <h2 className="text-3xl font-light text-[#e8e2d9]">Their Words</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-            { quote: "Avicam turned our wedding in Tuscany into something beyond our wildest dreams. Every single detail was perfect.", name: "Sarah & Daniel", location: "Tuscany, Italy" },
-            { quote: "Our gala raised more than ever before. The atmosphere, the production, the experience — guests are still talking about it.", name: "Rebecca Cohen", location: "New York, USA" },
-            { quote: "From the first call to the final dance, Avicam was present, attentive, and flawless. An experience we'll cherish forever.", name: "James & Miriam", location: "Santorini, Greece" }].
-            map((t, i) =>
-            <div key={i} className="bg-[#0f0e0c] border border-[#c9a84c]/15 p-7 rounded-2xl flex flex-col">
-                <p className="text-[#a09888] font-light text-sm leading-relaxed italic flex-1 mb-6">{t.quote}</p>
-                <div className="border-t border-[#c9a84c]/15 pt-4">
-                  <p className="text-[#e8e2d9] text-sm font-light">{t.name}</p>
-                  <p className="text-[#c9a84c] text-xs tracking-widest mt-1">{t.location}</p>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
-
       {/* Contact info strip */}
       <section className="py-16 px-6 bg-[#0f0e0c]">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">

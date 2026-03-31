@@ -75,6 +75,8 @@ export default function Home() {
         </div>
       </section>
 
+      <div style={{ height: "60px", background: "linear-gradient(to bottom, #0f0e0c, #f5f0e8)" }} />
+
       {/* ─── EVENT TYPES GRID ─── */}
       <section className="px-6 pb-20 bg-[#f5f0e8]">
         <div className="max-w-7xl mx-auto">
@@ -104,6 +106,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <div style={{ height: "60px", background: "linear-gradient(to bottom, #f5f0e8, #0f0e0c)" }} />
 
       {/* ─── STATS ─── */}
       <section className="py-16 px-6 bg-[#0f0e0c] border-y border-[#c9a84c]/20">
@@ -179,6 +183,8 @@ export default function Home() {
         </div>
       </section>
 
+      <div style={{ height: "60px", background: "linear-gradient(to bottom, #1c1b1a, #f5f0e8)" }} />
+
       {/* ─── THE AVICAM DIFFERENCE ─── */}
       <section className="py-24 px-6 bg-[#f5f0e8]">
         <div className="max-w-6xl mx-auto">
@@ -203,6 +209,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <div style={{ height: "60px", background: "linear-gradient(to bottom, #f5f0e8, #0f0e0c)" }} />
 
       {/* ─── MEET AVICAM ─── */}
       <section className="py-24 px-6 bg-[#0f0e0c]">
@@ -231,6 +239,8 @@ export default function Home() {
         </div>
       </section>
 
+      <div style={{ height: "60px", background: "linear-gradient(to bottom, #0f0e0c, #f5f0e8)" }} />
+
       {/* ─── HOW IT WORKS — teaser ─── */}
       <section className="py-24 px-6 bg-[#f5f0e8]">
         <div className="max-w-5xl mx-auto">
@@ -258,6 +268,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <div style={{ height: "60px", background: "linear-gradient(to bottom, #f5f0e8, #111)" }} />
 
       {/* ─── CTA ─── */}
       <section className="relative py-28 px-6 text-center overflow-hidden"

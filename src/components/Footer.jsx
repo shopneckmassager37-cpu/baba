@@ -5,7 +5,7 @@ const NAV = [["HOME","/"],["EVENTS","/events"],["HOW WE WORK","/process"],["ABOU
 
 export default function Footer() {
   return (
-    <footer className="bg-[#181817] border-t border-[#c9a84c]/20 pt-14 pb-8 px-6">
+    <footer className="bg-[#080807] border-t border-[#c9a84c]/20 pt-14 pb-8 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
           <div>
@@ -13,7 +13,7 @@ export default function Footer() {
               <img src={LOGO} alt="logo" className="h-10 w-10 object-contain" />
               <span className="text-[#c9a84c] text-base tracking-[0.3em] font-light">AVICAM GITLIN</span>
             </div>
-            <p className="text-gray-400 text-sm font-light leading-relaxed">Bespoke private events and extraordinary celebrations, crafted for discerning individuals worldwide.</p>
+            <p className="text-[#a09888] text-sm font-light leading-relaxed">Bespoke private events and extraordinary celebrations, crafted for discerning individuals worldwide.</p>
           </div>
           <div>
             <p className="text-gray-400 text-xs tracking-[0.3em] mb-4">NAVIGATION</p>

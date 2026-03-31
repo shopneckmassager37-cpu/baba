@@ -24,7 +24,7 @@ export default function Navbar({ active }) {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#181817]/95 backdrop-blur-md border-b border-[#c9a84c]/25">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0907]/95 backdrop-blur-md border-b border-[#c9a84c]/25">
         <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
           <Link to="/" className="flex items-center gap-3">
             <img src={LOGO} alt="logo" className="h-11 w-11 object-contain" />

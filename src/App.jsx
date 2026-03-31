@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import Gallery from './pages/Gallery';
+
 import Home from './pages/Home';
 import Contact from './pages/Contact';
 import About from './pages/About';
@@ -14,7 +14,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/gallery" element={<Gallery />} />
+
         <Route path="/home" element={<Navigate to="/" replace />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
@@ -25,7 +25,7 @@ function App() {
         <Route path="/admin" element={<Admin />} />
         {/* Redirect uppercase routes for backwards compatibility */}
         <Route path="/Home" element={<Navigate to="/" replace />} />
-        <Route path="/Gallery" element={<Navigate to="/gallery" replace />} />
+
         <Route path="/Contact" element={<Navigate to="/contact" replace />} />
         <Route path="/About" element={<Navigate to="/about" replace />} />
         <Route path="/Events" element={<Navigate to="/events" replace />} />

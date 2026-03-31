@@ -53,7 +53,6 @@ export default function About() {
             <div className="absolute -bottom-4 -left-4 w-28 h-28 border border-[#c9a84c]/40 pointer-events-none" />
           </div>
         </div>
-        </div>
       </section>
 
       {/* Kitchen photo — the new image */}
@@ -85,7 +84,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Philosophy */
+      {/* Philosophy */}
       <section className="py-24 px-6 bg-[#0f0e0c]">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
@@ -142,7 +141,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Quote */
+      {/* Quote */}
       <section className="py-24 px-6 text-center bg-[#0f0e0c]">
         <div className="max-w-3xl mx-auto">
           <div className="text-[#c9a84c] text-5xl font-light mb-6">"</div>

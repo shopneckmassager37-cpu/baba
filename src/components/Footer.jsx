@@ -5,7 +5,7 @@ const NAV = [["HOME","/"],["EVENTS","/events"],["HOW WE WORK","/process"],["ABOU
 
 export default function Footer() {
   return (
-    <footer className="bg-[#111] border-t border-[#c9a84c]/15 pt-14 pb-8 px-6">
+    <footer className="bg-[#181817] border-t border-[#c9a84c]/20 pt-14 pb-8 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
           <div>

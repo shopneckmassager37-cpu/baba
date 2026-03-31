@@ -90,7 +90,7 @@ const sections = [
 
 export default function Terms() {
   return (
-    <div className="min-h-screen bg-[#161616] text-white" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
+    <div className="min-h-screen bg-[#1c1b1a] text-white" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
       <ScrollToTop />
       <Navbar active="" />
 
@@ -107,7 +107,7 @@ export default function Terms() {
       </section>
 
       {/* Quick nav */}
-      <section className="py-10 px-6 bg-[#1a1a1a] border-b border-[#c9a84c]/10">
+      <section className="py-10 px-6 bg-[#232120] border-b border-[#c9a84c]/15">
         <div className="max-w-4xl mx-auto flex flex-wrap gap-3 justify-center">
           {sections.map((s,i) => (
             <a key={i} href={`#section-${i}`} className="text-xs text-gray-400 border border-[#c9a84c]/20 px-4 py-2 hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors tracking-wide">
@@ -118,7 +118,7 @@ export default function Terms() {
       </section>
 
       {/* Content */}
-      <section className="py-20 px-6">
+      <section className="py-20 px-6 bg-[#1c1b1a]">
         <div className="max-w-4xl mx-auto space-y-16">
           {sections.map((s,i) => (
             <div key={i} id={`section-${i}`} className="grid grid-cols-[60px_1fr] gap-8">

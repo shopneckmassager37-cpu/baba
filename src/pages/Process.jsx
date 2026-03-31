@@ -23,7 +23,7 @@ const steps = [
 
 export default function Process() {
   return (
-    <div className="min-h-screen bg-[#161616] text-white" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
+    <div className="min-h-screen bg-[#1c1b1a] text-white" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
       <ScrollToTop />
       <Navbar active="HOW WE WORK" />
 
@@ -42,7 +42,7 @@ export default function Process() {
       </section>
 
       {/* Steps — card grid, much cleaner */}
-      <section className="py-20 px-6 bg-[#161616]">
+      <section className="py-20 px-6 bg-[#1c1b1a]">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {steps.map((step, i) => (
@@ -61,7 +61,7 @@ export default function Process() {
       </section>
 
       {/* Values */}
-      <section className="py-20 px-6 bg-[#1a1a1a]">
+      <section className="py-20 px-6 bg-[#232120]">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-3">WHAT WE STAND FOR</p>
@@ -99,7 +99,7 @@ export default function Process() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 px-6 bg-[#161616]">
+      <section className="py-20 px-6 bg-[#1c1b1a]">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-3">COMMON QUESTIONS</p>
@@ -120,7 +120,7 @@ export default function Process() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-6 bg-[#1a1a1a] text-center">
+      <section className="py-20 px-6 bg-[#232120] text-center">
         <div className="max-w-lg mx-auto">
           <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-4">READY TO BEGIN?</p>
           <h2 className="text-3xl font-light mb-6">Start With a Conversation</h2>

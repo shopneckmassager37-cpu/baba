@@ -20,13 +20,7 @@ const events = [
     highlights: ["Full destination wedding planning & design","Venue sourcing across 30+ countries","Accommodation & guest logistics","Day-of execution & full team management","Custom décor, florals & production","Entertainment, music & live performance"],
     img: "https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=80"
   },
-  {
-    title: "Bar & Bat Mitzvahs",
-    tagline: "A milestone this meaningful deserves a celebration to match.",
-    description: "We create Bar and Bat Mitzvah celebrations that honour the significance of the moment while creating an unforgettable experience for the whole family. Whether in your hometown or a dream destination, we handle every element from venue to entertainment to guest experience.",
-    highlights: ["Destination & local Bar/Bat Mitzvah planning","Complete venue selection & design","Entertainment, DJ & live performances","Customised guest experience programs","Family accommodation coordination","Multi-day celebration programs"],
-    img: "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=1200&q=80"
-  },
+
   {
     title: "Fundraising Galas & Charity Events",
     tagline: "Events that inspire generosity and leave a lasting impact.",
@@ -59,7 +53,7 @@ const events = [
 
 export default function Events() {
   return (
-    <div className="min-h-screen bg-[#161616] text-white" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
+    <div className="min-h-screen bg-[#1c1b1a] text-white" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
       <ScrollToTop />
       <Navbar active="EVENTS" />
 
@@ -78,8 +72,8 @@ export default function Events() {
       </section>
 
       {/* Events list */}
-      <section className="py-24 px-6">
-        <div className="max-w-7xl mx-auto space-y-36">
+      <section className="py-24 px-6 bg-[#1c1b1a]">
+        <div className="max-w-7xl mx-auto space-y-28">
           {events.map((ev, i) => (
             <div key={i} className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
               {i % 2 === 0 ? (
@@ -129,7 +123,7 @@ export default function Events() {
       </section>
 
       {/* CTA */}
-      <section className="py-28 px-6 bg-[#1a1a1a] text-center">
+      <section className="py-28 px-6 bg-[#232120] text-center">
         <div className="max-w-2xl mx-auto">
           <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-6">READY TO START?</p>
           <h2 className="text-4xl font-light mb-6">Let's Design Your Event</h2>

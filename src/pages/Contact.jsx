@@ -27,7 +27,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen bg-[#161616] text-white" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
+    <div className="min-h-screen bg-[#1c1b1a] text-white" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
       <ScrollToTop />
       <Navbar active="CONTACT" />
 
@@ -43,7 +43,7 @@ export default function Contact() {
       </section>
 
       {/* Main contact section — styled like the reference image */}
-      <section className="py-16 px-6 bg-[#161616]">
+      <section className="py-16 px-6 bg-[#1c1b1a]">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
 
           {/* LEFT — Contact options cards */}

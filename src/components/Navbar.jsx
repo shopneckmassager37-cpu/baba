@@ -24,7 +24,7 @@ export default function Navbar({ active }) {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#111]/95 backdrop-blur-md border-b border-[#c9a84c]/20">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#181817]/95 backdrop-blur-md border-b border-[#c9a84c]/25">
         <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
           <Link to="/" className="flex items-center gap-3">
             <img src={LOGO} alt="logo" className="h-11 w-11 object-contain" />
@@ -56,7 +56,7 @@ export default function Navbar({ active }) {
       )}
 
       {/* Mobile side menu */}
-      <div className={`fixed top-0 right-0 h-full w-72 z-50 bg-[#111] border-l border-[#c9a84c]/20 transform transition-transform duration-300 ease-in-out md:hidden ${menuOpen ? "translate-x-0" : "translate-x-full"}`}>
+      <div className={`fixed top-0 right-0 h-full w-72 z-50 bg-[#181817] border-l border-[#c9a84c]/20 transform transition-transform duration-300 ease-in-out md:hidden ${menuOpen ? "translate-x-0" : "translate-x-full"}`}>
         <div className="flex items-center justify-between px-6 py-4 border-b border-[#c9a84c]/15">
           <span className="text-[#c9a84c] text-sm tracking-[0.3em] font-light">MENU</span>
           <button onClick={() => setMenuOpen(false)} className="w-10 h-10 flex items-center justify-center">

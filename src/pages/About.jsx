@@ -15,7 +15,7 @@ const KITCHEN_IMG = "https://media.base44.com/images/public/69caab40b61d6ee7c5b7
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-[#161616] text-white" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
+    <div className="min-h-screen bg-[#1c1b1a] text-white" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
       <ScrollToTop />
       <Navbar active="ABOUT" />
 
@@ -32,7 +32,7 @@ export default function About() {
       </section>
 
       {/* Story */}
-      <section className="py-16 md:py-28 px-6">
+      <section className="py-16 md:py-28 px-6 bg-[#1c1b1a]">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center">
           <div>
             <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-6">THE BEGINNING</p>
@@ -56,7 +56,7 @@ export default function About() {
       </section>
 
       {/* Kitchen photo — the new image */}
-      <section className="py-0 px-6 pb-16 md:pb-28">
+      <section className="py-0 px-6 pb-16 md:pb-28 bg-[#1c1b1a]">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
             <div className="relative overflow-hidden">
@@ -85,7 +85,7 @@ export default function About() {
       </section>
 
       {/* Philosophy */}
-      <section className="py-24 px-6 bg-[#1a1a1a]">
+      <section className="py-24 px-6 bg-[#232120]">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-4">THE PHILOSOPHY</p>
@@ -109,7 +109,7 @@ export default function About() {
       </section>
 
       {/* Meet Avicam */}
-      <section className="py-16 md:py-28 px-6">
+      <section className="py-16 md:py-28 px-6 bg-[#1c1b1a]">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center">
           <div className="relative">
             <img src={AVICAM} alt="Avicam Gitlin" className="w-full h-[650px] object-cover object-top"
@@ -142,7 +142,7 @@ export default function About() {
       </section>
 
       {/* Quote */}
-      <section className="py-24 px-6 text-center bg-[#1a1a1a]">
+      <section className="py-24 px-6 text-center bg-[#232120]">
         <div className="max-w-3xl mx-auto">
           <div className="text-[#c9a84c] text-5xl font-light mb-6">"</div>
           <p className="text-2xl md:text-3xl font-light leading-relaxed text-gray-300 italic mb-8">
@@ -154,7 +154,7 @@ export default function About() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-28 px-6 text-center">
+      <section className="py-16 md:py-28 px-6 text-center bg-[#1c1b1a]">
         <div className="max-w-xl mx-auto">
           <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-6">WORK WITH AVICAM</p>
           <h2 className="text-4xl font-light mb-8">Let's Create Something Together</h2>

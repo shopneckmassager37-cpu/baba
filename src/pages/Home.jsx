@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 const AVICAM = "https://base44.app/api/apps/69caab40b61d6ee7c5b75332/files/mp/public/69caab40b61d6ee7c5b75332/129dab6d3_avicam_photo.jpg";
 const KITCHEN = "https://media.base44.com/images/public/69caab40b61d6ee7c5b75332/45a3420cd_image.png";
 
+
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
@@ -33,7 +34,7 @@ export { ScrollToTop, Ticker };
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#161616] text-white" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
+    <div className="min-h-screen bg-[#1c1b1a] text-white" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
       <ScrollToTop />
       <Navbar active="HOME" />
 
@@ -61,7 +62,7 @@ export default function Home() {
       <Ticker />
 
       {/* ─── INTRO ─── */}
-      <section className="py-20 px-6 bg-[#161616]">
+      <section className="py-20 px-6 bg-[#1c1b1a]">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-[#c9a84c] tracking-[0.5em] text-xs mb-5">THE AVICAM GITLIN DIFFERENCE</p>
           <h2 className="text-3xl md:text-4xl font-light leading-relaxed mb-5">
@@ -105,7 +106,7 @@ export default function Home() {
       </section>
 
       {/* ─── STATS ─── */}
-      <section className="py-14 px-6 border-y border-[#c9a84c]/10 bg-[#161616]">
+      <section className="py-14 px-6 border-y border-[#c9a84c]/15 bg-[#1c1b1a]">
         <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {[{num:"15+",label:"Years of Excellence"},{num:"500+",label:"Events Worldwide"},{num:"30+",label:"Destinations"},{num:"100%",label:"Bespoke"}].map((s,i) => (
             <div key={i}>
@@ -171,7 +172,7 @@ export default function Home() {
       </section>
 
       {/* ─── DESTINATIONS ─── */}
-      <section className="py-20 px-6 bg-[#161616]">
+      <section className="py-20 px-6 bg-[#1c1b1a]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-3">DESTINATIONS & INSPIRATIONS</p>
@@ -224,7 +225,7 @@ export default function Home() {
       </section>
 
       {/* ─── MEET AVICAM ─── */}
-      <section className="py-20 px-6 bg-[#161616]">
+      <section className="py-20 px-6 bg-[#1c1b1a]">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div className="relative">
             <img src={AVICAM} alt="Avicam Gitlin" className="w-full h-[500px] object-cover object-top"
@@ -250,7 +251,7 @@ export default function Home() {
       </section>
 
       {/* ─── HOW IT WORKS — teaser ─── */}
-      <section className="py-20 px-6 bg-[#1a1a1a]">
+      <section className="py-20 px-6 bg-[#232120]">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-3">THE PROCESS</p>
@@ -263,7 +264,7 @@ export default function Home() {
               { n: "02", title: "Vision & Design", text: "We create a bespoke concept tailored to you — venue, aesthetic, programming, and every creative detail that makes it yours." },
               { n: "03", title: "Flawless Execution", text: "On the day, Avicam and his team manage every detail so you're entirely present — living the experience, not managing it." }
             ].map((s,i) => (
-              <div key={i} className="bg-[#161616] border border-[#c9a84c]/10 p-6 hover:border-[#c9a84c]/30 transition-colors">
+              <div key={i} className="bg-[#1c1b1a] border border-[#c9a84c]/15 p-6 hover:border-[#c9a84c]/35 transition-colors">
                 <span className="text-5xl font-light text-[#c9a84c]/15 leading-none">{s.n}</span>
                 <h3 className="text-base font-light mt-3 mb-2">{s.title}</h3>
                 <div className="w-6 h-px bg-[#c9a84c]/30 mb-3" />

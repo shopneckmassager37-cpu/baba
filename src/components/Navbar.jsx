@@ -30,12 +30,14 @@ export default function Navbar({ active }) {
             <img src={LOGO} alt="logo" className="h-11 w-11 object-contain" />
             <span className="text-lg tracking-[0.3em] text-[#c9a84c] font-light hidden sm:block">AVICAM GITLIN</span>
           </Link>
-          <div className="hidden md:flex gap-8 text-xs tracking-[0.2em] text-gray-300">
-            {NAV.map(([l,h]) => (
-              <Link key={l} to={h} className={`hover:text-[#c9a84c] transition-colors ${active===l?"text-[#c9a84c]":""}`}>{l}</Link>
-            ))}
+          <div className="hidden md:flex items-center gap-8">
+            <div className="flex gap-8 text-xs tracking-[0.2em] text-gray-300">
+              {NAV.map(([l,h]) => (
+                <Link key={l} to={h} className={`hover:text-[#c9a84c] transition-colors ${active===l?"text-[#c9a84c]":""}`}>{l}</Link>
+              ))}
+            </div>
+            <Link to="/contact" className="px-5 py-2 border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[0.2em] hover:bg-[#c9a84c]/10 transition-colors">INQUIRE</Link>
           </div>
-          <Link to="/contact" className="hidden md:block px-5 py-2 border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[0.2em] hover:bg-[#c9a84c]/10 transition-colors">INQUIRE</Link>
           
           {/* Mobile hamburger */}
           <button

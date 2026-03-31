@@ -75,7 +75,7 @@ export default function Events() {
       <section className="py-24 px-6 bg-[#0f0e0c]">
         <div className="max-w-7xl mx-auto space-y-28">
           {events.map((ev, i) => (
-            <div key={i} className={`grid grid-cols-1 md:grid-cols-2 gap-16 items-center p-8 md:p-12 ${i % 2 === 0 ? 'bg-[#141210]' : 'bg-[#f5f0e8]'}`}>
+            <div key={i} className={`grid grid-cols-1 md:grid-cols-2 gap-16 items-center p-8 md:p-12 ${i % 2 === 0 ? 'bg-[#141210]' : 'bg-[#1a1813]'}`}>
               {i % 2 === 0 ? (
                 <>
                   <div className="overflow-hidden">
@@ -100,17 +100,17 @@ export default function Events() {
                 <>
                   <div>
                     <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-4 italic">{ev.tagline}</p>
-                    <h2 className="text-3xl md:text-4xl font-light mb-6 text-[#1a1813]">{ev.title}</h2>
+                    <h2 className="text-3xl md:text-4xl font-light mb-6 text-[#e8e2d9]">{ev.title}</h2>
                     <div className="w-10 h-px bg-[#c9a84c]/50 mb-6" />
-                    <p className="text-[#6b5f50] font-light leading-relaxed mb-8">{ev.description}</p>
+                    <p className="text-[#a09888] font-light leading-relaxed mb-8">{ev.description}</p>
                     <ul className="space-y-2 mb-10">
                       {ev.highlights.map((d,j) => (
                         <li key={j} className="flex items-center gap-3 text-sm font-light">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] flex-shrink-0" /><span className="text-[#4a3f2f]">{d}</span>
+                         <span className="w-1.5 h-1.5 rounded-full bg-[#c9a84c] flex-shrink-0" /><span className="text-[#a09888]">{d}</span>
                         </li>
                       ))}
                     </ul>
-                    <Link to="/contact" className="inline-block px-8 py-3 border border-[#1a1813] text-[#1a1813] text-xs tracking-[0.2em] hover:bg-[#1a1813] hover:text-white transition-colors">INQUIRE NOW</Link>
+                    <Link to="/contact" className="inline-block px-8 py-3 border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[0.2em] hover:bg-[#c9a84c] hover:text-black transition-colors">INQUIRE NOW</Link>
                   </div>
                   <div className="overflow-hidden">
                     <img src={ev.img} alt={ev.title} className="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-700" />

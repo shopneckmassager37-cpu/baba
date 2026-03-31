@@ -1,12 +1,19 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import ChatWidget from "./ChatWidget";
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  return null;
+}
 
 const LOGO = "https://media.base44.com/images/public/69caab40b61d6ee7c5b75332/9d7fead75_generated_image.png";
 const NAV = [["HOME","/"],["EVENTS","/events"],["HOW WE WORK","/process"],["ABOUT","/about"],["CONTACT","/contact"]];
 
 function Navbar() {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-md border-b border-[#c9a84c]/20">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#161616]/95 backdrop-blur-md border-b border-[#c9a84c]/20">
       <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
         <Link to="/" className="flex items-center gap-3">
           <img src={LOGO} alt="logo" className="h-11 w-11 object-contain" />
@@ -23,7 +30,7 @@ function Navbar() {
 
 function Footer() {
   return (
-    <footer className="bg-[#070707] border-t border-[#c9a84c]/15 pt-14 pb-8 px-6">
+    <footer className="bg-[#111] border-t border-[#c9a84c]/15 pt-14 pb-8 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
           <div>
@@ -31,7 +38,7 @@ function Footer() {
               <img src={LOGO} alt="logo" className="h-10 w-10 object-contain" />
               <span className="text-[#c9a84c] text-base tracking-[0.3em] font-light">AVICAM GITLIN</span>
             </div>
-            <p className="text-gray-500 text-sm font-light leading-relaxed">Bespoke private events and extraordinary celebrations, crafted for discerning individuals worldwide.</p>
+            <p className="text-gray-400 text-sm font-light leading-relaxed">Bespoke private events and extraordinary celebrations, crafted for discerning individuals worldwide.</p>
           </div>
           <div>
             <p className="text-gray-500 text-xs tracking-[0.3em] mb-4">NAVIGATION</p>
@@ -134,7 +141,8 @@ const sections = [
 
 export default function Terms() {
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
+    <div className="min-h-screen bg-[#161616] text-white" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
+      <ScrollToTop />
       <Navbar />
 
       {/* Hero */}
@@ -150,7 +158,7 @@ export default function Terms() {
       </section>
 
       {/* Quick nav */}
-      <section className="py-10 px-6 bg-[#0d0d0d] border-b border-[#c9a84c]/10">
+      <section className="py-10 px-6 bg-[#1a1a1a] border-b border-[#c9a84c]/10">
         <div className="max-w-4xl mx-auto flex flex-wrap gap-3 justify-center">
           {sections.map((s,i) => (
             <a key={i} href={`#section-${i}`} className="text-xs text-gray-400 border border-[#c9a84c]/20 px-4 py-2 hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors tracking-wide">
@@ -184,7 +192,7 @@ export default function Terms() {
       </section>
 
       {/* Contact for questions */}
-      <section className="py-20 px-6 bg-[#0d0d0d] text-center">
+      <section className="py-20 px-6 bg-[#1a1a1a] text-center">
         <div className="max-w-xl mx-auto">
           <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-4">QUESTIONS?</p>
           <h2 className="text-2xl font-light mb-6">We're Happy to Clarify</h2>

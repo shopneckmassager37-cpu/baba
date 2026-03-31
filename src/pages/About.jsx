@@ -1,5 +1,12 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import ChatWidget from "./ChatWidget";
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  return null;
+}
 
 const LOGO = "https://media.base44.com/images/public/69caab40b61d6ee7c5b75332/9d7fead75_generated_image.png";
 const AVICAM = "https://base44.app/api/apps/69caab40b61d6ee7c5b75332/files/mp/public/69caab40b61d6ee7c5b75332/129dab6d3_avicam_photo.jpg";
@@ -8,7 +15,7 @@ const NAV = [["HOME","/"],["EVENTS","/events"],["HOW WE WORK","/process"],["ABOU
 
 function Navbar({ active }) {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-md border-b border-[#c9a84c]/20">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#161616]/95 backdrop-blur-md border-b border-[#c9a84c]/20">
       <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
         <Link to="/" className="flex items-center gap-3">
           <img src={LOGO} alt="logo" className="h-11 w-11 object-contain" />
@@ -25,7 +32,7 @@ function Navbar({ active }) {
 
 function Footer() {
   return (
-    <footer className="bg-[#070707] border-t border-[#c9a84c]/15 pt-14 pb-8 px-6">
+    <footer className="bg-[#111] border-t border-[#c9a84c]/15 pt-14 pb-8 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
           <div>
@@ -33,7 +40,7 @@ function Footer() {
               <img src={LOGO} alt="logo" className="h-10 w-10 object-contain" />
               <span className="text-[#c9a84c] text-base tracking-[0.3em] font-light">AVICAM GITLIN</span>
             </div>
-            <p className="text-gray-500 text-sm font-light leading-relaxed">Bespoke private events and extraordinary celebrations, crafted for discerning individuals worldwide.</p>
+            <p className="text-gray-400 text-sm font-light leading-relaxed">Bespoke private events and extraordinary celebrations, crafted for discerning individuals worldwide.</p>
           </div>
           <div>
             <p className="text-gray-500 text-xs tracking-[0.3em] mb-4">NAVIGATION</p>
@@ -71,13 +78,14 @@ function Footer() {
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
+    <div className="min-h-screen bg-[#161616] text-white" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
+      <ScrollToTop />
       <Navbar active="ABOUT" />
 
       {/* Hero */}
       <section className="relative overflow-hidden" style={{ minHeight: "80vh" }}>
         <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80" alt="Private event" className="absolute inset-0 w-full h-full object-cover object-center" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/40 to-[#0a0a0a]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/40 to-[/95]" />
         <div className="relative z-10 flex flex-col items-center justify-center text-center px-6" style={{ minHeight: "80vh" }}>
           <p className="text-[#c9a84c] tracking-[0.6em] text-xs mb-6">THE STORY</p>
           <h1 className="text-5xl md:text-7xl font-light leading-none mb-6">Behind Every<br /><span className="italic text-[#c9a84c]">Extraordinary Event</span></h1>
@@ -140,7 +148,7 @@ export default function About() {
       </section>
 
       {/* Philosophy */}
-      <section className="py-24 px-6 bg-[#0d0d0d]">
+      <section className="py-24 px-6 bg-[#1a1a1a]">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-4">THE PHILOSOPHY</p>
@@ -197,7 +205,7 @@ export default function About() {
       </section>
 
       {/* Quote */}
-      <section className="py-24 px-6 text-center bg-[#0d0d0d]">
+      <section className="py-24 px-6 text-center bg-[#1a1a1a]">
         <div className="max-w-3xl mx-auto">
           <div className="text-[#c9a84c] text-5xl font-light mb-6">"</div>
           <p className="text-2xl md:text-3xl font-light leading-relaxed text-gray-300 italic mb-8">

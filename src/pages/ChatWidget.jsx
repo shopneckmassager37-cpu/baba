@@ -10,18 +10,14 @@ export default function ChatWidget() {
   const [loading, setLoading] = useState(false);
   const [config, setConfig] = useState(null);
   const [suggested, setSuggested] = useState([]);
+  const [showWelcome, setShowWelcome] = useState(false);
   const messagesEndRef = useRef(null);
+  const didInit = useRef(false);
 
   useEffect(() => {
-    fetch(`${APP_URL}/functions/chatbot`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ messages: [{ role: "user", content: "__init__" }] }),
-    })
-      .then(r => r.json())
-      .catch(() => {});
+    if (didInit.current) return;
+    didInit.current = true;
 
-    // Load config for welcome message & suggestions
     import("@/api/entities").then(({ ChatbotConfig }) => {
       ChatbotConfig.list().then(configs => {
         const cfg = configs?.[0];
@@ -36,10 +32,17 @@ export default function ChatWidget() {
         }
       }).catch(() => {});
     }).catch(() => {});
+
+    // Show welcome bubble after 3 seconds
+    setTimeout(() => setShowWelcome(true), 3000);
+    setTimeout(() => setShowWelcome(false), 9000);
   }, []);
 
   useEffect(() => {
-    if (open) messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (open) {
+      setShowWelcome(false);
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
   }, [messages, open]);
 
   const send = async (text) => {
@@ -55,7 +58,7 @@ export default function ChatWidget() {
       const res = await fetch(`${APP_URL}/functions/chatbot`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: newMessages.filter(m => m.role !== "__init__") }),
+        body: JSON.stringify({ messages: newMessages }),
       });
       const data = await res.json();
       setMessages(prev => [...prev, { role: "assistant", content: data.reply || "Sorry, I couldn't process that." }]);
@@ -67,6 +70,18 @@ export default function ChatWidget() {
 
   return (
     <>
+      {/* Welcome bubble */}
+      {showWelcome && !open && (
+        <div
+          className="fixed bottom-24 right-6 z-[9997] max-w-[220px] bg-white text-gray-800 px-4 py-3 shadow-xl text-sm font-light leading-relaxed cursor-pointer"
+          style={{ borderRadius: "12px 12px 0 12px", animation: "fadeInUp 0.4s ease" }}
+          onClick={() => setOpen(true)}
+        >
+          <p style={{ fontFamily: "'Georgia', serif" }}>👋 I'm here to help — tell me what's on your mind</p>
+          <div className="absolute bottom-[-8px] right-3 w-0 h-0" style={{ borderLeft: "8px solid transparent", borderTop: "8px solid white" }} />
+        </div>
+      )}
+
       {/* Floating button */}
       <button
         onClick={() => setOpen(!open)}
@@ -83,40 +98,48 @@ export default function ChatWidget() {
       {/* Chat window */}
       {open && (
         <div
-          className="fixed bottom-24 right-6 z-[9998] w-[360px] max-h-[560px] flex flex-col rounded-none shadow-2xl overflow-hidden"
-          style={{ background: "#0d0d0d", border: "1px solid rgba(201,168,76,0.3)", boxShadow: "0 8px 60px rgba(0,0,0,0.8)" }}
+          className="fixed bottom-24 right-6 z-[9998] w-[360px] flex flex-col shadow-2xl overflow-hidden"
+          style={{ background: "#111", border: "1px solid rgba(201,168,76,0.3)", boxShadow: "0 8px 60px rgba(0,0,0,0.7)", maxHeight: "560px" }}
         >
           {/* Header */}
-          <div className="bg-[#0a0a0a] border-b border-[#c9a84c]/20 px-4 py-3 flex items-center gap-3">
+          <div className="border-b border-[#c9a84c]/20 px-4 py-3 flex items-center gap-3" style={{ background: "#0d0d0d" }}>
             <img src={LOGO} alt="logo" className="w-8 h-8 object-contain" />
-            <div>
+            <div className="flex-1">
               <p className="text-[#c9a84c] text-xs tracking-[0.2em] font-light">{config?.bot_name || "AVICAM ASSISTANT"}</p>
               <div className="flex items-center gap-1.5 mt-0.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                <span className="text-gray-500 text-xs">Online</span>
+                <span className="text-gray-500 text-xs">Online · Here to help</span>
               </div>
             </div>
           </div>
 
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3" style={{ maxHeight: "380px" }}>
+          <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3" style={{ maxHeight: "360px" }}>
             {messages.map((m, i) => (
               <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
+                {m.role === "assistant" && (
+                  <div className="w-6 h-6 rounded-full bg-[#c9a84c]/20 flex items-center justify-center mr-2 flex-shrink-0 mt-1">
+                    <span className="text-[#c9a84c] text-xs">A</span>
+                  </div>
+                )}
                 <div
-                  className={`max-w-[85%] px-4 py-2.5 text-sm font-light leading-relaxed ${
+                  className={`max-w-[80%] px-4 py-2.5 text-sm font-light leading-relaxed ${
                     m.role === "user"
                       ? "bg-[#c9a84c] text-black"
-                      : "bg-[#1a1a1a] text-gray-300 border border-[#c9a84c]/10"
+                      : "bg-[#1d1d1d] text-gray-200 border border-[#c9a84c]/10"
                   }`}
-                  style={{ fontFamily: "'Georgia', serif" }}
+                  style={{ fontFamily: "'Georgia', serif", borderRadius: m.role === "user" ? "12px 12px 0 12px" : "12px 12px 12px 0" }}
                 >
                   {m.content}
                 </div>
               </div>
             ))}
             {loading && (
-              <div className="flex justify-start">
-                <div className="bg-[#1a1a1a] border border-[#c9a84c]/10 px-4 py-3 flex gap-1.5">
+              <div className="flex justify-start items-center gap-2">
+                <div className="w-6 h-6 rounded-full bg-[#c9a84c]/20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-[#c9a84c] text-xs">A</span>
+                </div>
+                <div className="bg-[#1d1d1d] border border-[#c9a84c]/10 px-4 py-3 flex gap-1.5" style={{ borderRadius: "12px 12px 12px 0" }}>
                   {[0,1,2].map(i => (
                     <span key={i} className="w-1.5 h-1.5 rounded-full bg-[#c9a84c]/50 animate-bounce" style={{ animationDelay: `${i*0.15}s` }} />
                   ))}
@@ -128,9 +151,9 @@ export default function ChatWidget() {
 
           {/* Suggested questions */}
           {suggested.length > 0 && (
-            <div className="px-4 pb-2 flex flex-wrap gap-2">
+            <div className="px-4 pb-2 flex flex-wrap gap-2 border-t border-[#c9a84c]/10 pt-2">
               {suggested.map((q, i) => (
-                <button key={i} onClick={() => send(q)} className="text-xs text-[#c9a84c] border border-[#c9a84c]/30 px-3 py-1.5 hover:bg-[#c9a84c]/10 transition-colors font-light text-left">
+                <button key={i} onClick={() => send(q)} className="text-xs text-[#c9a84c] border border-[#c9a84c]/30 px-3 py-1.5 hover:bg-[#c9a84c]/10 transition-colors font-light text-left" style={{ borderRadius: "20px" }}>
                   {q}
                 </button>
               ))}
@@ -138,25 +161,33 @@ export default function ChatWidget() {
           )}
 
           {/* Input */}
-          <div className="border-t border-[#c9a84c]/15 p-3 flex gap-2">
+          <div className="border-t border-[#c9a84c]/15 p-3 flex gap-2" style={{ background: "#0d0d0d" }}>
             <input
               value={input}
               onChange={e => setInput(e.target.value)}
               onKeyDown={e => e.key === "Enter" && !e.shiftKey && send()}
-              placeholder="Ask us anything..."
+              placeholder="Tell me what's on your mind..."
               className="flex-1 bg-[#1a1a1a] border border-[#c9a84c]/20 text-white text-sm px-3 py-2.5 focus:outline-none focus:border-[#c9a84c]/50 font-light placeholder-gray-600"
-              style={{ fontFamily: "'Georgia', serif" }}
+              style={{ fontFamily: "'Georgia', serif", borderRadius: "8px" }}
             />
             <button
               onClick={() => send()}
               disabled={loading || !input.trim()}
               className="bg-[#c9a84c] text-black px-4 py-2 hover:bg-[#e0c070] transition-colors disabled:opacity-40"
+              style={{ borderRadius: "8px" }}
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
             </button>
           </div>
         </div>
       )}
+
+      <style>{`
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
     </>
   );
 }

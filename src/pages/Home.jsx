@@ -180,7 +180,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-1">
             {[
-              { label: "Europe", sub: "Tuscany · Greek Isles · Swiss Alps", img: "/__generating__/img_4cab8201d182.png" },
+              { label: "Europe", sub: "Tuscany · Greek Isles · Swiss Alps", img: "https://media.base44.com/images/public/69caad387617bf1ed7d68057/19f4a9656_generated_67ef89c9.png" },
               { label: "Mediterranean", sub: "Amalfi · Santorini · Croatia", img: "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=600&q=80" },
               { label: "North America", sub: "New York · California · Florida", img: "https://images.unsplash.com/photo-1518391846015-55a9cc003b25?w=600&q=80" },
               { label: "Morocco & Africa", sub: "Marrakech · Desert · Kasbahs", img: "https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=600&q=80" }

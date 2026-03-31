@@ -1,240 +1,294 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-const LOGO = "https://media.base44.com/images/public/69caab40b61d6ee7c5b75332/9d7fead75_generated_image.png";
+import { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import ChatWidget from "./ChatWidget";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+
 const AVICAM = "https://base44.app/api/apps/69caab40b61d6ee7c5b75332/files/mp/public/69caab40b61d6ee7c5b75332/129dab6d3_avicam_photo.jpg";
-const CHEF = "https://base44.app/api/apps/69caab40b61d6ee7c5b75332/files/mp/public/69caab40b61d6ee7c5b75332/14656185e_chef_photo.jpg";
-const NAV = [["HOME","/"],["EVENTS","/events"],["HOW WE WORK","/process"],["ABOUT","/about"],["GALLERY","/gallery"],["CONTACT","/contact"]];
-const dests = [
-  {name:"Tuscany",img:"https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=800&q=80"},
-  {name:"Greek Islands",img:"https://images.unsplash.com/photo-1533105079780-92b9be482077?w=800&q=80"},
-  {name:"Europe",img:"https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800&q=80"},
-  {name:"Morocco",img:"https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=800&q=80"},
-  {name:"Amalfi Coast",img:"https://images.unsplash.com/photo-1510076857177-7470076d4098?w=800&q=80"},
-  {name:"Caribbean",img:"https://images.unsplash.com/photo-1548013146-72479768bada?w=800&q=80"},
-];
+const KITCHEN = "https://media.base44.com/images/public/69caab40b61d6ee7c5b75332/45a3420cd_image.png";
+
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  return null;
+}
+
+const TICKER_ITEMS = ["Weddings","Fundraising Galas","Corporate Events","VIP Experiences","Milestone Celebrations","Sailing Journeys","Heritage Journeys","Destination Celebrations","Private Events"];
+
+function Ticker() {
+  const items = [...TICKER_ITEMS, ...TICKER_ITEMS];
+  return (
+    <div className="bg-[#c9a84c] py-3 overflow-hidden whitespace-nowrap select-none">
+      <div className="inline-flex" style={{ animation: "ticker 32s linear infinite" }}>
+        {items.map((t, i) => (
+          <span key={i} className="text-black text-xs tracking-[0.25em] whitespace-nowrap px-7 font-medium">✦ {t.toUpperCase()}</span>
+        ))}
+      </div>
+      <style>{`@keyframes ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }`}</style>
+    </div>
+  );
+}
+
+export { ScrollToTop, Ticker };
 
 export default function Home() {
-  const [menuOpen, setMenuOpen] = useState(false);
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white" style={{fontFamily:"'Georgia','Times New Roman',serif"}}>
-      {/* NAV */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-md border-b border-[#c9a84c]/20">
-        <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
-          <Link to="/" className="flex items-center gap-3">
-            <img src={LOGO} className="h-10 w-10 md:h-12 md:w-12 object-contain"/>
-            <span className="text-lg md:text-xl tracking-[0.25em] text-[#c9a84c] font-light">AVICAM GITLIN</span>
-          </Link>
-          <div className="hidden md:flex gap-8 text-xs tracking-[0.2em] text-gray-300">
-            {NAV.map(([l,h])=><Link key={l} to={h} className={`hover:text-[#c9a84c] transition-colors ${l==="HOME"?"text-[#c9a84c]":""}`}>{l}</Link>)}
-          </div>
-          <Link to="/contact" className="hidden md:block px-5 py-2 border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[0.2em] hover:bg-[#c9a84c]/10 transition-colors">INQUIRE</Link>
-          <button className="md:hidden text-gray-300 hover:text-[#c9a84c] p-1" onClick={()=>setMenuOpen(!menuOpen)}>
-            {menuOpen
-              ? <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-              : <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>}
-          </button>
-        </div>
-        {menuOpen && (
-          <div className="md:hidden bg-[#0a0a0a] border-t border-[#c9a84c]/10 px-6 py-4 flex flex-col gap-4">
-            {NAV.map(([l,h])=><Link key={l} to={h} onClick={()=>setMenuOpen(false)} className="text-gray-300 hover:text-[#c9a84c] transition-colors text-sm tracking-[0.2em] py-1">{l}</Link>)}
-            <Link to="/contact" onClick={()=>setMenuOpen(false)} className="mt-2 px-5 py-3 border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[0.2em] text-center hover:bg-[#c9a84c]/10 transition-colors">INQUIRE</Link>
-          </div>
-        )}
-      </nav>
+    <div className="min-h-screen bg-[#0f0e0c] text-[#e8e2d9]" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
+      <ScrollToTop />
+      <Navbar active="HOME" />
 
-      {/* HERO */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{backgroundImage:`url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80')`}}/>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/45 to-[#0a0a0a]"/>
-        <div className="relative z-10 text-center px-6 max-w-5xl mx-auto pt-20">
-          <p className="text-[#c9a84c] tracking-[0.4em] md:tracking-[0.6em] text-xs mb-6 font-light">PRIVATE EVENTS · BESPOKE CELEBRATIONS · WORLDWIDE</p>
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-light leading-tight mb-8 tracking-wide">Your Moment.<br/><span className="text-[#c9a84c] italic">Crafted to Perfection.</span></h1>
-          <p className="text-gray-300 text-base md:text-xl font-light leading-relaxed mb-10 max-w-2xl mx-auto">Destination celebrations, milestone events, corporate retreats, and private villa programs — designed exclusively for those who demand the extraordinary.</p>
+      {/* ─── HERO ─── */}
+      <section className="relative flex items-center justify-center overflow-hidden" style={{ minHeight: "88vh" }}>
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80')` }} />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/45 to-[#0f0e0c]" />
+        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+          <p className="text-[#c9a84c] tracking-[0.6em] text-xs mb-5 font-light">PRIVATE EVENTS · BESPOKE CELEBRATIONS · WORLDWIDE</p>
+          <h1 className="text-5xl md:text-7xl font-light leading-tight mb-6 tracking-wide">
+            Your Moment.<br /><span className="text-[#c9a84c] italic">Crafted to Perfection.</span>
+          </h1>
+          <p className="text-gray-300 text-base font-light leading-relaxed mb-10 max-w-xl mx-auto">
+            Weddings, galas, corporate events, and VIP celebrations —
+            designed exclusively for those who demand the extraordinary.
+          </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="px-8 py-4 bg-[#c9a84c] text-black text-xs tracking-[0.3em] hover:bg-[#e0c070] transition-colors font-semibold">BEGIN YOUR JOURNEY</Link>
-            <Link to="/events" className="px-8 py-4 border border-white/40 text-white text-xs tracking-[0.3em] hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors">EXPLORE EVENTS</Link>
+            <Link to="/contact" className="px-10 py-4 bg-[#c9a84c] text-black text-xs tracking-[0.3em] hover:bg-[#e0c070] transition-colors font-semibold">PLAN YOUR EVENT</Link>
+            <Link to="/events" className="px-10 py-4 border border-white/40 text-white text-xs tracking-[0.3em] hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors">EXPLORE EVENTS</Link>
           </div>
         </div>
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 hidden md:flex">
-          <span className="text-gray-500 text-xs tracking-widest">SCROLL</span>
-          <div className="w-px h-12 bg-gradient-to-b from-[#c9a84c] to-transparent"/>
+      </section>
+
+      {/* ─── TICKER ─── */}
+      <Ticker />
+
+      {/* ─── INTRO ─── */}
+      <section className="py-24 px-6 bg-[#0f0e0c]">
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="text-[#c9a84c] tracking-[0.5em] text-xs mb-5">WHAT SETS US APART</p>
+          <h2 className="text-3xl md:text-4xl font-light leading-relaxed mb-5 text-[#e8e2d9]">
+            Every event is once-in-a-lifetime.<br /><span className="text-[#c9a84c] italic">We treat it that way.</span>
+          </h2>
+          <div className="w-12 h-px bg-[#c9a84c] mx-auto mb-6" />
+          <p className="text-[#a09888] text-base font-light leading-relaxed max-w-2xl mx-auto">
+            Over a decade producing bespoke private events across the world's most spectacular destinations. Unmatched expertise, impeccable discretion, and a deeply personal touch — every single time.
+          </p>
         </div>
       </section>
 
-      {/* GOLD STRIP */}
-      <div className="bg-[#c9a84c] py-3 overflow-hidden whitespace-nowrap">
-        <div className="inline-flex gap-0">
-          {["Destination Events","Milestone Celebrations","Corporate Retreats","Villa Programs","Sailing Events","Heritage Journeys","VIP Experiences","Cultural Journeys"].map((t,i)=>(
-            <span key={i} className="text-black text-xs tracking-[0.2em] md:tracking-[0.3em] whitespace-nowrap px-6 md:px-8">✦ {t.toUpperCase()}</span>
-          ))}
-        </div>
-      </div>
+      <div style={{ height: "60px", background: "linear-gradient(to bottom, #0f0e0c, #f5f0e8)" }} />
 
-      {/* INTRO */}
-      <section className="py-20 md:py-28 px-6">
-        <div className="max-w-5xl mx-auto text-center">
-          <p className="text-[#c9a84c] tracking-[0.4em] md:tracking-[0.5em] text-xs mb-6 md:mb-8">THE AVICAM GITLIN DIFFERENCE</p>
-          <h2 className="text-2xl md:text-5xl font-light leading-relaxed mb-8 md:mb-10">Every event is a once-in-a-lifetime experience.<br/><span className="text-gray-400">We treat it that way.</span></h2>
-          <div className="w-16 h-px bg-[#c9a84c] mx-auto mb-8 md:mb-10"/>
-          <p className="text-gray-400 text-base md:text-lg font-light leading-relaxed max-w-3xl mx-auto">With over a decade producing bespoke private events across the world's most spectacular destinations, Avicam Gitlin brings unmatched expertise, impeccable discretion, and a deeply personal touch to every celebration.</p>
-        </div>
-      </section>
-
-      {/* EVENT TYPES */}
-      <section className="pb-16 md:pb-20 px-4 md:px-6 bg-[#0d0d0d]">
+      {/* ─── EVENT TYPES GRID ─── */}
+      <section className="px-6 pb-20 bg-[#f5f0e8]">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 md:mb-16 pt-16 md:pt-20">
-            <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-4">WHAT WE CREATE</p>
-            <h2 className="text-2xl md:text-4xl font-light text-white">Private Events of Every Kind</h2>
+          <div className="text-center pt-20 mb-10">
+            <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-3">WHAT WE CREATE</p>
+            <h2 className="text-2xl md:text-3xl font-light text-[#1a1813]">Private Events of Every Kind</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-1">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mb-8">
             {[
-              {title:"Destination Celebrations",desc:"Celebrate life's greatest milestones in the world's most breathtaking settings — Tuscany, Greek islands, Swiss Alps, and beyond.",img:"https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80"},
-              {title:"Corporate & VIP Events",desc:"Executive retreats, product launches, incentive trips, and gala evenings — produced at the highest level, anywhere in the world.",img:"https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80"},
-              {title:"Private Villa Programs",desc:"A full week or more in a stunning private estate, with every day programmed, every evening memorable, every detail considered.",img:"https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80"}
-            ].map((s,i)=>(
-              <Link key={i} to="/events" className="group relative overflow-hidden block" style={{height:"320px"}}>
-                <img src={s.img} alt={s.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"/>
-                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-                  <h3 className="text-lg md:text-xl font-light tracking-wide mb-2 text-white">{s.title}</h3>
-                  <p className="text-gray-300 text-sm leading-relaxed mb-3 font-light hidden md:block">{s.desc}</p>
-                  <span className="text-[#c9a84c] text-xs tracking-[0.3em] border-b border-[#c9a84c]/40 pb-1">EXPLORE →</span>
+              { title: "Weddings & Celebrations", desc: "Destination weddings in the world's most breathtaking settings — Tuscany, Greek islands, Swiss Alps.", img: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80" },
+              { title: "Galas & Fundraisers", desc: "High-impact fundraising galas and VIP evenings that inspire, connect, and leave a lasting impression.", img: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80" },
+              { title: "Corporate & VIP", desc: "Executive retreats, product launches, incentive trips — produced at the highest level, anywhere in the world.", img: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80" }
+            ].map((s,i) => (
+              <Link key={i} to="/events" className="group relative overflow-hidden block" style={{ height: "380px" }}>
+                <img src={s.img} alt={s.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <h3 className="text-lg font-light tracking-wide mb-2 text-white">{s.title}</h3>
+                  <p className="text-gray-300 text-sm leading-relaxed mb-3 font-light">{s.desc}</p>
+                  <span className="text-[#c9a84c] text-xs tracking-[0.3em] border-b border-[#c9a84c]/60 pb-1">EXPLORE →</span>
                 </div>
               </Link>
             ))}
           </div>
-          <div className="text-center mt-8">
-            <Link to="/events" className="inline-block px-8 md:px-10 py-4 border border-[#c9a84c]/40 text-[#c9a84c] text-xs tracking-[0.3em] hover:bg-[#c9a84c]/10 transition-colors">VIEW ALL EVENTS</Link>
+          <div className="text-center">
+            <Link to="/events" className="inline-block px-10 py-3 border border-[#1a1813]/40 text-[#1a1813] text-xs tracking-[0.3em] hover:bg-[#1a1813] hover:text-white transition-colors">VIEW ALL EVENTS</Link>
           </div>
         </div>
       </section>
 
-      {/* STATS */}
-      <section className="py-16 md:py-20 px-6 border-y border-[#c9a84c]/10">
-        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
-          {[{num:"15+",label:"Years of Excellence"},{num:"500+",label:"Events Worldwide"},{num:"30+",label:"Destinations"},{num:"100%",label:"Bespoke"}].map((s,i)=>(
-            <div key={i}><div className="text-3xl md:text-5xl text-[#c9a84c] font-light mb-2">{s.num}</div><div className="text-gray-500 text-xs tracking-[0.2em] md:tracking-[0.3em]">{s.label}</div></div>
+      <div style={{ height: "60px", background: "linear-gradient(to bottom, #f5f0e8, #0f0e0c)" }} />
+
+      {/* ─── STATS ─── */}
+      <section className="py-16 px-6 bg-[#0f0e0c] border-y border-[#c9a84c]/20">
+        <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          {[{num:"15+",label:"Years of Excellence"},{num:"500+",label:"Events Worldwide"},{num:"30+",label:"Destinations"},{num:"100%",label:"Bespoke"}].map((s,i) => (
+            <div key={i}>
+              <div className="text-5xl text-[#c9a84c] font-light mb-2">{s.num}</div>
+              <div className="text-[#a09888] text-xs tracking-[0.25em]">{s.label}</div>
+            </div>
           ))}
         </div>
       </section>
 
-      {/* DESTINATIONS — We Go Anywhere You Dream */}
-      <section className="py-20 md:py-28 px-4 md:px-6 bg-[#0d0d0d]">
+      {/* ─── SIGNATURE EXPERIENCES ─── */}
+      <section className="py-24 px-6 bg-[#0f0e0c]">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 md:mb-16">
-            <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-4">WE GO ANYWHERE YOU DREAM</p>
-            <h2 className="text-2xl md:text-4xl font-light text-white">Our World</h2>
-            <div className="w-12 h-px bg-[#c9a84c] mx-auto mt-6"/>
+          <div className="text-center mb-16">
+            <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-3">SIGNATURE EXPERIENCES</p>
+            <h2 className="text-3xl font-light text-[#e8e2d9]">Extraordinary Events, Every Season</h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-1">
-            {dests.map((d,i)=>(
-              <div key={i} className="group relative overflow-hidden" style={{height:"200px", minHeight:"160px"}}>
-                <img
-                  src={d.img}
-                  alt={d.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-black/50 group-hover:bg-black/25 transition-colors"/>
-                <div className="absolute inset-0 flex items-end p-4 md:p-6">
-                  <p className="text-white text-sm md:text-lg font-light tracking-[0.15em] md:tracking-[0.2em] drop-shadow-lg">{d.name.toUpperCase()}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* MEET AVICAM */}
-      <section className="py-20 md:py-28 px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
-          <div>
-            <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-6">MEET AVICAM</p>
-            <h2 className="text-2xl md:text-4xl font-light leading-tight mb-6 md:mb-8 text-white">The person behind<br/>every extraordinary event.</h2>
-            <div className="w-10 h-px bg-[#c9a84c]/50 mb-6 md:mb-8"/>
-            <p className="text-gray-400 font-light leading-relaxed mb-5 md:mb-6">Avicam Gitlin is a private event producer and travel curator with over 15 years of experience creating bespoke celebrations across the world's most spectacular destinations.</p>
-            <p className="text-gray-400 font-light leading-relaxed mb-8 md:mb-10">His philosophy: every event is personal, every detail matters, and the world is your venue.</p>
-            <Link to="/about" className="inline-block px-8 py-3 border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[0.2em] hover:bg-[#c9a84c]/10 transition-colors">MEET AVICAM</Link>
-          </div>
-          <div className="relative">
-            <img src={AVICAM} className="w-full h-[400px] md:h-[600px] object-cover object-top" onError={e=>{e.target.src=CHEF}}/>
-            <div className="absolute bottom-4 md:bottom-6 left-4 md:left-6 bg-black/70 backdrop-blur-sm border border-[#c9a84c]/30 px-4 md:px-5 py-2 md:py-3">
-              <p className="text-[#c9a84c] text-xs tracking-[0.3em]">AVICAM GITLIN</p>
-              <p className="text-gray-400 text-xs mt-0.5">Private Event Producer</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* TESTIMONIALS */}
-      <section className="py-20 md:py-24 px-4 md:px-6 bg-[#0d0d0d]">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12 md:mb-16">
-            <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-4">CLIENT EXPERIENCES</p>
-            <h2 className="text-2xl md:text-3xl font-light text-white">Words from Those Who Were There</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#c9a84c]/10">
             {[
-              {quote:"Avicam didn't just plan our event — he created a memory that our family will carry forever. Every detail was perfect.",name:"Sarah M.",event:"Destination Celebration, Tuscany"},
-              {quote:"The level of care and attention Avicam brought to our corporate retreat was extraordinary. Our clients were genuinely moved.",name:"Jonathan R.",event:"Corporate Retreat, Swiss Alps"},
-              {quote:"We've worked with many event producers. None come close to Avicam's combination of vision, taste, and personal commitment.",name:"The Klein Family",event:"Private Villa Program, Greece"}
-            ].map((t,i)=>(
-              <div key={i} className="border border-[#c9a84c]/15 p-6 md:p-8 bg-[#0a0a0a]">
-                <div className="text-[#c9a84c] text-3xl font-light mb-4">"</div>
-                <p className="text-gray-400 font-light leading-relaxed italic mb-6 text-sm">{t.quote}</p>
-                <div className="border-t border-[#c9a84c]/15 pt-4">
-                  <p className="text-white text-sm font-light">{t.name}</p>
-                  <p className="text-gray-600 text-xs mt-1">{t.event}</p>
+              { title: "Destination Weddings", sub: "Italy · Greece · Switzerland · Caribbean", img: "https://images.unsplash.com/photo-1519741497674-611481863552?w=900&q=80", desc: "From intimate ceremonies in Tuscan villas to grand celebrations on Greek island estates, every destination wedding we produce is a masterclass in beauty, precision, and emotion." },
+              { title: "Sailing Journeys", sub: "Mediterranean · Adriatic · Caribbean", img: "https://images.unsplash.com/photo-1540946485063-a40da27545f8?w=900&q=80", desc: "Wake up somewhere extraordinary every day aboard a private charter. We produce exclusive sailing events through the Mediterranean and beyond — combining breathtaking destinations and seamless service." },
+              { title: "Heritage & Cultural Journeys", sub: "Europe · Israel · North Africa", img: "https://images.unsplash.com/photo-1548013146-72479768bada?w=900&q=80", desc: "Meaningful group journeys that combine history, culture, and connection. Expert educators, iconic destinations, and a deeply personal touch — creating shared experiences beyond the ordinary." },
+              { title: "Fundraising Galas", sub: "New York · Los Angeles · London · Worldwide", img: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=900&q=80", desc: "High-impact galas that combine compelling storytelling, world-class production, and the atmosphere that inspires generosity. We help organisations raise more by creating events people genuinely want to attend." }
+            ].map((exp, i) => (
+              <div key={i} className="group bg-[#141210] overflow-hidden hover:bg-[#1a1813] transition-colors">
+                <div className="overflow-hidden h-64">
+                  <img src={exp.img} alt={exp.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 </div>
+                <div className="p-8">
+                  <p className="text-[#c9a84c] text-xs tracking-[0.3em] mb-2">{exp.sub}</p>
+                  <h3 className="text-xl font-light mb-3 text-[#e8e2d9]">{exp.title}</h3>
+                  <div className="w-8 h-px bg-[#c9a84c]/40 mb-4" />
+                  <p className="text-[#a09888] text-sm font-light leading-relaxed mb-5">{exp.desc}</p>
+                  <Link to="/contact" className="text-[#c9a84c] text-xs tracking-[0.3em] border-b border-[#c9a84c]/40 pb-1 hover:border-[#c9a84c] transition-colors">ENQUIRE NOW →</Link>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-12">
+            <Link to="/events" className="inline-block px-10 py-3 border border-[#c9a84c]/40 text-[#c9a84c] text-xs tracking-[0.3em] hover:bg-[#c9a84c] hover:text-black transition-colors">VIEW ALL EVENTS</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── DESTINATIONS ─── */}
+      <section className="py-20 px-6 bg-[#1c1b1a]">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-3">DESTINATIONS & INSPIRATIONS</p>
+            <h2 className="text-3xl font-light">We Go Anywhere You Dream</h2>
+            <p className="text-gray-500 text-sm font-light mt-3 max-w-xl mx-auto">From vineyard hillsides to ancient cities, each destination is chosen for its beauty — then transformed into an exceptional experience.</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-1">
+            {[
+              { label: "Europe", sub: "Tuscany · Greek Isles · Swiss Alps", img: "https://media.base44.com/images/public/69caad387617bf1ed7d68057/19f4a9656_generated_67ef89c9.png" },
+              { label: "Mediterranean", sub: "Amalfi · Santorini · Croatia", img: "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=600&q=80" },
+              { label: "North America", sub: "New York · California · Florida", img: "https://images.unsplash.com/photo-1518391846015-55a9cc003b25?w=600&q=80" },
+              { label: "Morocco & Africa", sub: "Marrakech · Desert · Kasbahs", img: "https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=600&q=80" }
+            ].map((d,i) => (
+              <Link key={i} to="/gallery" className="group relative overflow-hidden block" style={{ height: "260px" }}>
+                <img src={d.img} alt={d.label} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-5">
+                  <h3 className="text-base font-light tracking-wide mb-1">{d.label}</h3>
+                  <p className="text-gray-400 text-xs font-light">{d.sub}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div style={{ height: "60px", background: "linear-gradient(to bottom, #1c1b1a, #f5f0e8)" }} />
+
+      {/* ─── THE AVICAM DIFFERENCE ─── */}
+      <section className="py-24 px-6 bg-[#f5f0e8]">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-14">
+            <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-3">WHY AVICAM GITLIN</p>
+            <h2 className="text-3xl font-light text-[#1a1813]">The Private Events Difference</h2>
+            <p className="text-[#6b5f50] text-sm font-light mt-3 max-w-xl mx-auto">We bring together luxury event production, extraordinary destinations, and deeply personal service — in one seamless experience.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { icon: "◆", title: "Luxury Without Compromise", text: "Every event is custom-crafted. Hand-picked venues, bespoke programming, and white-glove logistics from first conversation to final moment." },
+              { icon: "✦", title: "Genuinely Personal", text: "Avicam personally reads every inquiry and is involved in every event. You will never be handed to a junior team member." },
+              { icon: "✦", title: "Global Expertise", text: "With 15+ years producing events across 30+ countries, we have the relationships and network to make anything possible, anywhere." }
+            ].map((d,i) => (
+              <div key={i} className="bg-white border border-[#e0d8cc] p-8 text-center hover:border-[#c9a84c] hover:shadow-lg transition-all duration-300">
+                <div className="text-[#c9a84c] text-3xl mb-5">{d.icon}</div>
+                <h3 className="text-lg font-light mb-3 text-[#1a1813]">{d.title}</h3>
+                <div className="w-8 h-px bg-[#c9a84c]/40 mx-auto mb-4" />
+                <p className="text-[#6b5f50] text-sm font-light leading-relaxed">{d.text}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="relative py-24 md:py-32 px-6 text-center" style={{backgroundImage:"url('https://images.unsplash.com/photo-1510076857177-7470076d4098?w=1920&q=80')",backgroundSize:"cover",backgroundPosition:"center"}}>
-        <div className="absolute inset-0 bg-black/75"/>
-        <div className="relative z-10 max-w-2xl mx-auto">
-          <p className="text-[#c9a84c] tracking-[0.4em] md:tracking-[0.5em] text-xs mb-6">LET'S CREATE TOGETHER</p>
-          <h2 className="text-3xl md:text-6xl font-light mb-6 text-white">Ready to Begin?</h2>
-          <div className="w-12 h-px bg-[#c9a84c] mx-auto mb-8"/>
-          <p className="text-gray-300 font-light mb-10 md:mb-12 text-base md:text-lg">Every extraordinary event starts with a single conversation.<br/>Tell us your vision — we'll handle the rest.</p>
-          <Link to="/contact" className="inline-block px-10 md:px-14 py-4 md:py-5 bg-[#c9a84c] text-black text-xs tracking-[0.3em] md:tracking-[0.4em] hover:bg-[#e0c070] transition-colors font-semibold">START THE CONVERSATION</Link>
+      <div style={{ height: "60px", background: "linear-gradient(to bottom, #f5f0e8, #0f0e0c)" }} />
+
+      {/* ─── MEET AVICAM ─── */}
+      <section className="py-24 px-6 bg-[#0f0e0c]">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          <div className="relative">
+            <img src={AVICAM} alt="Avicam Gitlin" className="w-full h-[540px] object-cover object-top"
+              onError={e => e.target.src=KITCHEN} />
+            <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-black/60 to-transparent" />
+            <div className="absolute bottom-5 left-5 bg-black/75 backdrop-blur-sm border border-[#c9a84c]/30 px-4 py-2">
+              <p className="text-[#c9a84c] text-xs tracking-[0.3em]">AVICAM GITLIN</p>
+              <p className="text-[#a09888] text-xs mt-0.5">Event Producer · Travel Curator</p>
+            </div>
+          </div>
+          <div>
+            <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-4">MEET AVICAM</p>
+            <h2 className="text-3xl md:text-4xl font-light leading-tight mb-5 text-[#e8e2d9]">The person behind<br />every extraordinary event.</h2>
+            <div className="w-10 h-px bg-[#c9a84c]/50 mb-6" />
+            <p className="text-[#a09888] font-light leading-relaxed mb-4">
+              Avicam Gitlin is a private event producer with over 15 years of experience creating bespoke celebrations across the world's most spectacular destinations — from weddings in Tuscany to galas in New York, sailing journeys in the Mediterranean to cultural heritage tours in Europe.
+            </p>
+            <p className="text-[#a09888] font-light leading-relaxed mb-8">
+              His philosophy: every event is personal, every detail matters, and the world's most extraordinary places are available to anyone with the right partner to open the door.
+            </p>
+            <Link to="/about" className="inline-block px-8 py-3 border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[0.2em] hover:bg-[#c9a84c] hover:text-black transition-colors">READ THE FULL STORY</Link>
+          </div>
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="bg-[#070707] border-t border-[#c9a84c]/15 pt-12 md:pt-16 pb-8 px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-10 mb-10 md:mb-12">
-          <div className="md:col-span-2">
-            <div className="flex items-center gap-3 mb-5"><img src={LOGO} className="h-10 w-10 object-contain"/><span className="text-[#c9a84c] text-lg tracking-[0.3em] font-light">AVICAM GITLIN</span></div>
-            <p className="text-gray-500 text-sm font-light leading-relaxed max-w-sm">Bespoke private events and extraordinary celebrations, crafted for discerning individuals worldwide.</p>
+      <div style={{ height: "60px", background: "linear-gradient(to bottom, #0f0e0c, #f5f0e8)" }} />
+
+      {/* ─── HOW IT WORKS — teaser ─── */}
+      <section className="py-24 px-6 bg-[#f5f0e8]">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-14">
+            <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-3">THE PROCESS</p>
+            <h2 className="text-3xl font-light text-[#1a1813]">How We Work</h2>
+            <p className="text-[#6b5f50] text-sm font-light mt-3">From first conversation to final moment — every step, handled personally.</p>
           </div>
-          <div>
-            <p className="text-gray-500 text-xs tracking-[0.3em] mb-4 md:mb-5">NAVIGATION</p>
-            <div className="grid grid-cols-2 md:grid-cols-1 gap-2 md:gap-3">
-              {NAV.map(([l,h])=><Link key={l} to={h} className="text-gray-500 text-sm font-light hover:text-[#c9a84c] transition-colors">{l}</Link>)}
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            {[
+              { n: "01", title: "The Conversation", text: "It starts with a personal call — no forms, no templates. Avicam listens to your vision and what you want your event to feel like." },
+              { n: "02", title: "Vision & Design", text: "We create a bespoke concept tailored to you — venue, aesthetic, programming, and every creative detail that makes it yours." },
+              { n: "03", title: "Flawless Execution", text: "On the day, Avicam and his team manage every detail so you're entirely present — living the experience, not managing it." }
+            ].map((s,i) => (
+              <div key={i} className="bg-white border border-[#e0d8cc] p-7 hover:border-[#c9a84c] hover:shadow-md transition-all duration-300">
+                <span className="text-5xl font-light text-[#c9a84c]/30 leading-none">{s.n}</span>
+                <h3 className="text-base font-light mt-3 mb-2 text-[#1a1813]">{s.title}</h3>
+                <div className="w-6 h-px bg-[#c9a84c]/40 mb-3" />
+                <p className="text-[#6b5f50] text-sm font-light leading-relaxed">{s.text}</p>
+              </div>
+            ))}
           </div>
-          <div>
-            <p className="text-gray-500 text-xs tracking-[0.3em] mb-4 md:mb-5">CONTACT</p>
-            <div className="space-y-2 md:space-y-3 text-gray-500 text-sm font-light">
-              <p>+1 (347) 994-9284</p>
-              <p className="text-xs break-all">avicam@kosherculinarytravel.com</p>
-            </div>
-            <div className="flex gap-3 mt-4 md:mt-5">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="border border-[#c9a84c]/30 px-3 py-2 text-xs text-gray-500 hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors">INSTAGRAM</a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="border border-[#c9a84c]/30 px-3 py-2 text-xs text-gray-500 hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors">FACEBOOK</a>
-            </div>
+          <div className="text-center">
+            <Link to="/process" className="inline-block px-10 py-3 border border-[#1a1813]/40 text-[#1a1813] text-xs tracking-[0.3em] hover:bg-[#1a1813] hover:text-white transition-colors">SEE THE FULL PROCESS</Link>
           </div>
         </div>
-        <div className="border-t border-[#c9a84c]/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3">
-          <p className="text-gray-600 text-xs">© 2025 Avicam Gitlin Private Events. All rights reserved.</p>
-          <Link to="/terms" className="text-gray-600 text-xs hover:text-[#c9a84c] transition-colors">Terms & Conditions</Link>
+      </section>
+
+      <div style={{ height: "60px", background: "linear-gradient(to bottom, #f5f0e8, #111)" }} />
+
+      {/* ─── CTA ─── */}
+      <section className="relative py-28 px-6 text-center overflow-hidden"
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1510076857177-7470076d4098?w=1920&q=80')", backgroundSize: "cover", backgroundPosition: "center" }}>
+        <div className="absolute inset-0 bg-black/85" />
+        <div className="relative z-10 max-w-xl mx-auto">
+          <p className="text-[#c9a84c] tracking-[0.5em] text-xs mb-4">LET'S CREATE TOGETHER</p>
+          <h2 className="text-4xl md:text-5xl font-light mb-5">Ready to Begin?</h2>
+          <div className="w-10 h-px bg-[#c9a84c] mx-auto mb-6" />
+          <p className="text-gray-300 font-light mb-10 text-base leading-relaxed max-w-md mx-auto">Every extraordinary event starts with a single conversation. Tell us your vision — we'll do the rest.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/contact" className="inline-block px-12 py-4 bg-[#c9a84c] text-black text-xs tracking-[0.4em] hover:bg-[#e0c070] transition-colors font-semibold">START THE CONVERSATION</Link>
+            <Link to="/process" className="inline-block px-12 py-4 border border-white/40 text-white text-xs tracking-[0.4em] hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors">HOW WE WORK</Link>
+          </div>
         </div>
-      </footer>
+      </section>
+
+      <Footer />
+      <ChatWidget />
     </div>
   );
 }

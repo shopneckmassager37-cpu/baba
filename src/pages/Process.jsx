@@ -1,103 +1,147 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-const LOGO = "https://media.base44.com/images/public/69caab40b61d6ee7c5b75332/9d7fead75_generated_image.png";
-const NAV = [["HOME","/"],["EVENTS","/events"],["HOW WE WORK","/process"],["ABOUT","/about"],["GALLERY","/gallery"],["CONTACT","/contact"]];
+import { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import ChatWidget from "./ChatWidget";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+
+
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {window.scrollTo(0, 0);}, [pathname]);
+  return null;
+}
+
 const steps = [
-  {n:"01",title:"The First Conversation",desc:"Everything begins with a personal conversation — no forms, no templates. Avicam listens to your vision, your story, and what you want your event to feel like.",detail:"We take the time to understand who you are, who your guests are, and what this event means to you."},
-  {n:"02",title:"Vision & Concept",desc:"We develop a bespoke concept document — a creative direction for your event capturing the mood, the aesthetic, the flow, and the experience we want to create.",detail:"A tailored vision built specifically around your event, complete with venue suggestions, design direction, and programming ideas."},
-  {n:"03",title:"Venue & Destination",desc:"We source and secure the right venue — a private estate in Tuscany, a hilltop villa in Greece, a luxury resort in Morocco, or an exclusive urban space in 30+ countries.",detail:"For destination events, we also handle all guest logistics: accommodation, travel coordination, and ground arrangements."},
-  {n:"04",title:"Design & Production",desc:"We build the full event experience — décor, florals, lighting, entertainment, music, and every creative detail that transforms a space into something extraordinary.",detail:"We work with the world's best vendors and local artisans to ensure the aesthetics are perfect and authentic."},
-  {n:"05",title:"The Day Itself",desc:"On the day, Avicam and his team are on the ground managing every detail so you can be entirely present with your guests.",detail:"You'll be living the experience we built together, surrounded by the people you love, in a setting that takes your breath away."},
-  {n:"06",title:"After the Event",desc:"Our relationship doesn't end when the event does. We follow up personally and begin planning for your next extraordinary moment.",detail:"Many of our clients come back year after year — for anniversaries, birthdays, family gatherings, and new milestones."}
-];
-const values = [
-  {icon:"◆",title:"Absolute Discretion",text:"Our clients trust us with their most personal moments. We operate with complete confidentiality."},
-  {icon:"◆",title:"Genuinely Personal",text:"Avicam is personally involved in every event from concept to execution. You'll never be handed off."},
-  {icon:"◆",title:"No Compromises",text:"Every detail is held to the highest standard — from the grandest gesture to the smallest touch."},
-  {icon:"◆",title:"Global Reach",text:"15+ years producing events across 30+ countries. We have the relationships to create events anywhere."}
-];
+{ number: "01", title: "The First Conversation", icon: "✦", description: "Everything begins with a personal conversation — no forms, no templates. Avicam listens to your vision, your story, and what you want your event to feel like. Whether you have a clear idea or just a feeling, this is where it starts." },
+{ number: "02", title: "Vision & Concept", icon: "◆", description: "We develop a bespoke concept document — a creative direction capturing the mood, aesthetic, flow, and experience. A tailored vision with venue suggestions, design direction, and programming ideas." },
+{ number: "03", title: "Venue & Destination", icon: "✦", description: "We source and secure the right venue anywhere in the world — private estates, island retreats, alpine chalets, or urban landmarks. For destination events, we handle all guest logistics too." },
+{ number: "04", title: "Design & Production", icon: "◆", description: "We build the full event experience — décor, florals, lighting, entertainment, and every creative detail that transforms a space. Nothing generic. Nothing off-the-shelf." },
+{ number: "05", title: "The Day Itself", icon: "✦", description: "Avicam and his team are there on the day, managing every detail so you can be fully present. You won't be fielding calls — you'll be living the experience we built together." },
+{ number: "06", title: "After the Event", icon: "◆", description: "Our relationship doesn't end when the event does. We follow up personally and begin planning the next extraordinary moment. Many clients come back year after year." }];
+
+
 export default function Process() {
-  const [menuOpen, setMenuOpen] = useState(false);
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white" style={{fontFamily:"'Georgia','Times New Roman',serif"}}>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-md border-b border-[#c9a84c]/20">
-        <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
-          <Link to="/" className="flex items-center gap-3"><img src={LOGO} className="h-12 w-12 object-contain"/><span className="text-xl tracking-[0.25em] text-[#c9a84c] font-light hidden sm:block">AVICAM GITLIN</span></Link>
-          <div className="hidden md:flex gap-8 text-xs tracking-[0.2em] text-gray-300">{NAV.map(([l,h])=><Link key={l} to={h} className={`hover:text-[#c9a84c] transition-colors ${l==="HOW WE WORK"?"text-[#c9a84c]":""}`}>{l}</Link>)}</div>
-          <Link to="/contact" className="hidden md:block px-5 py-2 border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[0.2em] hover:bg-[#c9a84c]/10 transition-colors">INQUIRE</Link>
-          <button className="md:hidden text-gray-300 hover:text-[#c9a84c] p-1" onClick={()=>setMenuOpen(!menuOpen)}>
-            {menuOpen
-              ? <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-              : <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>}
-          </button>
-        </div>
-        {menuOpen && (
-          <div className="md:hidden bg-[#0a0a0a] border-t border-[#c9a84c]/10 px-6 py-4 flex flex-col gap-4">
-            {[["HOME","/"],["EVENTS","/events"],["HOW WE WORK","/process"],["ABOUT","/about"],["GALLERY","/gallery"],["CONTACT","/contact"]].map(([l,h])=><Link key={l} to={h} onClick={()=>setMenuOpen(false)} className="text-gray-300 hover:text-[#c9a84c] transition-colors text-sm tracking-[0.2em] py-1">{l}</Link>)}
-            <Link to="/contact" onClick={()=>setMenuOpen(false)} className="mt-2 px-5 py-3 border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[0.2em] text-center hover:bg-[#c9a84c]/10 transition-colors">INQUIRE</Link>
-          </div>
-        )}
-      </nav>
-      <section className="relative pt-32 pb-28 px-6 text-center" style={{backgroundImage:"url('https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1920&q=80')",backgroundSize:"cover",backgroundPosition:"center"}}>
-        <div className="absolute inset-0 bg-black/78"/>
-        <div className="relative z-10 max-w-3xl mx-auto">
-          <p className="text-[#c9a84c] tracking-[0.5em] text-xs mb-6">THE PROCESS</p>
-          <h1 className="text-5xl md:text-6xl font-light mb-6">How We Work</h1>
-          <div className="w-12 h-px bg-[#c9a84c] mx-auto mb-8"/>
-          <p className="text-gray-400 text-lg font-light leading-relaxed max-w-2xl mx-auto">Every extraordinary event starts long before the day itself. Here's how we take an idea from vision to reality — personally, meticulously, and without compromise.</p>
+    <div className="min-h-screen bg-[#1c1b1a] text-white" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
+      <ScrollToTop />
+      <Navbar active="HOW WE WORK" />
+
+      {/* Hero */}
+      <section className="relative overflow-hidden" style={{ minHeight: "55vh" }}>
+        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80" alt="hero" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-[#161616]" />
+        <div className="relative z-10 flex flex-col items-center justify-center text-center px-6" style={{ minHeight: "55vh" }}>
+          <p className="text-[#c9a84c] tracking-[0.6em] text-xs mb-4">THE PROCESS</p>
+          <h1 className="text-5xl md:text-6xl font-light leading-none mb-4">How We Work</h1>
+          <div className="w-12 h-px bg-[#c9a84c] mb-6" />
+          <p className="text-gray-300 text-base font-light leading-relaxed max-w-xl">
+            From first conversation to final moment — every step, handled personally.
+          </p>
         </div>
       </section>
-      <section className="py-28 px-6">
-        <div className="max-w-5xl mx-auto">
-          {steps.map((step,i)=>(
-            <div key={i} className="grid grid-cols-1 md:grid-cols-[140px_1fr] gap-8 md:gap-16 py-16 border-b border-[#c9a84c]/10 last:border-0">
-              <div className="flex flex-col items-start md:items-end pt-1"><span className="text-5xl font-light text-[#c9a84c]/25 leading-none">{step.n}</span></div>
-              <div>
-                <h2 className="text-2xl md:text-3xl font-light mb-4">{step.title}</h2>
-                <div className="w-8 h-px bg-[#c9a84c]/40 mb-5"/>
-                <p className="text-gray-300 font-light leading-relaxed mb-4">{step.desc}</p>
-                <p className="text-gray-500 font-light leading-relaxed text-sm italic">{step.detail}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-      <section className="py-28 px-6 bg-[#0d0d0d]">
+
+      <div style={{ height: "50px", background: "linear-gradient(to bottom, #161616, #1c1b1a)" }} />
+
+      {/* Steps — card grid, much cleaner */}
+      <section className="py-20 px-6 bg-[#1c1b1a]">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16"><p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-4">WHAT WE STAND FOR</p><h2 className="text-3xl md:text-4xl font-light">Our Commitments to You</h2></div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#c9a84c]/10">
-            {values.map((v,i)=>(
-              <div key={i} className="bg-[#0d0d0d] p-10 hover:bg-[#111] transition-colors">
-                <div className="text-[#c9a84c] text-xs mb-5">{v.icon}</div>
-                <h3 className="text-xl font-light mb-4 tracking-wide">{v.title}</h3>
-                <div className="w-8 h-px bg-[#c9a84c]/30 mb-5"/>
-                <p className="text-gray-400 font-light leading-relaxed text-sm">{v.text}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {steps.map((step, i) =>
+            <div key={i} className="bg-[#1d1d1d] border border-[#c9a84c]/10 p-7 hover:border-[#c9a84c]/30 transition-all duration-300 group">
+                <div className="flex items-start justify-between mb-5">
+                  <span className="text-4xl font-light text-[#c9a84c]/20 group-hover:text-[#c9a84c]/40 transition-colors leading-none">{step.number}</span>
+                  <span className="text-2xl">{step.icon}</span>
+                </div>
+                <h3 className="text-lg font-light text-white mb-3 tracking-wide">{step.title}</h3>
+                <div className="w-6 h-px bg-[#c9a84c]/40 mb-4" />
+                <p className="text-gray-400 font-light leading-relaxed text-sm">{step.description}</p>
               </div>
-            ))}
+            )}
           </div>
         </div>
       </section>
-      <section className="relative py-32 px-6 text-center" style={{backgroundImage:"url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1920&q=80')",backgroundSize:"cover",backgroundAttachment:"fixed",backgroundPosition:"center"}}>
-        <div className="absolute inset-0 bg-black/78"/>
-        <div className="relative z-10 max-w-3xl mx-auto">
-          <div className="text-[#c9a84c] text-5xl font-light mb-6">"</div>
-          <p className="text-2xl md:text-3xl font-light text-gray-200 leading-relaxed italic mb-8">I read every inquiry personally. I am involved in every decision. And I will not rest until the event we've built together exceeds everything you imagined.</p>
-          <div className="w-10 h-px bg-[#c9a84c] mx-auto mb-6"/>
+
+      <div style={{ height: "60px", background: "linear-gradient(to bottom, #1c1b1a, #f5f0e8)" }} />
+
+      {/* Values */}
+      <section className="py-20 px-6 bg-[#f5f0e8]">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-3">WHAT WE STAND FOR</p>
+            <h2 className="text-3xl font-light text-[#1a1813]">Our Commitments to You</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+            { title: "Absolute Discretion", text: "Our clients trust us with their most personal moments. We operate with complete confidentiality — always." },
+            { title: "Genuinely Personal", text: "Avicam is personally involved in every event from concept to execution. You will never be handed off to a junior team member." },
+            { title: "No Compromises", text: "We do not cut corners or settle for 'good enough'. Every detail is held to the same standard of excellence." },
+            { title: "Global Reach", text: "15+ years, 30+ countries. We have the relationships and network to create extraordinary events anywhere." }].
+            map((v, i) =>
+            <div key={i} className="bg-white border border-[#e0d8cc] p-8 hover:border-[#c9a84c] hover:shadow-md transition-all duration-300">
+                <div className="text-[#c9a84c] mb-4">◆</div>
+                <h3 className="text-lg font-light mb-3 text-[#1a1813]">{v.title}</h3>
+                <div className="w-6 h-px bg-[#c9a84c]/30 mb-4" />
+                <p className="text-[#6b5f50] font-light text-sm leading-relaxed">{v.text}</p>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      <div style={{ height: "60px", background: "linear-gradient(to bottom, #f5f0e8, #1a1a1a)" }} />
+
+      {/* Quote */}
+      <section className="relative py-24 px-6 text-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1920&q=80')", backgroundSize: "cover", backgroundPosition: "center" }}>
+        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0,0,0,0.88)' }} />
+        <div className="relative z-10 max-w-2xl mx-auto">
+          
+          <p className="text-xl md:text-2xl font-light text-white leading-relaxed italic mb-6">
+            I read every inquiry personally. I will not rest until the event we've built together exceeds everything you imagined.
+          </p>
+          <div className="w-8 h-px bg-[#c9a84c] mx-auto mb-4" />
           <p className="text-[#c9a84c] tracking-[0.4em] text-xs">— AVICAM GITLIN</p>
         </div>
       </section>
-      <section className="relative py-28 px-6 text-center" style={{backgroundImage:"url('https://images.unsplash.com/photo-1510076857177-7470076d4098?w=1920&q=80')",backgroundSize:"cover",backgroundPosition:"center"}}>
-        <div className="absolute inset-0 bg-black/75"/>
-        <div className="relative z-10 max-w-xl mx-auto">
-          <p className="text-[#c9a84c] tracking-[0.5em] text-xs mb-6">READY TO BEGIN?</p>
-          <h2 className="text-4xl font-light mb-6">Let's Start the Conversation</h2>
-          <div className="w-10 h-px bg-[#c9a84c] mx-auto mb-8"/>
+
+      <div style={{ height: "60px", background: "linear-gradient(to bottom, #1a1a1a, #f5f0e8)" }} />
+
+      {/* FAQ */}
+      <section className="py-20 px-6 bg-[#f5f0e8]">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-3">COMMON QUESTIONS</p>
+            <h2 className="text-2xl font-light text-[#1a1813]">What You Want to Know</h2>
+          </div>
+          {[
+          { q: "How far in advance should I reach out?", a: "For destination events and large celebrations, 6–12 months in advance is ideal. For smaller events, 2–3 months is usually sufficient. That said, we've pulled off extraordinary events on shorter timelines — just ask." },
+          { q: "Do you handle events outside of the US?", a: "Absolutely. Many of our most celebrated events have taken place in Italy, Greece, Morocco, Switzerland, Croatia, and beyond. We have trusted partners in every destination." },
+          { q: "How do you approach budgets?", a: "Transparently. Once we understand your vision, we'll share an honest picture of what it costs. We work within your budget to maximise impact where it matters most." },
+          { q: "Is our event truly confidential?", a: "Completely. We never share details about our clients or events without explicit permission. Discretion is fundamental to how we operate." }].
+          map((faq, i) =>
+          <div key={i} className="border-b border-[#c9a84c]/20 py-6">
+              <h3 className="text-base font-light text-[#1a1813] mb-3">{faq.q}</h3>
+              <p className="text-[#6b5f50] font-light text-sm leading-relaxed">{faq.a}</p>
+            </div>
+          )}
+        </div>
+      </section>
+
+      <div style={{ height: "60px", background: "linear-gradient(to bottom, #f5f0e8, #232120)" }} />
+
+      {/* CTA */}
+      <section className="py-20 px-6 bg-[#232120] text-center">
+        <div className="max-w-lg mx-auto">
+          <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-4">READY TO BEGIN?</p>
+          <h2 className="text-3xl font-light mb-6">Start With a Conversation</h2>
+          <div className="w-8 h-px bg-[#c9a84c] mx-auto mb-6" />
+          <p className="text-gray-400 font-light mb-8 text-sm">You don't need a full brief. Just reach out — Avicam will handle the rest.</p>
           <Link to="/contact" className="inline-block px-12 py-4 bg-[#c9a84c] text-black text-xs tracking-[0.3em] hover:bg-[#e0c070] transition-colors font-semibold">GET IN TOUCH</Link>
         </div>
       </section>
-      <footer className="bg-[#070707] border-t border-[#c9a84c]/15 py-8 px-6 text-center">
-        <p className="text-gray-600 text-xs">© 2025 Avicam Gitlin Private Events. All rights reserved.</p>
-      </footer>
-    </div>
-  );
+
+      <Footer />
+      <ChatWidget />
+    </div>);
+
 }

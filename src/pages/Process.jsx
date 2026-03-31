@@ -13,12 +13,12 @@ function ScrollToTop() {
 }
 
 const steps = [
-{ number: "01", title: "The First Conversation", icon: "💬", description: "Everything begins with a personal conversation — no forms, no templates. Avicam listens to your vision, your story, and what you want your event to feel like. Whether you have a clear idea or just a feeling, this is where it starts." },
-{ number: "02", title: "Vision & Concept", icon: "✦", description: "We develop a bespoke concept document — a creative direction capturing the mood, aesthetic, flow, and experience. A tailored vision with venue suggestions, design direction, and programming ideas." },
-{ number: "03", title: "Venue & Destination", icon: "🌍", description: "We source and secure the right venue anywhere in the world — private estates, island retreats, alpine chalets, or urban landmarks. For destination events, we handle all guest logistics too." },
+{ number: "01", title: "The First Conversation", icon: "✦", description: "Everything begins with a personal conversation — no forms, no templates. Avicam listens to your vision, your story, and what you want your event to feel like. Whether you have a clear idea or just a feeling, this is where it starts." },
+{ number: "02", title: "Vision & Concept", icon: "◆", description: "We develop a bespoke concept document — a creative direction capturing the mood, aesthetic, flow, and experience. A tailored vision with venue suggestions, design direction, and programming ideas." },
+{ number: "03", title: "Venue & Destination", icon: "✦", description: "We source and secure the right venue anywhere in the world — private estates, island retreats, alpine chalets, or urban landmarks. For destination events, we handle all guest logistics too." },
 { number: "04", title: "Design & Production", icon: "◆", description: "We build the full event experience — décor, florals, lighting, entertainment, and every creative detail that transforms a space. Nothing generic. Nothing off-the-shelf." },
-{ number: "05", title: "The Day Itself", icon: "🥂", description: "Avicam and his team are there on the day, managing every detail so you can be fully present. You won't be fielding calls — you'll be living the experience we built together." },
-{ number: "06", title: "After the Event", icon: "♾", description: "Our relationship doesn't end when the event does. We follow up personally and begin planning the next extraordinary moment. Many clients come back year after year." }];
+{ number: "05", title: "The Day Itself", icon: "✦", description: "Avicam and his team are there on the day, managing every detail so you can be fully present. You won't be fielding calls — you'll be living the experience we built together." },
+{ number: "06", title: "After the Event", icon: "◆", description: "Our relationship doesn't end when the event does. We follow up personally and begin planning the next extraordinary moment. Many clients come back year after year." }];
 
 
 export default function Process() {

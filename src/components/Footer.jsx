@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const LOGO = "https://media.base44.com/images/public/69caab40b61d6ee7c5b75332/9d7fead75_generated_image.png";
-const NAV = [["HOME","/"],["EVENTS","/events"],["HOW WE WORK","/process"],["ABOUT","/about"],["CONTACT","/contact"]];
+const NAV = [["HOME","/"],["EVENTS","/events"],["HOW WE WORK","/process"],["GALLERY","/gallery"],["ABOUT","/about"],["CONTACT","/contact"]];
 
 export default function Footer() {
   return (
@@ -41,7 +41,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-[#c9a84c]/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-2">
-          <p className="text-gray-500 text-xs">© 2025 Avicam Gitlin Private Events. All rights reserved.</p>
+          <p className="text-gray-500 text-xs">© 2026 Avicam Gitlin Private Events. All rights reserved.</p>
           <Link to="/terms" className="text-gray-500 text-xs hover:text-[#c9a84c] transition-colors">Terms & Cancellation Policy</Link>
         </div>
       </div>

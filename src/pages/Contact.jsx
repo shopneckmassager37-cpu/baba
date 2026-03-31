@@ -93,7 +93,7 @@ export default function Contact() {
               {[
               "We'll review your inquiry within 24 hours",
               "Avicam will reach out personally to discuss your vision",
-              "We'll craft a bespoke proposal tailored to your event"].
+              "We'll craft a bespoke proposal tailored specifically to your event"].
               map((step, i) =>
               <div key={i} className="flex items-start gap-4 mb-4 last:mb-0">
                   <div className="w-6 h-6 rounded-full bg-[#c9a84c] flex items-center justify-center flex-shrink-0 mt-0.5">

@@ -101,7 +101,7 @@ export default function About() {
             {[
               { icon: "✦", title: "Every Event is Personal", text: "Avicam's approach starts from who you are, not a template. He wants to understand how you live, what you love, and what this event means to you — then build something unmistakably yours." },
               { icon: "◆", title: "Bespoke by Nature", text: "No two events are the same, because no two clients are the same. Every venue, every design direction, every piece of programming is chosen specifically for you." },
-              { icon: "🌍", title: "The World is Your Venue", text: "The finest venues in the world are available — a Tuscan hillside, a yacht deck, a lantern-lit courtyard in Marrakech. You just need the right person to open the door." }
+              { icon: "✦", title: "The World is Your Venue", text: "The finest venues in the world are available — a Tuscan hillside, a yacht deck, a lantern-lit courtyard in Marrakech. You just need the right person to open the door." }
             ].map((p,i) => (
               <div key={i} className="text-center px-8 py-12 bg-[#141210] hover:bg-[#1a1813] transition-colors">
                 <div className="text-3xl mb-6 text-[#c9a84c]">{p.icon}</div>

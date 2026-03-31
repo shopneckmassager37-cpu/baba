@@ -1,6 +1,14 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import ChatWidget from "./ChatWidget";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
-const LOGO = "https://media.base44.com/images/public/69caab40b61d6ee7c5b75332/9d7fead75_generated_image.png";
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  return null;
+}
 
 const services = [
   {
@@ -97,25 +105,9 @@ const services = [
 
 export default function Services() {
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-md border-b border-[#c9a84c]/20">
-        <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
-          <Link to="/" className="flex items-center gap-3">
-            <img src={LOGO} alt="Avicam Gitlin" className="h-12 w-12 object-contain" />
-            <span className="text-xl tracking-[0.25em] text-[#c9a84c] font-light hidden sm:block">AVICAM GITLIN</span>
-          </Link>
-          <div className="hidden md:flex gap-8 text-xs tracking-[0.2em] text-gray-300">
-            <Link to="/" className="hover:text-[#c9a84c] transition-colors">HOME</Link>
-            <Link to="/services" className="text-[#c9a84c]">SERVICES</Link>
-            <Link to="/events" className="hover:text-[#c9a84c] transition-colors">EVENTS</Link>
-            <Link to="/about" className="hover:text-[#c9a84c] transition-colors">ABOUT</Link>
-            <Link to="/gallery" className="hover:text-[#c9a84c] transition-colors">GALLERY</Link>
-            <Link to="/contact" className="hover:text-[#c9a84c] transition-colors">CONTACT</Link>
-          </div>
-          <Link to="/contact" className="hidden md:block px-5 py-2 border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[0.2em] hover:bg-[#c9a84c]/10 transition-colors">INQUIRE</Link>
-        </div>
-      </nav>
+    <div className="min-h-screen bg-[#0f0e0c] text-[#e8e2d9]" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
+      <ScrollToTop />
+      <Navbar active="SERVICES" />
 
       {/* Hero */}
       <section className="relative pt-32 pb-24 px-6 text-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1510076857177-7470076d4098?w=1920&q=80')", backgroundSize: "cover", backgroundPosition: "center" }}>
@@ -125,8 +117,8 @@ export default function Services() {
           <h1 className="text-5xl md:text-6xl font-light mb-8">Our Services</h1>
           <div className="w-12 h-px bg-[#c9a84c] mx-auto mb-8" />
           <p className="text-gray-400 text-lg font-light leading-relaxed">
-            Every service we offer is built on one principle: your event should feel effortless to experience
-            and impossible to forget. We handle the complexity — you live the moment.
+            Every service we offer is built on one principle: we make the planning effortless,
+            the experience extraordinary, and the memory impossible to forget.
           </p>
         </div>
       </section>
@@ -193,21 +185,8 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-[#070707] border-t border-[#c9a84c]/15 pt-16 pb-8 px-6">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-3">
-            <img src={LOGO} alt="logo" className="h-10 w-10 object-contain" />
-            <span className="text-[#c9a84c] text-lg tracking-[0.3em] font-light">AVICAM GITLIN</span>
-          </div>
-          <div className="flex gap-8 text-xs text-gray-500 tracking-[0.2em]">
-            {[["Services", "/services"], ["Events", "/events"], ["About", "/about"], ["Contact", "/contact"]].map(([l, h]) => (
-              <Link key={l} to={h} className="hover:text-[#c9a84c] transition-colors">{l.toUpperCase()}</Link>
-            ))}
-          </div>
-          <p className="text-gray-600 text-xs tracking-wide">© 2025 Avicam Gitlin Private Events</p>
-        </div>
-      </footer>
+      <Footer />
+      <ChatWidget />
     </div>
   );
 }

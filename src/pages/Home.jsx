@@ -274,7 +274,7 @@ export default function Home() {
       {/* ─── CTA ─── */}
       <section className="relative py-28 px-6 text-center overflow-hidden"
         style={{ backgroundImage: "url('https://images.unsplash.com/photo-1510076857177-7470076d4098?w=1920&q=80')", backgroundSize: "cover", backgroundPosition: "center" }}>
-        <div className="absolute inset-0 bg-black/72" />
+        <div className="absolute inset-0 bg-black/85" />
         <div className="relative z-10 max-w-xl mx-auto">
           <p className="text-[#c9a84c] tracking-[0.5em] text-xs mb-4">LET'S CREATE TOGETHER</p>
           <h2 className="text-4xl md:text-5xl font-light mb-5">Ready to Begin?</h2>

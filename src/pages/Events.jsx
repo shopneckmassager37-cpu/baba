@@ -124,15 +124,15 @@ export default function Events() {
         </div>
       </section>
 
-      <div style={{ height: "50px", background: "linear-gradient(to bottom, #0f0e0c, #080806)" }} />
+      <div style={{ height: "60px", background: "linear-gradient(to bottom, #0f0e0c, #f5f0e8)" }} />
 
       {/* CTA */}
-      <section className="py-28 px-6 bg-[#0f0e0c] text-center">
+      <section className="py-28 px-6 bg-[#f5f0e8] text-center">
         <div className="max-w-2xl mx-auto">
           <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-6">READY TO START?</p>
-          <h2 className="text-4xl font-light mb-6">Let's Design Your Event</h2>
+          <h2 className="text-4xl font-light mb-6 text-[#1a1813]">Let's Design Your Event</h2>
           <div className="w-12 h-px bg-[#c9a84c] mx-auto mb-8" />
-          <p className="text-gray-400 font-light mb-10">Every great event begins with a single conversation. Share your vision with us.</p>
+          <p className="text-[#6b5f50] font-light mb-10">Every great event begins with a single conversation. Share your vision with us.</p>
           <Link to="/contact" className="inline-block px-12 py-5 bg-[#c9a84c] text-black text-xs tracking-[0.3em] hover:bg-[#e0c070] transition-colors font-semibold">GET IN TOUCH</Link>
         </div>
       </section>

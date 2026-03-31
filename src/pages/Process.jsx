@@ -62,34 +62,34 @@ export default function Process() {
         </div>
       </section>
 
-      <div style={{ height: "50px", background: "linear-gradient(to bottom, #1c1b1a, #232120)" }} />
+      <div style={{ height: "60px", background: "linear-gradient(to bottom, #1c1b1a, #f5f0e8)" }} />
 
       {/* Values */}
-      <section className="py-20 px-6 bg-[#232120]">
+      <section className="py-20 px-6 bg-[#f5f0e8]">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-3">WHAT WE STAND FOR</p>
-            <h2 className="text-3xl font-light">Our Commitments to You</h2>
+            <h2 className="text-3xl font-light text-[#1a1813]">Our Commitments to You</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#c9a84c]/10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
             { title: "Absolute Discretion", text: "Our clients trust us with their most personal moments. We operate with complete confidentiality — always." },
             { title: "Genuinely Personal", text: "Avicam is personally involved in every event from concept to execution. You will never be handed off to a junior team member." },
             { title: "No Compromises", text: "We do not cut corners or settle for 'good enough'. Every detail is held to the same standard of excellence." },
             { title: "Global Reach", text: "15+ years, 30+ countries. We have the relationships and network to create extraordinary events anywhere." }].
             map((v, i) =>
-            <div key={i} className="bg-[#1a1a1a] p-8 hover:bg-[#1f1f1f] transition-colors">
+            <div key={i} className="bg-white border border-[#e0d8cc] p-8 hover:border-[#c9a84c] hover:shadow-md transition-all duration-300">
                 <div className="text-[#c9a84c] mb-4">◆</div>
-                <h3 className="text-lg font-light mb-3">{v.title}</h3>
+                <h3 className="text-lg font-light mb-3 text-[#1a1813]">{v.title}</h3>
                 <div className="w-6 h-px bg-[#c9a84c]/30 mb-4" />
-                <p className="text-gray-400 font-light text-sm leading-relaxed">{v.text}</p>
+                <p className="text-[#6b5f50] font-light text-sm leading-relaxed">{v.text}</p>
               </div>
             )}
           </div>
         </div>
       </section>
 
-      <div style={{ height: "50px", background: "linear-gradient(to bottom, #232120, #1a1a1a)" }} />
+      <div style={{ height: "60px", background: "linear-gradient(to bottom, #f5f0e8, #1a1a1a)" }} />
 
       {/* Quote */}
       <section className="relative py-24 px-6 text-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1920&q=80')", backgroundSize: "cover", backgroundPosition: "center" }}>
@@ -104,14 +104,14 @@ export default function Process() {
         </div>
       </section>
 
-      <div style={{ height: "50px", background: "linear-gradient(to bottom, #1a1a1a, #1c1b1a)" }} />
+      <div style={{ height: "60px", background: "linear-gradient(to bottom, #1a1a1a, #f5f0e8)" }} />
 
       {/* FAQ */}
-      <section className="py-20 px-6 bg-[#1c1b1a]">
+      <section className="py-20 px-6 bg-[#f5f0e8]">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-3">COMMON QUESTIONS</p>
-            <h2 className="text-2xl font-light">What You Want to Know</h2>
+            <h2 className="text-2xl font-light text-[#1a1813]">What You Want to Know</h2>
           </div>
           {[
           { q: "How far in advance should I reach out?", a: "For destination events and large celebrations, 6–12 months in advance is ideal. For smaller events, 2–3 months is usually sufficient. That said, we've pulled off extraordinary events on shorter timelines — just ask." },
@@ -119,15 +119,15 @@ export default function Process() {
           { q: "How do you approach budgets?", a: "Transparently. Once we understand your vision, we'll share an honest picture of what it costs. We work within your budget to maximise impact where it matters most." },
           { q: "Is our event truly confidential?", a: "Completely. We never share details about our clients or events without explicit permission. Discretion is fundamental to how we operate." }].
           map((faq, i) =>
-          <div key={i} className="border-b border-[#c9a84c]/10 py-6">
-              <h3 className="text-base font-light text-white mb-3">{faq.q}</h3>
-              <p className="text-gray-500 font-light text-sm leading-relaxed">{faq.a}</p>
+          <div key={i} className="border-b border-[#c9a84c]/20 py-6">
+              <h3 className="text-base font-light text-[#1a1813] mb-3">{faq.q}</h3>
+              <p className="text-[#6b5f50] font-light text-sm leading-relaxed">{faq.a}</p>
             </div>
           )}
         </div>
       </section>
 
-      <div style={{ height: "50px", background: "linear-gradient(to bottom, #1c1b1a, #232120)" }} />
+      <div style={{ height: "60px", background: "linear-gradient(to bottom, #f5f0e8, #232120)" }} />
 
       {/* CTA */}
       <section className="py-20 px-6 bg-[#232120] text-center">

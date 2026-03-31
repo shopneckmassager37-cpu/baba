@@ -31,22 +31,22 @@ export default function About() {
         </div>
       </section>
 
-      <div style={{ height: "50px", background: "linear-gradient(to bottom, #0d0d0d, #141210)" }} />
+      <div style={{ height: "60px", background: "linear-gradient(to bottom, #161616, #f5f0e8)" }} />
 
       {/* Story */}
-      <section className="py-16 md:py-28 px-6 bg-[#141210]">
+      <section className="py-16 md:py-28 px-6 bg-[#f5f0e8]">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center">
           <div>
             <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-6">THE BEGINNING</p>
-            <h2 className="text-3xl md:text-4xl font-light mb-8 leading-relaxed text-[#e8e2d9]">It started around a table<br />on a Friday night.</h2>
+            <h2 className="text-3xl md:text-4xl font-light mb-8 leading-relaxed text-[#1a1813]">It started around a table<br />on a Friday night.</h2>
             <div className="w-10 h-px bg-[#c9a84c]/40 mb-8" />
-            <p className="text-[#a09888] font-light leading-relaxed mb-5">
+            <p className="text-[#6b5f50] font-light leading-relaxed mb-5">
               It was springtime, and a group of friends sat together sharing a meal — full of laughter, good wine, and the kind of conversation that stays with you. The talk turned to travel: Tuscany, the rolling hills, the scent of cypress trees in the Mediterranean warmth. Everyone shared the same dream.
             </p>
-            <p className="text-[#a09888] font-light leading-relaxed mb-5">
+            <p className="text-[#6b5f50] font-light leading-relaxed mb-5">
               That evening was the seed of everything that followed. Avicam realised he could build something that didn't yet exist — a way for people to gather, celebrate, and experience the world's most extraordinary places with total care and without compromise.
             </p>
-            <p className="text-[#a09888] font-light leading-relaxed italic border-l-2 border-[#c9a84c]/60 pl-4">
+            <p className="text-[#6b5f50] font-light leading-relaxed italic border-l-2 border-[#c9a84c]/60 pl-4">
               "Great ideas are born when good friends and great wine come together."
             </p>
           </div>
@@ -57,7 +57,7 @@ export default function About() {
         </div>
       </section>
 
-      <div style={{ height: "50px", background: "linear-gradient(to bottom, #141210, #141210)" }} />
+      <div style={{ height: "60px", background: "linear-gradient(to bottom, #f5f0e8, #141210)" }} />
 
       {/* Kitchen photo — the new image */}
       <section className="py-0 px-6 pb-16 md:pb-28 bg-[#141210]">
@@ -114,10 +114,10 @@ export default function About() {
         </div>
       </section>
 
-      <div style={{ height: "50px", background: "linear-gradient(to bottom, #0f0e0c, #141210)" }} />
+      <div style={{ height: "60px", background: "linear-gradient(to bottom, #0f0e0c, #f5f0e8)" }} />
 
       {/* Meet Avicam */}
-      <section className="py-16 md:py-28 px-6 bg-[#141210]">
+      <section className="py-16 md:py-28 px-6 bg-[#f5f0e8]">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center">
           <div className="relative">
             <img src={AVICAM} alt="Avicam Gitlin" className="w-full h-[650px] object-cover object-top"
@@ -129,19 +129,19 @@ export default function About() {
           </div>
           <div>
             <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-6">THE MAN BEHIND IT ALL</p>
-            <h2 className="text-3xl md:text-4xl font-light leading-tight mb-8 text-[#e8e2d9]">Avicam Gitlin</h2>
+            <h2 className="text-3xl md:text-4xl font-light leading-tight mb-8 text-[#1a1813]">Avicam Gitlin</h2>
             <div className="w-10 h-px bg-[#c9a84c]/50 mb-8" />
-            <p className="text-[#a09888] font-light leading-relaxed mb-6">
+            <p className="text-[#6b5f50] font-light leading-relaxed mb-6">
               Avicam Gitlin is a private event producer and travel curator with over 15 years of experience creating bespoke celebrations across the world's most spectacular destinations.
             </p>
-            <p className="text-[#a09888] font-light leading-relaxed mb-10">
+            <p className="text-[#6b5f50] font-light leading-relaxed mb-10">
               He has produced weddings, fundraising galas, corporate retreats, and milestone celebrations — from New York ballrooms to Greek island estates, from Moroccan riads to Alpine chalets.
             </p>
             <div className="space-y-0">
               {["15+ years producing private events worldwide","Weddings, galas & corporate events","Trusted network in 30+ countries","Personally involved in every event","Complete discretion, always"].map((item,i) => (
                 <div key={i} className="flex items-center gap-4 py-3 border-b border-[#c9a84c]/20">
                   <span className="text-[#c9a84c] text-xs">→</span>
-                  <span className="text-[#a09888] text-sm font-light">{item}</span>
+                  <span className="text-[#6b5f50] text-sm font-light">{item}</span>
                 </div>
               ))}
             </div>
@@ -149,7 +149,7 @@ export default function About() {
         </div>
       </section>
 
-      <div style={{ height: "50px", background: "linear-gradient(to bottom, #141210, #0f0e0c)" }} />
+      <div style={{ height: "60px", background: "linear-gradient(to bottom, #f5f0e8, #0f0e0c)" }} />
 
       {/* Quote */}
       <section className="py-24 px-6 text-center bg-[#0f0e0c]">

@@ -87,10 +87,10 @@ export default function Process() {
 
       {/* Quote */}
       <section className="relative py-24 px-6 text-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1920&q=80')", backgroundSize: "cover", backgroundPosition: "center" }}>
-        <div className="absolute inset-0 bg-black/78" />
+        <div className="absolute inset-0 bg-black/88" />
         <div className="relative z-10 max-w-2xl mx-auto">
-          
-          <p className="text-xl md:text-2xl font-light text-gray-200 leading-relaxed italic mb-6">
+          <div className="text-[#c9a84c] text-5xl font-light mb-6">"</div>
+          <p className="text-xl md:text-2xl font-light text-white leading-relaxed italic mb-6">
             I read every inquiry personally. I will not rest until the event we've built together exceeds everything you imagined.
           </p>
           <div className="w-8 h-px bg-[#c9a84c] mx-auto mb-4" />

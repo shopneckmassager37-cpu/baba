@@ -14,7 +14,7 @@ function ScrollToTop() {
   return null;
 }
 
-const TICKER_ITEMS = ["Weddings","Bar & Bat Mitzvahs","Fundraising Galas","Corporate Events","VIP Experiences","Milestone Celebrations","Sailing Journeys","Heritage Journeys","Destination Celebrations","Private Events"];
+const TICKER_ITEMS = ["Weddings","Fundraising Galas","Corporate Events","VIP Experiences","Milestone Celebrations","Sailing Journeys","Heritage Journeys","Destination Celebrations","Private Events"];
 
 function Ticker() {
   const items = [...TICKER_ITEMS, ...TICKER_ITEMS];

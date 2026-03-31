@@ -71,6 +71,8 @@ export default function Events() {
         </div>
       </section>
 
+      <div style={{ height: "50px", background: "linear-gradient(to bottom, #0a0a0a, #0f0e0c)" }} />
+
       {/* Events list */}
       <section className="py-24 px-6 bg-[#0f0e0c]">
         <div className="max-w-7xl mx-auto space-y-28">
@@ -121,6 +123,8 @@ export default function Events() {
           ))}
         </div>
       </section>
+
+      <div style={{ height: "50px", background: "linear-gradient(to bottom, #0f0e0c, #080806)" }} />
 
       {/* CTA */}
       <section className="py-28 px-6 bg-[#0f0e0c] text-center">

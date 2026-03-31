@@ -31,6 +31,8 @@ export default function About() {
         </div>
       </section>
 
+      <div style={{ height: "50px", background: "linear-gradient(to bottom, #0d0d0d, #141210)" }} />
+
       {/* Story */}
       <section className="py-16 md:py-28 px-6 bg-[#141210]">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center">
@@ -54,6 +56,8 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      <div style={{ height: "50px", background: "linear-gradient(to bottom, #141210, #141210)" }} />
 
       {/* Kitchen photo — the new image */}
       <section className="py-0 px-6 pb-16 md:pb-28 bg-[#141210]">
@@ -84,6 +88,8 @@ export default function About() {
         </div>
       </section>
 
+      <div style={{ height: "50px", background: "linear-gradient(to bottom, #141210, #0f0e0c)" }} />
+
       {/* Philosophy */}
       <section className="py-24 px-6 bg-[#0f0e0c]">
         <div className="max-w-6xl mx-auto">
@@ -107,6 +113,8 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      <div style={{ height: "50px", background: "linear-gradient(to bottom, #0f0e0c, #141210)" }} />
 
       {/* Meet Avicam */}
       <section className="py-16 md:py-28 px-6 bg-[#141210]">
@@ -141,6 +149,8 @@ export default function About() {
         </div>
       </section>
 
+      <div style={{ height: "50px", background: "linear-gradient(to bottom, #141210, #0f0e0c)" }} />
+
       {/* Quote */}
       <section className="py-24 px-6 text-center bg-[#0f0e0c]">
         <div className="max-w-3xl mx-auto">
@@ -152,6 +162,8 @@ export default function About() {
           <p className="text-[#c9a84c] tracking-[0.4em] text-xs">— AVICAM GITLIN</p>
         </div>
       </section>
+
+      <div style={{ height: "50px", background: "linear-gradient(to bottom, #0f0e0c, #141210)" }} />
 
       {/* CTA */}
       <section className="py-16 md:py-28 px-6 text-center bg-[#141210]">

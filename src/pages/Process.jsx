@@ -41,6 +41,8 @@ export default function Process() {
         </div>
       </section>
 
+      <div style={{ height: "50px", background: "linear-gradient(to bottom, #161616, #1c1b1a)" }} />
+
       {/* Steps — card grid, much cleaner */}
       <section className="py-20 px-6 bg-[#1c1b1a]">
         <div className="max-w-6xl mx-auto">
@@ -59,6 +61,8 @@ export default function Process() {
           </div>
         </div>
       </section>
+
+      <div style={{ height: "50px", background: "linear-gradient(to bottom, #1c1b1a, #232120)" }} />
 
       {/* Values */}
       <section className="py-20 px-6 bg-[#232120]">
@@ -85,6 +89,8 @@ export default function Process() {
         </div>
       </section>
 
+      <div style={{ height: "50px", background: "linear-gradient(to bottom, #232120, #1a1a1a)" }} />
+
       {/* Quote */}
       <section className="relative py-24 px-6 text-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1920&q=80')", backgroundSize: "cover", backgroundPosition: "center" }}>
         <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0,0,0,0.88)' }} />
@@ -97,6 +103,8 @@ export default function Process() {
           <p className="text-[#c9a84c] tracking-[0.4em] text-xs">— AVICAM GITLIN</p>
         </div>
       </section>
+
+      <div style={{ height: "50px", background: "linear-gradient(to bottom, #1a1a1a, #1c1b1a)" }} />
 
       {/* FAQ */}
       <section className="py-20 px-6 bg-[#1c1b1a]">
@@ -118,6 +126,8 @@ export default function Process() {
           )}
         </div>
       </section>
+
+      <div style={{ height: "50px", background: "linear-gradient(to bottom, #1c1b1a, #232120)" }} />
 
       {/* CTA */}
       <section className="py-20 px-6 bg-[#232120] text-center">

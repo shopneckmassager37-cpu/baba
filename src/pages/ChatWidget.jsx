@@ -103,7 +103,7 @@ export default function ChatWidget() {
       {/* Chat window */}
       {open && (
         <div className="fixed bottom-24 right-6 z-[9998] w-[360px] flex flex-col shadow-2xl overflow-hidden"
-          style={{ background: "#111", border: "1px solid rgba(201,168,76,0.3)", boxShadow: "0 8px 60px rgba(0,0,0,0.7)", maxHeight: "560px", animation: "slideUp 0.25s ease" }}>
+          style={{ background: "#111", border: "1px solid rgba(201,168,76,0.3)", boxShadow: "0 8px 60px rgba(0,0,0,0.7)", maxHeight: "560px", animation: "slideUp 0.25s ease", borderRadius: "20px" }}>
 
           {/* Header */}
           <div className="border-b border-[#c9a84c]/20 px-4 py-3 flex items-center gap-3" style={{ background: "#0d0d0d" }}>

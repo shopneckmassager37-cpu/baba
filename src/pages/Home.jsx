@@ -64,7 +64,7 @@ export default function Home() {
       {/* ─── INTRO ─── */}
       <section className="py-24 px-6 bg-[#0f0e0c]">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-[#c9a84c] tracking-[0.5em] text-xs mb-5">THE AVICAM GITLIN DIFFERENCE</p>
+          <p className="text-[#c9a84c] tracking-[0.5em] text-xs mb-5">WHAT SETS US APART</p>
           <h2 className="text-3xl md:text-4xl font-light leading-relaxed mb-5 text-[#e8e2d9]">
             Every event is once-in-a-lifetime.<br /><span className="text-[#c9a84c] italic">We treat it that way.</span>
           </h2>
@@ -197,7 +197,7 @@ export default function Home() {
             {[
               { icon: "◆", title: "Luxury Without Compromise", text: "Every event is custom-crafted. Hand-picked venues, bespoke programming, and white-glove logistics from first conversation to final moment." },
               { icon: "✦", title: "Genuinely Personal", text: "Avicam personally reads every inquiry and is involved in every event. You will never be handed to a junior team member." },
-              { icon: "🌍", title: "Global Expertise", text: "With 15+ years producing events across 30+ countries, we have the relationships and network to make anything possible, anywhere." }
+              { icon: "✦", title: "Global Expertise", text: "With 15+ years producing events across 30+ countries, we have the relationships and network to make anything possible, anywhere." }
             ].map((d,i) => (
               <div key={i} className="bg-white border border-[#e0d8cc] p-8 text-center hover:border-[#c9a84c] hover:shadow-lg transition-all duration-300">
                 <div className="text-[#c9a84c] text-3xl mb-5">{d.icon}</div>

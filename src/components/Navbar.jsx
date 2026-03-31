@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const LOGO = "https://media.base44.com/images/public/69caab40b61d6ee7c5b75332/9d7fead75_generated_image.png";
-const NAV = [["HOME","/"],["EVENTS","/events"],["HOW WE WORK","/process"],["ABOUT","/about"],["CONTACT","/contact"]];
+const NAV = [["HOME","/"],["EVENTS","/events"],["HOW WE WORK","/process"],["GALLERY","/gallery"],["ABOUT","/about"],["CONTACT","/contact"]];
 
 export default function Navbar({ active }) {
   const [menuOpen, setMenuOpen] = useState(false);

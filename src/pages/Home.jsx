@@ -105,7 +105,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── STATS ─── */
+      {/* ─── STATS ─── */}
       <section className="py-16 px-6 bg-[#0f0e0c] border-y border-[#c9a84c]/20">
         <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {[{num:"15+",label:"Years of Excellence"},{num:"500+",label:"Events Worldwide"},{num:"30+",label:"Destinations"},{num:"100%",label:"Bespoke"}].map((s,i) => (

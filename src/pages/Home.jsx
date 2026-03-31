@@ -1,3 +1,4 @@
+import ChatWidget from "./ChatWidget";
 import { Link } from "react-router-dom";
 
 const LOGO = "https://media.base44.com/images/public/69caab40b61d6ee7c5b75332/9d7fead75_generated_image.png";
@@ -27,9 +28,11 @@ export default function Home() {
             {NAV_LINKS.map(([l, h]) => (
               <Link key={l} to={h} className={`hover:text-[#c9a84c] transition-colors ${l === "HOME" ? "text-[#c9a84c]" : ""}`}>{l}</Link>
             ))}
-          </div>
+            <ChatWidget />
+</div>
           <Link to="/contact" className="hidden md:block px-5 py-2 border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[0.2em] hover:bg-[#c9a84c]/10 transition-colors">INQUIRE</Link>
-        </div>
+          <ChatWidget />
+</div>
       </nav>
 
       {/* Hero */}
@@ -49,12 +52,15 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/contact" className="px-10 py-4 bg-[#c9a84c] text-black text-xs tracking-[0.3em] hover:bg-[#e0c070] transition-colors font-semibold">BEGIN YOUR JOURNEY</Link>
             <Link to="/events" className="px-10 py-4 border border-white/40 text-white text-xs tracking-[0.3em] hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors">EXPLORE EVENTS</Link>
-          </div>
-        </div>
+            <ChatWidget />
+</div>
+          <ChatWidget />
+</div>
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
           <span className="text-gray-500 text-xs tracking-widest">SCROLL</span>
           <div className="w-px h-12 bg-gradient-to-b from-[#c9a84c] to-transparent" />
-        </div>
+          <ChatWidget />
+</div>
       </section>
 
       {/* Gold strip */}
@@ -63,8 +69,10 @@ export default function Home() {
           {["Destination Events", "Milestone Celebrations", "Corporate Retreats", "Villa Programs", "Sailing Events", "Heritage Journeys", "VIP Experiences", "Cultural Journeys"].map((t, i) => (
             <span key={i} className="text-black text-xs tracking-[0.3em] whitespace-nowrap px-8">✦ {t.toUpperCase()}</span>
           ))}
-        </div>
-      </div>
+          <ChatWidget />
+</div>
+        <ChatWidget />
+</div>
 
       {/* Intro */}
       <section className="py-28 px-6">
@@ -80,7 +88,8 @@ export default function Home() {
             Avicam Gitlin brings unmatched expertise, impeccable discretion, and a deeply personal touch
             to every celebration — from intimate gatherings to grand destination events.
           </p>
-        </div>
+          <ChatWidget />
+</div>
       </section>
 
       {/* Event types */}
@@ -89,7 +98,8 @@ export default function Home() {
           <div className="text-center mb-16 pt-20">
             <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-4">WHAT WE CREATE</p>
             <h2 className="text-3xl md:text-4xl font-light">Private Events of Every Kind</h2>
-          </div>
+            <ChatWidget />
+</div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-1">
             {[
               { title: "Destination Celebrations", desc: "Celebrate life's greatest milestones in the world's most breathtaking settings — Tuscany, Greek islands, Swiss Alps, and beyond.", img: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80" },
@@ -103,14 +113,18 @@ export default function Home() {
                   <h3 className="text-xl font-light tracking-wide mb-3">{s.title}</h3>
                   <p className="text-gray-400 text-sm leading-relaxed mb-4 font-light">{s.desc}</p>
                   <span className="text-[#c9a84c] text-xs tracking-[0.3em] border-b border-[#c9a84c]/40 pb-1">EXPLORE →</span>
-                </div>
+                  <ChatWidget />
+</div>
               </Link>
             ))}
-          </div>
+            <ChatWidget />
+</div>
           <div className="text-center mt-8">
             <Link to="/events" className="inline-block px-10 py-4 border border-[#c9a84c]/40 text-[#c9a84c] text-xs tracking-[0.3em] hover:bg-[#c9a84c]/10 transition-colors">VIEW ALL EVENTS</Link>
-          </div>
-        </div>
+            <ChatWidget />
+</div>
+          <ChatWidget />
+</div>
       </section>
 
       {/* Stats */}
@@ -118,11 +132,15 @@ export default function Home() {
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[{ num: "15+", label: "Years of Excellence" }, { num: "500+", label: "Events Worldwide" }, { num: "30+", label: "Destinations" }, { num: "100%", label: "Bespoke" }].map((s, i) => (
             <div key={i}>
-              <div className="text-4xl md:text-5xl text-[#c9a84c] font-light mb-2">{s.num}</div>
-              <div className="text-gray-500 text-xs tracking-[0.3em]">{s.label}</div>
-            </div>
+              <div className="text-4xl md:text-5xl text-[#c9a84c] font-light mb-2">{s.num}  <ChatWidget />
+</div>
+              <div className="text-gray-500 text-xs tracking-[0.3em]">{s.label}  <ChatWidget />
+</div>
+              <ChatWidget />
+</div>
           ))}
-        </div>
+          <ChatWidget />
+</div>
       </section>
 
       {/* Meet Avicam */}
@@ -143,7 +161,8 @@ export default function Home() {
               From Alpine chalets to Mediterranean coastlines — wherever you envision your celebration, Avicam makes it happen.
             </p>
             <Link to="/about" className="inline-block px-8 py-3 border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[0.2em] hover:bg-[#c9a84c]/10 transition-colors">MEET AVICAM</Link>
-          </div>
+            <ChatWidget />
+</div>
           <div className="relative">
             <img
               src={AVICAM}
@@ -154,9 +173,12 @@ export default function Home() {
             <div className="absolute bottom-6 left-6 bg-black/70 backdrop-blur-sm border border-[#c9a84c]/30 px-5 py-3">
               <p className="text-[#c9a84c] text-xs tracking-[0.3em]">AVICAM GITLIN</p>
               <p className="text-gray-400 text-xs mt-1">Private Events · Worldwide</p>
-            </div>
-          </div>
-        </div>
+              <ChatWidget />
+</div>
+            <ChatWidget />
+</div>
+          <ChatWidget />
+</div>
       </section>
 
       {/* Testimonials */}
@@ -165,7 +187,8 @@ export default function Home() {
           <div className="text-center mb-16">
             <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-4">KIND WORDS</p>
             <h2 className="text-3xl md:text-4xl font-light">What Our Clients Say</h2>
-          </div>
+            <ChatWidget />
+</div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               { quote: "Avicam transformed our family gathering in Tuscany into something none of us will ever forget. Every single detail was perfection.", name: "Rachel & Daniel M.", event: "Private Villa Celebration, Italy" },
@@ -173,16 +196,21 @@ export default function Home() {
               { quote: "Our milestone celebration was flawlessly produced. Avicam's dedication to perfection was evident in every single moment.", name: "Sarah & Michael B.", event: "Milestone Event, Tuscany" }
             ].map((t, i) => (
               <div key={i} className="border border-[#c9a84c]/15 p-8 hover:border-[#c9a84c]/40 transition-colors">
-                <div className="text-[#c9a84c] text-4xl mb-4 font-light">"</div>
+                <div className="text-[#c9a84c] text-4xl mb-4 font-light">"  <ChatWidget />
+</div>
                 <p className="text-gray-400 font-light leading-relaxed mb-8 italic text-sm">{t.quote}</p>
                 <div className="border-t border-[#c9a84c]/15 pt-4">
                   <p className="text-white text-sm font-light">{t.name}</p>
                   <p className="text-[#c9a84c] text-xs tracking-wide mt-1">{t.event}</p>
-                </div>
-              </div>
+                  <ChatWidget />
+</div>
+                <ChatWidget />
+</div>
             ))}
-          </div>
-        </div>
+            <ChatWidget />
+</div>
+          <ChatWidget />
+</div>
       </section>
 
       {/* CTA */}
@@ -197,7 +225,8 @@ export default function Home() {
           <div className="w-12 h-px bg-[#c9a84c] mx-auto mb-8" />
           <p className="text-gray-300 font-light leading-relaxed mb-12 text-lg">Every extraordinary event starts with a conversation. Tell us your vision — we'll craft something truly unforgettable.</p>
           <Link to="/contact" className="inline-block px-14 py-5 bg-[#c9a84c] text-black text-xs tracking-[0.4em] hover:bg-[#e0c070] transition-colors font-semibold">START THE CONVERSATION</Link>
-        </div>
+          <ChatWidget />
+</div>
       </section>
 
       {/* Footer */}
@@ -208,30 +237,40 @@ export default function Home() {
               <img src={LOGO} alt="Avicam Gitlin" className="h-16 w-16 object-contain mb-4" />
               <p className="text-[#c9a84c] text-lg tracking-[0.3em] font-light mb-3">AVICAM GITLIN</p>
               <p className="text-gray-500 text-sm font-light leading-relaxed max-w-xs">Bespoke private events and extraordinary celebrations, crafted for discerning individuals worldwide.</p>
-            </div>
+              <ChatWidget />
+</div>
             <div>
               <p className="text-gray-500 text-xs tracking-[0.3em] mb-4">NAVIGATION</p>
               <div className="space-y-2">
                 {[["Home", "/"], ["Events", "/events"], ["How We Work", "/process"], ["About", "/about"], ["Gallery", "/gallery"], ["Contact", "/contact"]].map(([l, h]) => (
-                  <div key={l}><Link to={h} className="text-gray-400 text-sm font-light hover:text-[#c9a84c] transition-colors">{l}</Link></div>
+                  <div key={l}><Link to={h} className="text-gray-400 text-sm font-light hover:text-[#c9a84c] transition-colors">{l}</Link>  <ChatWidget />
+</div>
                 ))}
-              </div>
-            </div>
+                <ChatWidget />
+</div>
+              <ChatWidget />
+</div>
             <div>
               <p className="text-gray-500 text-xs tracking-[0.3em] mb-4">CONTACT</p>
               <div className="space-y-3 text-gray-400 text-sm font-light">
                 <p>+1 (347) 994-9284</p>
                 <p className="text-xs">avicam@kosherculinarytravel.com</p>
                 <p>New York · Worldwide</p>
-              </div>
-            </div>
-          </div>
+                <ChatWidget />
+</div>
+              <ChatWidget />
+</div>
+            <ChatWidget />
+</div>
           <div className="border-t border-[#c9a84c]/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-600 text-xs tracking-wide">© 2025 Avicam Gitlin Private Events. All rights reserved.</p>
             <p className="text-gray-700 text-xs tracking-wide">Crafted Worldwide</p>
-          </div>
-        </div>
+            <ChatWidget />
+</div>
+          <ChatWidget />
+</div>
       </footer>
-    </div>
+      <ChatWidget />
+</div>
   );
 }

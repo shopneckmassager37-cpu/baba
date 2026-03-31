@@ -1,3 +1,4 @@
+import ChatWidget from "./ChatWidget";
 import { Link } from "react-router-dom";
 
 const LOGO = "https://media.base44.com/images/public/69caab40b61d6ee7c5b75332/9d7fead75_generated_image.png";
@@ -112,9 +113,11 @@ export default function Events() {
             {NAV_LINKS.map(([l, h]) => (
               <Link key={l} to={h} className={`hover:text-[#c9a84c] transition-colors ${l === "EVENTS" ? "text-[#c9a84c]" : ""}`}>{l}</Link>
             ))}
-          </div>
+            <ChatWidget />
+</div>
           <Link to="/contact" className="hidden md:block px-5 py-2 border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[0.2em] hover:bg-[#c9a84c]/10 transition-colors">INQUIRE</Link>
-        </div>
+          <ChatWidget />
+</div>
       </nav>
 
       {/* Hero */}
@@ -131,7 +134,8 @@ export default function Events() {
             From intimate private gatherings to grand destination celebrations —
             every event is designed from scratch to be entirely, unmistakably yours.
           </p>
-        </div>
+          <ChatWidget />
+</div>
       </section>
 
       {/* Events list */}
@@ -143,7 +147,8 @@ export default function Events() {
                 <>
                   <div className="overflow-hidden">
                     <img src={ev.img} alt={ev.title} className="w-full h-[520px] object-cover hover:scale-105 transition-transform duration-700" />
-                  </div>
+                    <ChatWidget />
+</div>
                   <div>
                     <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-4 italic">{ev.tagline}</p>
                     <h2 className="text-3xl md:text-4xl font-light mb-6">{ev.title}</h2>
@@ -157,7 +162,8 @@ export default function Events() {
                       ))}
                     </ul>
                     <Link to="/contact" className="inline-block px-8 py-3 border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[0.2em] hover:bg-[#c9a84c]/10 transition-colors">INQUIRE NOW</Link>
-                  </div>
+                    <ChatWidget />
+</div>
                 </>
               ) : (
                 <>
@@ -174,15 +180,19 @@ export default function Events() {
                       ))}
                     </ul>
                     <Link to="/contact" className="inline-block px-8 py-3 border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[0.2em] hover:bg-[#c9a84c]/10 transition-colors">INQUIRE NOW</Link>
-                  </div>
+                    <ChatWidget />
+</div>
                   <div className="overflow-hidden">
                     <img src={ev.img} alt={ev.title} className="w-full h-[520px] object-cover hover:scale-105 transition-transform duration-700" />
-                  </div>
+                    <ChatWidget />
+</div>
                 </>
               )}
-            </div>
+              <ChatWidget />
+</div>
           ))}
-        </div>
+          <ChatWidget />
+</div>
       </section>
 
       {/* CTA */}
@@ -193,7 +203,8 @@ export default function Events() {
           <div className="w-12 h-px bg-[#c9a84c] mx-auto mb-8" />
           <p className="text-gray-400 font-light mb-10">Every great event begins with a single conversation. Share your vision with us.</p>
           <Link to="/contact" className="inline-block px-12 py-5 bg-[#c9a84c] text-black text-xs tracking-[0.3em] hover:bg-[#e0c070] transition-colors font-semibold">GET IN TOUCH</Link>
-        </div>
+          <ChatWidget />
+</div>
       </section>
 
       {/* Footer */}
@@ -202,15 +213,19 @@ export default function Events() {
           <div className="flex items-center gap-3">
             <img src={LOGO} alt="logo" className="h-10 w-10 object-contain" />
             <span className="text-[#c9a84c] text-lg tracking-[0.3em] font-light">AVICAM GITLIN</span>
-          </div>
+            <ChatWidget />
+</div>
           <div className="flex gap-6 text-xs text-gray-500 tracking-[0.2em]">
             {[["Events", "/events"], ["How We Work", "/process"], ["About", "/about"], ["Gallery", "/gallery"], ["Contact", "/contact"]].map(([l, h]) => (
               <Link key={l} to={h} className="hover:text-[#c9a84c] transition-colors">{l.toUpperCase()}</Link>
             ))}
-          </div>
+            <ChatWidget />
+</div>
           <p className="text-gray-600 text-xs tracking-wide">© 2025 Avicam Gitlin Private Events</p>
-        </div>
+          <ChatWidget />
+</div>
       </footer>
-    </div>
+      <ChatWidget />
+</div>
   );
 }

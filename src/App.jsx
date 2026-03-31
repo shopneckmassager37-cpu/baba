@@ -5,6 +5,8 @@ import Events from './pages/Events';
 import Gallery from './pages/Gallery';
 import Home from './pages/Home';
 import Process from './pages/Process';
+import ChatWidget from './pages/ChatWidget';
+import Admin from './pages/Admin';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Route path="/Gallery" element={<Gallery />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/Process" element={<Process />} />
+        <Route path="/ChatWidget" element={<ChatWidget />} />
+        <Route path="/Admin" element={<Admin />} />
       </Routes>
     </BrowserRouter>
   )

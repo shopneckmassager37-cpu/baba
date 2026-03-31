@@ -1,3 +1,4 @@
+import ChatWidget from "./ChatWidget";
 import { Link } from "react-router-dom";
 
 const LOGO = "https://media.base44.com/images/public/69caab40b61d6ee7c5b75332/9d7fead75_generated_image.png";
@@ -87,9 +88,11 @@ export default function Process() {
             {NAV_LINKS.map(([l, h]) => (
               <Link key={l} to={h} className={`hover:text-[#c9a84c] transition-colors ${l === "HOW WE WORK" ? "text-[#c9a84c]" : ""}`}>{l}</Link>
             ))}
-          </div>
+            <ChatWidget />
+</div>
           <Link to="/contact" className="hidden md:block px-5 py-2 border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[0.2em] hover:bg-[#c9a84c]/10 transition-colors">INQUIRE</Link>
-        </div>
+          <ChatWidget />
+</div>
       </nav>
 
       {/* Hero */}
@@ -106,7 +109,8 @@ export default function Process() {
             Every extraordinary event starts long before the day itself.
             Here's how we take an idea from vision to reality — personally, meticulously, and without compromise.
           </p>
-        </div>
+          <ChatWidget />
+</div>
       </section>
 
       {/* Steps */}
@@ -117,17 +121,22 @@ export default function Process() {
               <div key={i} className="grid grid-cols-1 md:grid-cols-[140px_1fr] gap-8 md:gap-16 py-16 border-b border-[#c9a84c]/10 last:border-0">
                 <div className="flex flex-col items-start md:items-end pt-1">
                   <span className="text-5xl font-light text-[#c9a84c]/25 leading-none">{step.number}</span>
-                </div>
+                  <ChatWidget />
+</div>
                 <div>
                   <h2 className="text-2xl md:text-3xl font-light mb-4 text-white">{step.title}</h2>
                   <div className="w-8 h-px bg-[#c9a84c]/40 mb-5" />
                   <p className="text-gray-300 font-light leading-relaxed mb-4">{step.description}</p>
                   <p className="text-gray-500 font-light leading-relaxed text-sm italic">{step.detail}</p>
-                </div>
-              </div>
+                  <ChatWidget />
+</div>
+                <ChatWidget />
+</div>
             ))}
-          </div>
-        </div>
+            <ChatWidget />
+</div>
+          <ChatWidget />
+</div>
       </section>
 
       {/* Values */}
@@ -136,18 +145,23 @@ export default function Process() {
           <div className="text-center mb-16">
             <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-4">WHAT WE STAND FOR</p>
             <h2 className="text-3xl md:text-4xl font-light">Our Commitments to You</h2>
-          </div>
+            <ChatWidget />
+</div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#c9a84c]/10">
             {values.map((v, i) => (
               <div key={i} className="bg-[#0d0d0d] p-10 hover:bg-[#111] transition-colors">
-                <div className="text-[#c9a84c] text-xs mb-5">{v.icon}</div>
+                <div className="text-[#c9a84c] text-xs mb-5">{v.icon}  <ChatWidget />
+</div>
                 <h3 className="text-xl font-light mb-4 tracking-wide">{v.title}</h3>
                 <div className="w-8 h-px bg-[#c9a84c]/30 mb-5" />
                 <p className="text-gray-400 font-light leading-relaxed text-sm">{v.text}</p>
-              </div>
+                <ChatWidget />
+</div>
             ))}
-          </div>
-        </div>
+            <ChatWidget />
+</div>
+          <ChatWidget />
+</div>
       </section>
 
       {/* Full-width quote */}
@@ -157,14 +171,16 @@ export default function Process() {
       >
         <div className="absolute inset-0 bg-black/78" />
         <div className="relative z-10 max-w-3xl mx-auto">
-          <div className="text-[#c9a84c] text-5xl font-light mb-6">"</div>
+          <div className="text-[#c9a84c] text-5xl font-light mb-6">"  <ChatWidget />
+</div>
           <p className="text-2xl md:text-3xl font-light text-gray-200 leading-relaxed italic mb-8">
             I read every inquiry personally. I am involved in every decision.
             And I will not rest until the event we've built together exceeds everything you imagined.
           </p>
           <div className="w-10 h-px bg-[#c9a84c] mx-auto mb-6" />
           <p className="text-[#c9a84c] tracking-[0.4em] text-xs">— AVICAM GITLIN</p>
-        </div>
+          <ChatWidget />
+</div>
       </section>
 
       {/* FAQ */}
@@ -173,7 +189,8 @@ export default function Process() {
           <div className="text-center mb-16">
             <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-4">COMMON QUESTIONS</p>
             <h2 className="text-3xl font-light">What You Want to Know</h2>
-          </div>
+            <ChatWidget />
+</div>
           <div className="space-y-0">
             {[
               { q: "How far in advance should I reach out?", a: "For destination events and large celebrations, 6–12 months in advance is ideal. For smaller or local events, 2–3 months is usually sufficient. That said, we've pulled off extraordinary events on shorter timelines — reach out and we'll tell you honestly what's possible." },
@@ -185,10 +202,13 @@ export default function Process() {
               <div key={i} className="border-b border-[#c9a84c]/10 py-8">
                 <h3 className="text-lg font-light text-white mb-4">{faq.q}</h3>
                 <p className="text-gray-500 font-light leading-relaxed text-sm">{faq.a}</p>
-              </div>
+                <ChatWidget />
+</div>
             ))}
-          </div>
-        </div>
+            <ChatWidget />
+</div>
+          <ChatWidget />
+</div>
       </section>
 
       {/* CTA */}
@@ -199,7 +219,8 @@ export default function Process() {
           <div className="w-10 h-px bg-[#c9a84c] mx-auto mb-8" />
           <p className="text-gray-400 font-light mb-10 leading-relaxed">You don't need a full brief or a clear idea. Just reach out — Avicam will handle the rest.</p>
           <Link to="/contact" className="inline-block px-12 py-5 bg-[#c9a84c] text-black text-xs tracking-[0.3em] hover:bg-[#e0c070] transition-colors font-semibold">GET IN TOUCH</Link>
-        </div>
+          <ChatWidget />
+</div>
       </section>
 
       {/* Footer */}
@@ -208,15 +229,19 @@ export default function Process() {
           <div className="flex items-center gap-3">
             <img src={LOGO} alt="logo" className="h-10 w-10 object-contain" />
             <span className="text-[#c9a84c] text-lg tracking-[0.3em] font-light">AVICAM GITLIN</span>
-          </div>
+            <ChatWidget />
+</div>
           <div className="flex gap-6 text-xs text-gray-500 tracking-[0.2em]">
             {[["Events", "/events"], ["How We Work", "/process"], ["About", "/about"], ["Gallery", "/gallery"], ["Contact", "/contact"]].map(([l, h]) => (
               <Link key={l} to={h} className="hover:text-[#c9a84c] transition-colors">{l.toUpperCase()}</Link>
             ))}
-          </div>
+            <ChatWidget />
+</div>
           <p className="text-gray-600 text-xs tracking-wide">© 2025 Avicam Gitlin Private Events</p>
-        </div>
+          <ChatWidget />
+</div>
       </footer>
-    </div>
+      <ChatWidget />
+</div>
   );
 }

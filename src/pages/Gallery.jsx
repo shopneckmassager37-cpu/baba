@@ -1,3 +1,4 @@
+import ChatWidget from "./ChatWidget";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -45,9 +46,11 @@ export default function Gallery() {
             <Link to="/about" className="hover:text-[#c9a84c] transition-colors">ABOUT</Link>
             <Link to="/gallery" className="text-[#c9a84c]">GALLERY</Link>
             <Link to="/contact" className="hover:text-[#c9a84c] transition-colors">CONTACT</Link>
-          </div>
+            <ChatWidget />
+</div>
           <Link to="/contact" className="hidden md:block px-5 py-2 border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[0.2em] hover:bg-[#c9a84c]/10 transition-colors">INQUIRE</Link>
-        </div>
+          <ChatWidget />
+</div>
       </nav>
 
       {/* Hero */}
@@ -77,7 +80,8 @@ export default function Gallery() {
                 {cat}
               </button>
             ))}
-          </div>
+            <ChatWidget />
+</div>
 
           {/* Masonry Grid */}
           <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-2 space-y-2">
@@ -96,11 +100,15 @@ export default function Gallery() {
                   <p className="text-white text-xs tracking-wide p-4 opacity-0 group-hover:opacity-100 transition-opacity font-light">
                     {item.caption}
                   </p>
-                </div>
-              </div>
+                  <ChatWidget />
+</div>
+                <ChatWidget />
+</div>
             ))}
-          </div>
-        </div>
+            <ChatWidget />
+</div>
+          <ChatWidget />
+</div>
       </section>
 
       {/* Lightbox */}
@@ -110,8 +118,10 @@ export default function Gallery() {
             <img src={lightbox.img} alt={lightbox.caption} className="w-full max-h-[80vh] object-contain" />
             <p className="text-center text-gray-400 text-sm mt-4 tracking-wide">{lightbox.caption}</p>
             <p className="text-center text-gray-600 text-xs mt-2 tracking-widest">CLICK TO CLOSE</p>
-          </div>
-        </div>
+            <ChatWidget />
+</div>
+          <ChatWidget />
+</div>
       )}
 
       {/* CTA */}
@@ -121,7 +131,8 @@ export default function Gallery() {
           <h2 className="text-4xl font-light mb-6">Let's Add Your Moment to the Collection</h2>
           <div className="w-10 h-px bg-[#c9a84c] mx-auto mb-8" />
           <Link to="/contact" className="inline-block px-12 py-5 bg-[#c9a84c] text-black text-xs tracking-[0.3em] hover:bg-[#e0c070] transition-colors font-semibold">BEGIN YOUR JOURNEY</Link>
-        </div>
+          <ChatWidget />
+</div>
       </section>
 
       <footer className="bg-[#070707] border-t border-[#c9a84c]/15 pt-16 pb-8 px-6">
@@ -129,15 +140,19 @@ export default function Gallery() {
           <div className="flex items-center gap-3">
             <img src={LOGO} alt="logo" className="h-10 w-10 object-contain" />
             <span className="text-[#c9a84c] text-lg tracking-[0.3em] font-light">AVICAM GITLIN</span>
-          </div>
+            <ChatWidget />
+</div>
           <div className="flex gap-8 text-xs text-gray-500 tracking-[0.2em]">
             {[["How We Work", "/process"], ["Events", "/events"], ["About", "/about"], ["Contact", "/contact"]].map(([l, h]) => (
               <Link key={l} to={h} className="hover:text-[#c9a84c] transition-colors">{l.toUpperCase()}</Link>
             ))}
-          </div>
+            <ChatWidget />
+</div>
           <p className="text-gray-600 text-xs tracking-wide">© 2025 Avicam Gitlin Private Events</p>
-        </div>
+          <ChatWidget />
+</div>
       </footer>
-    </div>
+      <ChatWidget />
+</div>
   );
 }

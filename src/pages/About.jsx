@@ -1,3 +1,4 @@
+import ChatWidget from "./ChatWidget";
 import { Link } from "react-router-dom";
 
 const LOGO = "https://media.base44.com/images/public/69caab40b61d6ee7c5b75332/9d7fead75_generated_image.png";
@@ -20,9 +21,11 @@ export default function About() {
             <Link to="/about" className="text-[#c9a84c]">ABOUT</Link>
             <Link to="/gallery" className="hover:text-[#c9a84c] transition-colors">GALLERY</Link>
             <Link to="/contact" className="hover:text-[#c9a84c] transition-colors">CONTACT</Link>
-          </div>
+            <ChatWidget />
+</div>
           <Link to="/contact" className="hidden md:block px-5 py-2 border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[0.2em] hover:bg-[#c9a84c]/10 transition-colors">INQUIRE</Link>
-        </div>
+          <ChatWidget />
+</div>
       </nav>
 
       {/* Hero with Avicam photo */}
@@ -40,8 +43,10 @@ export default function About() {
             <p className="text-[#c9a84c] tracking-[0.6em] text-xs mb-5">THE PERSON BEHIND THE EXPERIENCE</p>
             <h1 className="text-6xl md:text-8xl font-light leading-none mb-4">Avicam Gitlin</h1>
             <p className="text-gray-300 text-xl font-light tracking-widest">Travel Curator · Private Chef · Event Architect</p>
-          </div>
-        </div>
+            <ChatWidget />
+</div>
+          <ChatWidget />
+</div>
       </section>
 
       {/* Story */}
@@ -64,7 +69,8 @@ export default function About() {
             <p className="text-gray-400 font-light leading-relaxed italic border-l-2 border-[#c9a84c]/40 pl-4">
               "Great ideas are born when good friends and great wine come together."
             </p>
-          </div>
+            <ChatWidget />
+</div>
           <div className="relative">
             <img
               src={CHEF_PHOTO}
@@ -73,8 +79,10 @@ export default function About() {
               onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=800&q=80"; }}
             />
             <div className="absolute -bottom-4 -left-4 w-32 h-32 border border-[#c9a84c]/30 pointer-events-none" />
-          </div>
-        </div>
+            <ChatWidget />
+</div>
+          <ChatWidget />
+</div>
       </section>
 
       {/* Philosophy */}
@@ -83,7 +91,8 @@ export default function About() {
           <div className="text-center mb-16">
             <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-4">THE PHILOSOPHY</p>
             <h2 className="text-3xl md:text-4xl font-light">What Drives Every Decision</h2>
-          </div>
+            <ChatWidget />
+</div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {[
               { icon: "🍽️", title: "Food as Connection", text: "Avicam believes food is the most powerful way to experience a place and connect with the people around you. Every menu tells a story — of the land, the season, and those gathered." },
@@ -91,20 +100,25 @@ export default function About() {
               { icon: "🌍", title: "The World as Your Venue", text: "A dining room can be a Tuscan hillside at sunset, a yacht deck, or a lantern-lit courtyard in Marrakech. The world's most beautiful places are available — you just need the right person to open the door." }
             ].map((p, i) => (
               <div key={i} className="text-center px-4">
-                <div className="text-4xl mb-6">{p.icon}</div>
+                <div className="text-4xl mb-6">{p.icon}  <ChatWidget />
+</div>
                 <h3 className="text-lg font-light mb-4 text-[#c9a84c] tracking-wide">{p.title}</h3>
                 <div className="w-8 h-px bg-[#c9a84c]/30 mx-auto mb-4" />
                 <p className="text-gray-400 font-light leading-relaxed text-sm">{p.text}</p>
-              </div>
+                <ChatWidget />
+</div>
             ))}
-          </div>
-        </div>
+            <ChatWidget />
+</div>
+          <ChatWidget />
+</div>
       </section>
 
       {/* Quote */}
       <section className="py-28 px-6 text-center">
         <div className="max-w-3xl mx-auto">
-          <div className="text-[#c9a84c] text-6xl font-light mb-6">"</div>
+          <div className="text-[#c9a84c] text-6xl font-light mb-6">"  <ChatWidget />
+</div>
           <p className="text-2xl md:text-3xl font-light leading-relaxed text-gray-300 italic mb-10">
             I am excited to provide people with the opportunity to experience cuisine and culture
             in the most extraordinary settings. Each event is a new opportunity to explore,
@@ -112,7 +126,8 @@ export default function About() {
           </p>
           <div className="w-10 h-px bg-[#c9a84c] mx-auto mb-6" />
           <p className="text-[#c9a84c] tracking-[0.4em] text-xs">— AVICAM GITLIN</p>
-        </div>
+          <ChatWidget />
+</div>
       </section>
 
       {/* Second photo + expertise */}
@@ -131,7 +146,8 @@ export default function About() {
                     </li>
                   ))}
                 </ul>
-              </div>
+                <ChatWidget />
+</div>
               <div>
                 <h3 className="text-lg font-light mb-5 text-[#c9a84c] tracking-wide">Event Curation</h3>
                 <ul className="space-y-4">
@@ -141,9 +157,12 @@ export default function About() {
                     </li>
                   ))}
                 </ul>
-              </div>
-            </div>
-          </div>
+                <ChatWidget />
+</div>
+              <ChatWidget />
+</div>
+            <ChatWidget />
+</div>
           <div className="relative">
             <img
               src={AVICAM_PHOTO}
@@ -152,8 +171,10 @@ export default function About() {
               onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?w=800&q=80"; }}
             />
             <div className="absolute top-4 right-4 border border-[#c9a84c]/30 w-24 h-24 pointer-events-none" />
-          </div>
-        </div>
+            <ChatWidget />
+</div>
+          <ChatWidget />
+</div>
       </section>
 
       {/* CTA */}
@@ -164,7 +185,8 @@ export default function About() {
           <div className="w-10 h-px bg-[#c9a84c] mx-auto mb-8" />
           <p className="text-gray-400 font-light mb-10">Whether you have a clear vision or just a feeling, Avicam would love to hear from you.</p>
           <Link to="/contact" className="inline-block px-12 py-5 bg-[#c9a84c] text-black text-xs tracking-[0.3em] hover:bg-[#e0c070] transition-colors font-semibold">GET IN TOUCH</Link>
-        </div>
+          <ChatWidget />
+</div>
       </section>
 
       {/* Footer */}
@@ -173,15 +195,19 @@ export default function About() {
           <div className="flex items-center gap-3">
             <img src={LOGO} alt="logo" className="h-10 w-10 object-contain" />
             <span className="text-[#c9a84c] text-lg tracking-[0.3em] font-light">AVICAM GITLIN</span>
-          </div>
+            <ChatWidget />
+</div>
           <div className="flex gap-8 text-xs text-gray-500 tracking-[0.2em]">
             {[["How We Work", "/process"], ["Events", "/events"], ["About", "/about"], ["Contact", "/contact"]].map(([l, h]) => (
               <Link key={l} to={h} className="hover:text-[#c9a84c] transition-colors">{l.toUpperCase()}</Link>
             ))}
-          </div>
+            <ChatWidget />
+</div>
           <p className="text-gray-600 text-xs tracking-wide">© 2025 Avicam Gitlin Private Events</p>
-        </div>
+          <ChatWidget />
+</div>
       </footer>
-    </div>
+      <ChatWidget />
+</div>
   );
 }

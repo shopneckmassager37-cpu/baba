@@ -3,14 +3,20 @@ import { useState, useEffect, useRef } from "react";
 const APP_URL = "https://app-c5b75332.base44.app";
 const LOGO = "https://media.base44.com/images/public/69caab40b61d6ee7c5b75332/9d7fead75_generated_image.png";
 
+// הודעת פתיחה נחמדה — מופיעה ברגע שפותחים את הצ'אט
+const OPENING_MESSAGE = {
+  role: "assistant",
+  content: "היי! 👋 שמח שפנית אלינו.\n\nאני כאן כדי לעזור לך — ספר לי על האירוע שאתה חולם עליו, ואני אנסה לענות על כל שאלה שיש לך 🥂"
+};
+
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([OPENING_MESSAGE]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [config, setConfig] = useState(null);
   const [suggested, setSuggested] = useState([]);
-  const [showWelcome, setShowWelcome] = useState(false);
+  const [showBubble, setShowBubble] = useState(false);
   const messagesEndRef = useRef(null);
   const didInit = useRef(false);
 
@@ -23,9 +29,6 @@ export default function ChatWidget() {
         const cfg = configs?.[0];
         if (cfg) {
           setConfig(cfg);
-          if (cfg.welcome_message) {
-            setMessages([{ role: "assistant", content: cfg.welcome_message }]);
-          }
           if (cfg.suggested_questions) {
             setSuggested(cfg.suggested_questions.split("\n").filter(Boolean).slice(0, 4));
           }
@@ -33,24 +36,28 @@ export default function ChatWidget() {
       }).catch(() => {});
     }).catch(() => {});
 
-    // Show welcome bubble after 3 seconds
-    setTimeout(() => setShowWelcome(true), 3000);
-    setTimeout(() => setShowWelcome(false), 9000);
+    // בועת פתיחה מופיעה אחרי 4 שניות
+    setTimeout(() => setShowBubble(true), 4000);
+    setTimeout(() => setShowBubble(false), 11000);
   }, []);
 
   useEffect(() => {
     if (open) {
-      setShowWelcome(false);
-      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+      setShowBubble(false);
+      setTimeout(() => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
     }
-  }, [messages, open]);
+  }, [open, messages]);
 
   const send = async (text) => {
     const content = text || input.trim();
     if (!content || loading) return;
     setInput("");
-    const newMessages = [...messages, { role: "user", content }];
-    setMessages(newMessages);
+    // לא שולחים את הודעת הפתיחה ל-API
+    const chatHistory = messages.filter(m => m !== OPENING_MESSAGE);
+    const newMessages = [...chatHistory, { role: "user", content }];
+    setMessages(prev => [...prev, { role: "user", content }]);
     setLoading(true);
     setSuggested([]);
 
@@ -70,42 +77,58 @@ export default function ChatWidget() {
 
   return (
     <>
-      {/* Welcome bubble */}
-      {showWelcome && !open && (
+      {/* בועת פתיחה */}
+      {showBubble && !open && (
         <div
-          className="fixed bottom-24 right-6 z-[9997] max-w-[220px] bg-white text-gray-800 px-4 py-3 shadow-xl text-sm font-light leading-relaxed cursor-pointer"
-          style={{ borderRadius: "12px 12px 0 12px", animation: "fadeInUp 0.4s ease" }}
           onClick={() => setOpen(true)}
+          className="fixed bottom-24 right-6 z-[9997] cursor-pointer"
+          style={{ animation: "fadeInUp 0.4s ease" }}
         >
-          <p style={{ fontFamily: "'Georgia', serif" }}>👋 I'm here to help — tell me what's on your mind</p>
-          <div className="absolute bottom-[-8px] right-3 w-0 h-0" style={{ borderLeft: "8px solid transparent", borderTop: "8px solid white" }} />
+          <div className="bg-white text-gray-800 px-4 py-3 shadow-2xl max-w-[200px] text-sm font-light leading-relaxed relative"
+            style={{ borderRadius: "12px 12px 0 12px", fontFamily: "'Georgia', serif" }}>
+            💬 שלום! אשמח לעזור — ספר לי מה בראש שלך
+            <div className="absolute bottom-[-7px] right-4 w-0 h-0"
+              style={{ borderLeft: "7px solid transparent", borderTop: "7px solid white" }} />
+          </div>
         </div>
       )}
 
-      {/* Floating button */}
+      {/* כפתור צף */}
       <button
         onClick={() => setOpen(!open)}
         className="fixed bottom-6 right-6 z-[9999] w-14 h-14 bg-[#c9a84c] rounded-full shadow-2xl flex items-center justify-center hover:bg-[#e0c070] transition-all duration-300 hover:scale-110"
         style={{ boxShadow: "0 4px 30px rgba(201,168,76,0.4)" }}
       >
         {open ? (
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2.5">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
         ) : (
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
         )}
       </button>
 
-      {/* Chat window */}
+      {/* חלון הצ'אט */}
       {open && (
         <div
           className="fixed bottom-24 right-6 z-[9998] w-[360px] flex flex-col shadow-2xl overflow-hidden"
-          style={{ background: "#111", border: "1px solid rgba(201,168,76,0.3)", boxShadow: "0 8px 60px rgba(0,0,0,0.7)", maxHeight: "560px" }}
+          style={{
+            background: "#111",
+            border: "1px solid rgba(201,168,76,0.3)",
+            boxShadow: "0 8px 60px rgba(0,0,0,0.7)",
+            maxHeight: "560px",
+            animation: "slideUp 0.25s ease"
+          }}
         >
           {/* Header */}
           <div className="border-b border-[#c9a84c]/20 px-4 py-3 flex items-center gap-3" style={{ background: "#0d0d0d" }}>
             <img src={LOGO} alt="logo" className="w-8 h-8 object-contain" />
             <div className="flex-1">
-              <p className="text-[#c9a84c] text-xs tracking-[0.2em] font-light">{config?.bot_name || "AVICAM ASSISTANT"}</p>
+              <p className="text-[#c9a84c] text-xs tracking-[0.2em] font-light">
+                {config?.bot_name || "AVICAM ASSISTANT"}
+              </p>
               <div className="flex items-center gap-1.5 mt-0.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
                 <span className="text-gray-500 text-xs">Online · Here to help</span>
@@ -113,35 +136,41 @@ export default function ChatWidget() {
             </div>
           </div>
 
-          {/* Messages */}
+          {/* הודעות */}
           <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3" style={{ maxHeight: "360px" }}>
             {messages.map((m, i) => (
               <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
                 {m.role === "assistant" && (
                   <div className="w-6 h-6 rounded-full bg-[#c9a84c]/20 flex items-center justify-center mr-2 flex-shrink-0 mt-1">
-                    <span className="text-[#c9a84c] text-xs">A</span>
+                    <span className="text-[#c9a84c] text-xs font-light">A</span>
                   </div>
                 )}
                 <div
-                  className={`max-w-[80%] px-4 py-2.5 text-sm font-light leading-relaxed ${
+                  className={`max-w-[80%] px-4 py-3 text-sm font-light leading-relaxed whitespace-pre-line ${
                     m.role === "user"
                       ? "bg-[#c9a84c] text-black"
                       : "bg-[#1d1d1d] text-gray-200 border border-[#c9a84c]/10"
                   }`}
-                  style={{ fontFamily: "'Georgia', serif", borderRadius: m.role === "user" ? "12px 12px 0 12px" : "12px 12px 12px 0" }}
+                  style={{
+                    fontFamily: "'Georgia', serif",
+                    borderRadius: m.role === "user" ? "12px 12px 0 12px" : "12px 12px 12px 0"
+                  }}
                 >
                   {m.content}
                 </div>
               </div>
             ))}
+
             {loading && (
               <div className="flex justify-start items-center gap-2">
                 <div className="w-6 h-6 rounded-full bg-[#c9a84c]/20 flex items-center justify-center flex-shrink-0">
                   <span className="text-[#c9a84c] text-xs">A</span>
                 </div>
-                <div className="bg-[#1d1d1d] border border-[#c9a84c]/10 px-4 py-3 flex gap-1.5" style={{ borderRadius: "12px 12px 12px 0" }}>
-                  {[0,1,2].map(i => (
-                    <span key={i} className="w-1.5 h-1.5 rounded-full bg-[#c9a84c]/50 animate-bounce" style={{ animationDelay: `${i*0.15}s` }} />
+                <div className="bg-[#1d1d1d] border border-[#c9a84c]/10 px-4 py-3 flex gap-1.5"
+                  style={{ borderRadius: "12px 12px 12px 0" }}>
+                  {[0,1,2].map(j => (
+                    <span key={j} className="w-1.5 h-1.5 rounded-full bg-[#c9a84c]/50 animate-bounce"
+                      style={{ animationDelay: `${j*0.15}s` }} />
                   ))}
                 </div>
               </div>
@@ -149,24 +178,26 @@ export default function ChatWidget() {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Suggested questions */}
+          {/* שאלות מוצעות */}
           {suggested.length > 0 && (
-            <div className="px-4 pb-2 flex flex-wrap gap-2 border-t border-[#c9a84c]/10 pt-2">
+            <div className="px-4 pb-2 flex flex-wrap gap-2 border-t border-[#c9a84c]/10 pt-3">
               {suggested.map((q, i) => (
-                <button key={i} onClick={() => send(q)} className="text-xs text-[#c9a84c] border border-[#c9a84c]/30 px-3 py-1.5 hover:bg-[#c9a84c]/10 transition-colors font-light text-left" style={{ borderRadius: "20px" }}>
+                <button key={i} onClick={() => send(q)}
+                  className="text-xs text-[#c9a84c] border border-[#c9a84c]/30 px-3 py-1.5 hover:bg-[#c9a84c]/10 transition-colors font-light text-left"
+                  style={{ borderRadius: "20px" }}>
                   {q}
                 </button>
               ))}
             </div>
           )}
 
-          {/* Input */}
+          {/* שדה קלט */}
           <div className="border-t border-[#c9a84c]/15 p-3 flex gap-2" style={{ background: "#0d0d0d" }}>
             <input
               value={input}
               onChange={e => setInput(e.target.value)}
               onKeyDown={e => e.key === "Enter" && !e.shiftKey && send()}
-              placeholder="Tell me what's on your mind..."
+              placeholder="ספר לי מה בראש שלך..."
               className="flex-1 bg-[#1a1a1a] border border-[#c9a84c]/20 text-white text-sm px-3 py-2.5 focus:outline-none focus:border-[#c9a84c]/50 font-light placeholder-gray-600"
               style={{ fontFamily: "'Georgia', serif", borderRadius: "8px" }}
             />
@@ -176,7 +207,10 @@ export default function ChatWidget() {
               className="bg-[#c9a84c] text-black px-4 py-2 hover:bg-[#e0c070] transition-colors disabled:opacity-40"
               style={{ borderRadius: "8px" }}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <line x1="22" y1="2" x2="11" y2="13"/>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              </svg>
             </button>
           </div>
         </div>
@@ -184,7 +218,11 @@ export default function ChatWidget() {
 
       <style>{`
         @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(10px); }
+          from { opacity: 0; transform: translateY(12px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideUp {
+          from { opacity: 0; transform: translateY(16px); }
           to { opacity: 1; transform: translateY(0); }
         }
       `}</style>

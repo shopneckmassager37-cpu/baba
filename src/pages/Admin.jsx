@@ -12,6 +12,7 @@ export default function Admin() {
   const [testMsg, setTestMsg] = useState("");
   const [testReply, setTestReply] = useState("");
   const [testing, setTesting] = useState(false);
+  const [tab, setTab] = useState("general"); // general | qa | model | test
 
   useEffect(() => {
     ChatbotConfig.list().then(configs => {
@@ -60,197 +61,253 @@ export default function Admin() {
   const set = (field, value) => setConfig(prev => ({ ...prev, [field]: value }));
 
   if (!config) return (
-    <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
+    <div className="min-h-screen bg-[#161616] flex items-center justify-center">
       <div className="text-[#c9a84c] text-sm tracking-widest animate-pulse">LOADING...</div>
     </div>
   );
 
+  const tabs = [
+    { id: "general", label: "General" },
+    { id: "qa", label: "Custom Q&A" },
+    { id: "model", label: "Model Settings" },
+    { id: "test", label: "Test Bot" },
+  ];
+
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
+    <div className="min-h-screen bg-[#161616] text-white" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
       {/* Top bar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-md border-b border-[#c9a84c]/20">
-        <div className="max-w-6xl mx-auto px-6 py-3 flex justify-between items-center">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#111]/95 backdrop-blur-md border-b border-[#c9a84c]/20">
+        <div className="max-w-5xl mx-auto px-6 py-3 flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <img src={LOGO} alt="logo" className="h-10 w-10 object-contain" />
+            <img src={LOGO} alt="logo" className="h-9 w-9 object-contain" />
             <div>
               <span className="text-[#c9a84c] text-sm tracking-[0.3em] font-light">AVICAM GITLIN</span>
-              <span className="text-gray-600 text-xs ml-3 tracking-widest">/ ADMIN</span>
+              <span className="text-gray-600 text-xs ml-2 tracking-widest">/ ADMIN</span>
             </div>
           </div>
           <div className="flex gap-4 items-center">
-            <Link to="/" className="text-gray-500 text-xs tracking-[0.2em] hover:text-[#c9a84c] transition-colors">← BACK TO SITE</Link>
-            <button
-              onClick={handleSave}
-              disabled={saving}
-              className="px-6 py-2 bg-[#c9a84c] text-black text-xs tracking-[0.2em] hover:bg-[#e0c070] transition-colors font-semibold disabled:opacity-50"
-            >
+            <Link to="/" className="text-gray-500 text-xs hover:text-[#c9a84c] transition-colors">← Back to site</Link>
+            <button onClick={handleSave} disabled={saving}
+              className="px-5 py-2 bg-[#c9a84c] text-black text-xs tracking-[0.2em] hover:bg-[#e0c070] transition-colors font-semibold disabled:opacity-50">
               {saving ? "SAVING..." : saved ? "✓ SAVED" : "SAVE CHANGES"}
             </button>
           </div>
         </div>
       </nav>
 
-      <div className="max-w-6xl mx-auto px-6 pt-28 pb-20">
-        <div className="mb-12">
-          <h1 className="text-3xl font-light text-white mb-2">Chatbot Configuration</h1>
-          <p className="text-gray-500 text-sm font-light">Manage your AI assistant's personality, knowledge, and behaviour.</p>
+      <div className="max-w-5xl mx-auto px-6 pt-24 pb-20">
+        {/* Header */}
+        <div className="mb-8">
+          <h1 className="text-2xl font-light text-white mb-1">Chatbot Configuration</h1>
+          <p className="text-gray-500 text-sm font-light">Manage your AI assistant's behaviour, knowledge, and custom answers.</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Left — main settings */}
-          <div className="lg:col-span-2 space-y-6">
+        {/* Active toggle — always visible */}
+        <div className="bg-[#1d1d1d] border border-[#c9a84c]/15 p-5 mb-6 flex items-center justify-between">
+          <div>
+            <h3 className="text-white font-light text-sm mb-0.5">Chatbot Status</h3>
+            <p className="text-gray-500 text-xs">Enable or disable the chat widget across the site</p>
+          </div>
+          <button onClick={() => set("is_active", !config.is_active)}
+            className={`relative w-12 h-6 rounded-full transition-colors ${config.is_active ? "bg-[#c9a84c]" : "bg-gray-700"}`}>
+            <span className={`absolute top-1 w-4 h-4 rounded-full bg-white transition-all ${config.is_active ? "left-7" : "left-1"}`} />
+          </button>
+        </div>
 
-            {/* Active toggle */}
-            <div className="bg-[#0d0d0d] border border-[#c9a84c]/15 p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h3 className="text-white font-light tracking-wide mb-1">Chatbot Status</h3>
-                  <p className="text-gray-500 text-xs">Enable or disable the chat widget on your site</p>
-                </div>
-                <button
-                  onClick={() => set("is_active", !config.is_active)}
-                  className={`relative w-12 h-6 rounded-full transition-colors ${config.is_active ? "bg-[#c9a84c]" : "bg-gray-700"}`}
-                >
-                  <span className={`absolute top-1 w-4 h-4 rounded-full bg-white transition-transform ${config.is_active ? "left-7" : "left-1"}`} />
-                </button>
-              </div>
-            </div>
+        {/* Tab navigation */}
+        <div className="flex gap-1 mb-6 border-b border-[#c9a84c]/10">
+          {tabs.map(t => (
+            <button key={t.id} onClick={() => setTab(t.id)}
+              className={`px-5 py-3 text-xs tracking-[0.2em] transition-colors border-b-2 -mb-px ${
+                tab === t.id
+                  ? "text-[#c9a84c] border-[#c9a84c]"
+                  : "text-gray-500 border-transparent hover:text-gray-300"
+              }`}>
+              {t.label.toUpperCase()}
+            </button>
+          ))}
+        </div>
 
-            {/* Bot name */}
-            <div className="bg-[#0d0d0d] border border-[#c9a84c]/15 p-6">
+        {/* GENERAL TAB */}
+        {tab === "general" && (
+          <div className="space-y-5">
+            <div className="bg-[#1d1d1d] border border-[#c9a84c]/15 p-6">
               <label className="block text-xs tracking-[0.3em] text-gray-500 mb-3">BOT NAME</label>
-              <input
-                value={config.bot_name || ""}
-                onChange={e => set("bot_name", e.target.value)}
-                className="w-full bg-[#111] border border-[#c9a84c]/20 text-white px-4 py-3 focus:outline-none focus:border-[#c9a84c] transition-colors font-light"
-                placeholder="e.g. Avicam Assistant"
-              />
+              <input value={config.bot_name || ""} onChange={e => set("bot_name", e.target.value)}
+                className="w-full bg-[#252525] border border-[#333] text-white px-4 py-3 focus:outline-none focus:border-[#c9a84c]/60 transition-colors font-light text-sm"
+                placeholder="e.g. Avicam Assistant" />
             </div>
 
-            {/* Welcome message */}
-            <div className="bg-[#0d0d0d] border border-[#c9a84c]/15 p-6">
-              <label className="block text-xs tracking-[0.3em] text-gray-500 mb-3">WELCOME MESSAGE</label>
-              <textarea
-                value={config.welcome_message || ""}
-                onChange={e => set("welcome_message", e.target.value)}
-                rows={4}
-                className="w-full bg-[#111] border border-[#c9a84c]/20 text-white px-4 py-3 focus:outline-none focus:border-[#c9a84c] transition-colors font-light resize-none text-sm"
-                placeholder="The first message the bot sends when chat opens..."
-              />
+            <div className="bg-[#1d1d1d] border border-[#c9a84c]/15 p-6">
+              <label className="block text-xs tracking-[0.3em] text-gray-500 mb-2">OPENING MESSAGE</label>
+              <p className="text-gray-600 text-xs mb-3">The first message shown when someone opens the chat.</p>
+              <textarea value={config.welcome_message || ""} onChange={e => set("welcome_message", e.target.value)}
+                rows={4} className="w-full bg-[#252525] border border-[#333] text-white px-4 py-3 focus:outline-none focus:border-[#c9a84c]/60 transition-colors font-light resize-none text-sm"
+                placeholder="Hi there! I'm here to help you plan something extraordinary..." />
             </div>
 
-            {/* System prompt */}
-            <div className="bg-[#0d0d0d] border border-[#c9a84c]/15 p-6">
+            <div className="bg-[#1d1d1d] border border-[#c9a84c]/15 p-6">
               <label className="block text-xs tracking-[0.3em] text-gray-500 mb-2">SYSTEM PROMPT</label>
-              <p className="text-gray-600 text-xs mb-3">This is the core instruction set that defines how the bot behaves, what it knows, and its tone.</p>
-              <textarea
-                value={config.system_prompt || ""}
-                onChange={e => set("system_prompt", e.target.value)}
-                rows={14}
-                className="w-full bg-[#111] border border-[#c9a84c]/20 text-white px-4 py-3 focus:outline-none focus:border-[#c9a84c] transition-colors font-light resize-none text-sm leading-relaxed"
-                placeholder="You are a luxury event concierge for Avicam Gitlin..."
-              />
+              <p className="text-gray-600 text-xs mb-3">The core instructions that define the bot's personality, knowledge, and tone.</p>
+              <textarea value={config.system_prompt || ""} onChange={e => set("system_prompt", e.target.value)}
+                rows={12} className="w-full bg-[#252525] border border-[#333] text-white px-4 py-3 focus:outline-none focus:border-[#c9a84c]/60 transition-colors font-light resize-none text-sm leading-relaxed"
+                placeholder="You are a luxury event concierge for Avicam Gitlin..." />
             </div>
 
-            {/* Suggested questions */}
-            <div className="bg-[#0d0d0d] border border-[#c9a84c]/15 p-6">
+            <div className="bg-[#1d1d1d] border border-[#c9a84c]/15 p-6">
               <label className="block text-xs tracking-[0.3em] text-gray-500 mb-2">SUGGESTED QUESTIONS</label>
-              <p className="text-gray-600 text-xs mb-3">One question per line. Shown as quick-tap buttons when the chat first opens (max 4 shown).</p>
-              <textarea
-                value={config.suggested_questions || ""}
-                onChange={e => set("suggested_questions", e.target.value)}
-                rows={6}
-                className="w-full bg-[#111] border border-[#c9a84c]/20 text-white px-4 py-3 focus:outline-none focus:border-[#c9a84c] transition-colors font-light resize-none text-sm"
-                placeholder={"What types of events do you plan?\nHow do I get started?\nWhich destinations do you work in?"}
-              />
+              <p className="text-gray-600 text-xs mb-3">One per line. Shown as quick-tap buttons when chat opens (max 4 displayed).</p>
+              <textarea value={config.suggested_questions || ""} onChange={e => set("suggested_questions", e.target.value)}
+                rows={5} className="w-full bg-[#252525] border border-[#333] text-white px-4 py-3 focus:outline-none focus:border-[#c9a84c]/60 transition-colors font-light resize-none text-sm"
+                placeholder={"What types of events do you plan?\nHow do I get started?\nWhich destinations do you work in?"} />
             </div>
           </div>
+        )}
 
-          {/* Right — model settings + test */}
-          <div className="space-y-6">
+        {/* CUSTOM Q&A TAB */}
+        {tab === "qa" && (
+          <div className="space-y-5">
+            <div className="bg-[#1d1d1d] border border-[#c9a84c]/15 p-6">
+              <label className="block text-xs tracking-[0.3em] text-gray-500 mb-2">SPECIFIC QUESTION & ANSWER PAIRS</label>
+              <p className="text-gray-600 text-xs mb-1">
+                Define exact answers to specific questions. The bot will always use these when someone asks something related.
+              </p>
+              <p className="text-gray-600 text-xs mb-4">
+                Format — one pair per block, separated by a blank line:
+              </p>
+              <div className="bg-[#111] border border-[#c9a84c]/10 px-4 py-3 mb-4 text-xs text-gray-400 font-mono leading-relaxed">
+                <p>Q: What is the minimum budget for an event?</p>
+                <p>A: Our events typically start from $15,000 for intimate gatherings.</p>
+                <br />
+                <p>Q: Do you work in Israel?</p>
+                <p>A: Yes, we produce events across Israel including Tel Aviv, Jerusalem, and the Galilee.</p>
+              </div>
+              <textarea
+                value={config.custom_qa || ""}
+                onChange={e => set("custom_qa", e.target.value)}
+                rows={18}
+                className="w-full bg-[#252525] border border-[#333] text-white px-4 py-3 focus:outline-none focus:border-[#c9a84c]/60 transition-colors font-light resize-none text-sm leading-relaxed"
+                placeholder={"Q: What is your minimum budget?\nA: Our events start from $15,000 for intimate gatherings.\n\nQ: Do you work in Israel?\nA: Yes, we produce events across Israel including Tel Aviv and Jerusalem.\n\nQ: How quickly do you respond?\nA: Avicam personally responds to every inquiry within 24 hours."}
+              />
+              <p className="text-gray-600 text-xs mt-3">
+                💡 Tip: The more specific your questions, the better the bot will match them. Use natural language as if a real client is asking.
+              </p>
+            </div>
 
-            {/* Model */}
-            <div className="bg-[#0d0d0d] border border-[#c9a84c]/15 p-6">
+            {/* Preview */}
+            {config.custom_qa && (
+              <div className="bg-[#1d1d1d] border border-[#c9a84c]/15 p-6">
+                <p className="text-xs tracking-[0.3em] text-gray-500 mb-4">PREVIEW — LOADED Q&A PAIRS</p>
+                <div className="space-y-3">
+                  {config.custom_qa.split(/\n\s*\n/).filter(Boolean).map((block, i) => {
+                    const lines = block.trim().split("\n");
+                    const q = lines.find(l => l.startsWith("Q:"))?.replace("Q:", "").trim();
+                    const a = lines.find(l => l.startsWith("A:"))?.replace("A:", "").trim();
+                    if (!q || !a) return null;
+                    return (
+                      <div key={i} className="border border-[#c9a84c]/10 p-4">
+                        <p className="text-[#c9a84c] text-xs mb-1">Q: {q}</p>
+                        <p className="text-gray-400 text-sm font-light">A: {a}</p>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* MODEL SETTINGS TAB */}
+        {tab === "model" && (
+          <div className="space-y-5 max-w-lg">
+            <div className="bg-[#1d1d1d] border border-[#c9a84c]/15 p-6">
               <label className="block text-xs tracking-[0.3em] text-gray-500 mb-3">AI MODEL</label>
-              <select
-                value={config.model || "gpt-4o-mini"}
-                onChange={e => set("model", e.target.value)}
-                className="w-full bg-[#111] border border-[#c9a84c]/20 text-white px-4 py-3 focus:outline-none focus:border-[#c9a84c] transition-colors font-light text-sm"
-              >
-                <option value="gpt-4o-mini">GPT-4o Mini (Fast, affordable)</option>
-                <option value="gpt-4o">GPT-4o (Most capable)</option>
-                <option value="gpt-3.5-turbo">GPT-3.5 Turbo (Fastest)</option>
+              <select value={config.model || "gpt-4o-mini"} onChange={e => set("model", e.target.value)}
+                className="w-full bg-[#252525] border border-[#333] text-white px-4 py-3 focus:outline-none focus:border-[#c9a84c]/60 transition-colors font-light text-sm">
+                <option value="gpt-4o-mini">GPT-4o Mini — Fast & affordable (recommended)</option>
+                <option value="gpt-4o">GPT-4o — Most capable, slower</option>
+                <option value="gpt-3.5-turbo">GPT-3.5 Turbo — Fastest, basic</option>
               </select>
             </div>
 
-            {/* Temperature */}
-            <div className="bg-[#0d0d0d] border border-[#c9a84c]/15 p-6">
+            <div className="bg-[#1d1d1d] border border-[#c9a84c]/15 p-6">
               <label className="block text-xs tracking-[0.3em] text-gray-500 mb-2">
-                CREATIVITY (TEMPERATURE): <span className="text-[#c9a84c]">{config.temperature ?? 0.7}</span>
+                CREATIVITY — <span className="text-[#c9a84c]">{config.temperature ?? 0.7}</span>
               </label>
-              <p className="text-gray-600 text-xs mb-3">0 = precise & consistent · 1 = creative & varied</p>
-              <input
-                type="range" min="0" max="1" step="0.1"
-                value={config.temperature ?? 0.7}
+              <p className="text-gray-600 text-xs mb-4">0 = very consistent · 1 = more varied & creative</p>
+              <input type="range" min="0" max="1" step="0.1" value={config.temperature ?? 0.7}
                 onChange={e => set("temperature", parseFloat(e.target.value))}
-                className="w-full accent-[#c9a84c]"
-              />
+                className="w-full accent-[#c9a84c]" />
               <div className="flex justify-between text-xs text-gray-600 mt-1">
-                <span>0 Precise</span><span>1 Creative</span>
+                <span>0 — Precise</span><span>1 — Creative</span>
               </div>
             </div>
 
-            {/* Max tokens */}
-            <div className="bg-[#0d0d0d] border border-[#c9a84c]/15 p-6">
+            <div className="bg-[#1d1d1d] border border-[#c9a84c]/15 p-6">
               <label className="block text-xs tracking-[0.3em] text-gray-500 mb-2">
-                MAX RESPONSE LENGTH: <span className="text-[#c9a84c]">{config.max_tokens ?? 500}</span>
+                MAX RESPONSE LENGTH — <span className="text-[#c9a84c]">{config.max_tokens ?? 500} tokens</span>
               </label>
-              <p className="text-gray-600 text-xs mb-3">~1 token ≈ 1 word. 300–600 is recommended.</p>
-              <input
-                type="range" min="100" max="1500" step="50"
-                value={config.max_tokens ?? 500}
+              <p className="text-gray-600 text-xs mb-4">~1 token ≈ 1 word. 300–600 is ideal for most responses.</p>
+              <input type="range" min="100" max="1500" step="50" value={config.max_tokens ?? 500}
                 onChange={e => set("max_tokens", parseInt(e.target.value))}
-                className="w-full accent-[#c9a84c]"
-              />
+                className="w-full accent-[#c9a84c]" />
               <div className="flex justify-between text-xs text-gray-600 mt-1">
                 <span>100</span><span>1500</span>
               </div>
             </div>
+          </div>
+        )}
 
-            {/* Test panel */}
-            <div className="bg-[#0d0d0d] border border-[#c9a84c]/20 p-6">
-              <h3 className="text-xs tracking-[0.3em] text-gray-400 mb-4">TEST YOUR BOT</h3>
-              <textarea
-                value={testMsg}
-                onChange={e => setTestMsg(e.target.value)}
-                rows={3}
-                placeholder="Ask the bot something..."
-                className="w-full bg-[#111] border border-[#c9a84c]/20 text-white px-3 py-2.5 focus:outline-none focus:border-[#c9a84c] transition-colors font-light resize-none text-sm mb-3"
-              />
-              <button
-                onClick={handleTest}
-                disabled={testing || !testMsg.trim()}
-                className="w-full py-2.5 bg-[#c9a84c]/20 border border-[#c9a84c]/30 text-[#c9a84c] text-xs tracking-[0.2em] hover:bg-[#c9a84c]/30 transition-colors disabled:opacity-40"
-              >
-                {testing ? "TESTING..." : "SEND TEST"}
+        {/* TEST BOT TAB */}
+        {tab === "test" && (
+          <div className="max-w-2xl space-y-5">
+            <div className="bg-[#1d1d1d] border border-[#c9a84c]/15 p-6">
+              <label className="block text-xs tracking-[0.3em] text-gray-500 mb-3">SEND A TEST MESSAGE</label>
+              <p className="text-gray-600 text-xs mb-4">Tests the bot with current saved settings. Save changes first for accurate results.</p>
+              <textarea value={testMsg} onChange={e => setTestMsg(e.target.value)}
+                rows={4} placeholder="Ask the bot something..."
+                className="w-full bg-[#252525] border border-[#333] text-white px-4 py-3 focus:outline-none focus:border-[#c9a84c]/60 transition-colors font-light resize-none text-sm mb-4" />
+              <button onClick={handleTest} disabled={testing || !testMsg.trim()}
+                className="px-8 py-3 bg-[#c9a84c] text-black text-xs tracking-[0.2em] hover:bg-[#e0c070] transition-colors font-semibold disabled:opacity-40">
+                {testing ? "TESTING..." : "SEND TEST →"}
               </button>
-              {testReply && (
-                <div className="mt-4 p-4 bg-[#111] border border-[#c9a84c]/10 text-gray-300 text-sm font-light leading-relaxed">
-                  <p className="text-[#c9a84c] text-xs tracking-wide mb-2">BOT REPLY:</p>
-                  {testReply}
-                </div>
-              )}
             </div>
 
-            {/* Save button */}
-            <button
-              onClick={handleSave}
-              disabled={saving}
-              className="w-full py-4 bg-[#c9a84c] text-black text-xs tracking-[0.3em] hover:bg-[#e0c070] transition-colors font-semibold disabled:opacity-50"
-            >
-              {saving ? "SAVING..." : saved ? "✓ CHANGES SAVED" : "SAVE ALL CHANGES"}
-            </button>
+            {testReply && (
+              <div className="bg-[#1d1d1d] border border-[#c9a84c]/20 p-6">
+                <p className="text-[#c9a84c] text-xs tracking-[0.3em] mb-4">BOT REPLY</p>
+                <div className="flex gap-3">
+                  <div className="w-7 h-7 rounded-full bg-[#c9a84c]/20 flex items-center justify-center flex-shrink-0">
+                    <span className="text-[#c9a84c] text-xs">A</span>
+                  </div>
+                  <div className="bg-[#252525] border border-[#c9a84c]/10 px-4 py-3 text-gray-200 text-sm font-light leading-relaxed flex-1 whitespace-pre-line"
+                    style={{ borderRadius: "0 12px 12px 12px" }}>
+                    {testReply}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            <div className="bg-[#1d1d1d] border border-[#c9a84c]/15 p-5">
+              <p className="text-xs tracking-[0.3em] text-gray-500 mb-3">QUICK TEST IDEAS</p>
+              <div className="flex flex-wrap gap-2">
+                {["What events do you plan?","What's your minimum budget?","Do you work in Italy?","How do I book?","Tell me about the process"].map((q,i) => (
+                  <button key={i} onClick={() => setTestMsg(q)}
+                    className="text-xs text-gray-400 border border-[#333] px-3 py-1.5 hover:border-[#c9a84c]/40 hover:text-[#c9a84c] transition-colors">
+                    {q}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
+        )}
+
+        {/* Bottom save */}
+        <div className="mt-8 pt-6 border-t border-[#c9a84c]/10 flex justify-end">
+          <button onClick={handleSave} disabled={saving}
+            className="px-10 py-3 bg-[#c9a84c] text-black text-xs tracking-[0.3em] hover:bg-[#e0c070] transition-colors font-semibold disabled:opacity-50">
+            {saving ? "SAVING..." : saved ? "✓ ALL CHANGES SAVED" : "SAVE ALL CHANGES"}
+          </button>
         </div>
       </div>
     </div>

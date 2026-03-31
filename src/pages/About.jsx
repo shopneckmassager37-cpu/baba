@@ -108,7 +108,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Meet Avicam */
+      {/* Meet Avicam */}
       <section className="py-16 md:py-28 px-6 bg-[#f5f0e8]">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center">
           <div className="relative">
@@ -141,7 +141,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Quote */
+      {/* Quote */}
       <section className="py-24 px-6 text-center bg-[#0f0e0c]">
         <div className="max-w-3xl mx-auto">
           <div className="text-[#c9a84c] text-5xl font-light mb-6">"</div>

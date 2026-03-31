@@ -13,16 +13,15 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Navigate to="/Home" replace />} />
-        <Route path="/About" element={<About />} />
-        <Route path="/Contact" element={<Contact />} />
-        <Route path="/Events" element={<Events />} />
-        <Route path="/Gallery" element={<Gallery />} />
-        <Route path="/Home" element={<Home />} />
-        <Route path="/Process" element={<Process />} />
-        <Route path="/ChatWidget" element={<ChatWidget />} />
-        <Route path="/Admin" element={<Admin />} />
-        <Route path="/Terms" element={<Terms />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/process" element={<Process />} />
+        <Route path="/chat" element={<ChatWidget />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/terms" element={<Terms />} />
       </Routes>
     </BrowserRouter>
   )

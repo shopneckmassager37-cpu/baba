@@ -190,7 +190,7 @@ export default function Contact() {
             <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-4">WHERE WE ARE</p>
             <h2 className="text-3xl font-light text-[#e8e2d9] mb-6">Based in Miami.<br />Working Worldwide.</h2>
             <div className="w-10 h-px bg-[#c9a84c]/40 mb-6" />
-            <p className="text-[#a09888] font-light text-sm leading-relaxed mb-8">Our team is based in Miami, Florida, but our events span the globe — from the hills of Tuscany to the shores of the Aegean.</p> — from the hills of Tuscany to the shores of the Aegean.</p> — from the hills of Tuscany to the shores of the Aegean.</p>
+            <p className="text-[#a09888] font-light text-sm leading-relaxed mb-8">Our team is based in Miami, Florida, but our events span the globe — from the hills of Tuscany to the shores of the Aegean.</p>
             <div className="space-y-4">
               {[
               { icon: "M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.9 12.4 19.79 19.79 0 0 1 1.85 3.82 2 2 0 0 1 3.82 1.64h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l.97-.97a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z", label: "+1 (347) 994-9284", sub: "Available by appointment" },

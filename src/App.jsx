@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Process from './pages/Process';
 import ChatWidget from './pages/ChatWidget';
 import Admin from './pages/Admin';
+import Terms from './pages/Terms';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/Process" element={<Process />} />
         <Route path="/ChatWidget" element={<ChatWidget />} />
         <Route path="/Admin" element={<Admin />} />
+        <Route path="/Terms" element={<Terms />} />
       </Routes>
     </BrowserRouter>
   )

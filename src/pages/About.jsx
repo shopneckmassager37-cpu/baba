@@ -1,213 +1,102 @@
-import ChatWidget from "./ChatWidget";
 import { Link } from "react-router-dom";
-
 const LOGO = "https://media.base44.com/images/public/69caab40b61d6ee7c5b75332/9d7fead75_generated_image.png";
-const AVICAM_PHOTO = "https://base44.app/api/apps/69caab40b61d6ee7c5b75332/files/mp/public/69caab40b61d6ee7c5b75332/129dab6d3_avicam_photo.jpg";
-const CHEF_PHOTO = "https://base44.app/api/apps/69caab40b61d6ee7c5b75332/files/mp/public/69caab40b61d6ee7c5b75332/14656185e_chef_photo.jpg";
-
+const AVICAM = "https://base44.app/api/apps/69caab40b61d6ee7c5b75332/files/mp/public/69caab40b61d6ee7c5b75332/129dab6d3_avicam_photo.jpg";
+const CHEF = "https://base44.app/api/apps/69caab40b61d6ee7c5b75332/files/mp/public/69caab40b61d6ee7c5b75332/14656185e_chef_photo.jpg";
+const NAV = [["HOME","/"],["EVENTS","/events"],["HOW WE WORK","/process"],["ABOUT","/about"],["GALLERY","/gallery"],["CONTACT","/contact"]];
 export default function About() {
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white" style={{ fontFamily: "'Georgia', 'Times New Roman', serif" }}>
+    <div className="min-h-screen bg-[#0a0a0a] text-white" style={{fontFamily:"'Georgia','Times New Roman',serif"}}>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-md border-b border-[#c9a84c]/20">
         <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
-          <Link to="/" className="flex items-center gap-3">
-            <img src={LOGO} alt="Avicam Gitlin" className="h-12 w-12 object-contain" />
-            <span className="text-xl tracking-[0.25em] text-[#c9a84c] font-light hidden sm:block">AVICAM GITLIN</span>
-          </Link>
-          <div className="hidden md:flex gap-8 text-xs tracking-[0.2em] text-gray-300">
-            <Link to="/" className="hover:text-[#c9a84c] transition-colors">HOME</Link>
-            <Link to="/process" className="hover:text-[#c9a84c] transition-colors">HOW WE WORK</Link>
-            <Link to="/events" className="hover:text-[#c9a84c] transition-colors">EVENTS</Link>
-            <Link to="/about" className="text-[#c9a84c]">ABOUT</Link>
-            <Link to="/gallery" className="hover:text-[#c9a84c] transition-colors">GALLERY</Link>
-            <Link to="/contact" className="hover:text-[#c9a84c] transition-colors">CONTACT</Link>
-            <ChatWidget />
-</div>
+          <Link to="/" className="flex items-center gap-3"><img src={LOGO} className="h-12 w-12 object-contain"/><span className="text-xl tracking-[0.25em] text-[#c9a84c] font-light hidden sm:block">AVICAM GITLIN</span></Link>
+          <div className="hidden md:flex gap-8 text-xs tracking-[0.2em] text-gray-300">{NAV.map(([l,h])=><Link key={l} to={h} className={`hover:text-[#c9a84c] transition-colors ${l==="ABOUT"?"text-[#c9a84c]":""}`}>{l}</Link>)}</div>
           <Link to="/contact" className="hidden md:block px-5 py-2 border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[0.2em] hover:bg-[#c9a84c]/10 transition-colors">INQUIRE</Link>
-          <ChatWidget />
-</div>
+        </div>
       </nav>
-
-      {/* Hero with Avicam photo */}
-      <section className="relative overflow-hidden" style={{ minHeight: "85vh" }}>
-        <img
-          src={AVICAM_PHOTO}
-          alt="Avicam Gitlin"
-          className="w-full h-full object-cover object-top absolute inset-0"
-          style={{ minHeight: "85vh" }}
-          onError={(e) => { e.target.src = CHEF_PHOTO; }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-[#0a0a0a]" />
+      <section className="relative overflow-hidden" style={{minHeight:"85vh"}}>
+        <img src={AVICAM} className="w-full h-full object-cover object-top absolute inset-0" style={{minHeight:"85vh"}} onError={e=>{e.target.src=CHEF}}/>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-[#0a0a0a]"/>
         <div className="relative z-10 flex items-end min-h-[85vh] pb-20 px-6">
           <div className="max-w-4xl">
             <p className="text-[#c9a84c] tracking-[0.6em] text-xs mb-5">THE PERSON BEHIND THE EXPERIENCE</p>
             <h1 className="text-6xl md:text-8xl font-light leading-none mb-4">Avicam Gitlin</h1>
-            <p className="text-gray-300 text-xl font-light tracking-widest">Travel Curator · Private Chef · Event Architect</p>
-            <ChatWidget />
-</div>
-          <ChatWidget />
-</div>
+            <p className="text-gray-300 text-xl font-light tracking-widest">Event Architect · Travel Curator · Private Producer</p>
+          </div>
+        </div>
       </section>
-
-      {/* Story */}
       <section className="py-28 px-6">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-start">
           <div>
             <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-6">THE BEGINNING</p>
-            <h2 className="text-3xl md:text-4xl font-light mb-8 leading-relaxed">It started around a table<br />on a Friday night.</h2>
-            <div className="w-10 h-px bg-[#c9a84c]/40 mb-8" />
-            <p className="text-gray-400 font-light leading-relaxed mb-6">
-              It was springtime, and a group of friends sat together sharing a meal — full of laughter, good wine,
-              and the kind of conversation that stays with you. The talk turned to travel: Tuscany, the rolling hills,
-              the scent of cypress trees in the Mediterranean warmth. Everyone shared the same dream.
-            </p>
-            <p className="text-gray-400 font-light leading-relaxed mb-6">
-              That evening was the seed of everything that followed. Avicam realised he could build something
-              that didn't exist — a way for people to experience the world's most extraordinary places through food,
-              culture, and genuine hospitality, without compromise.
-            </p>
-            <p className="text-gray-400 font-light leading-relaxed italic border-l-2 border-[#c9a84c]/40 pl-4">
-              "Great ideas are born when good friends and great wine come together."
-            </p>
-            <ChatWidget />
-</div>
+            <h2 className="text-3xl md:text-4xl font-light mb-8 leading-relaxed">Where passion meets purpose.</h2>
+            <div className="w-10 h-px bg-[#c9a84c]/40 mb-8"/>
+            <p className="text-gray-400 font-light leading-relaxed mb-6">Avicam Gitlin has spent over 15 years turning extraordinary visions into unforgettable realities. His journey began with a simple but powerful belief: that the world's most beautiful places deserve to be the backdrop for the world's most meaningful moments.</p>
+            <p className="text-gray-400 font-light leading-relaxed mb-6">From the rolling hills of Tuscany to the crystal waters of the Greek Islands, from Alpine chalets to Moroccan palaces — Avicam has produced events in some of the world's most spectacular settings, for clients who demand nothing less than perfection.</p>
+            <p className="text-gray-400 font-light leading-relaxed italic border-l-2 border-[#c9a84c]/40 pl-4">"Every event I create is personal to me. I read every inquiry myself and respond personally."</p>
+          </div>
           <div className="relative">
-            <img
-              src={CHEF_PHOTO}
-              alt="Avicam in the kitchen"
-              className="w-full h-[580px] object-cover"
-              onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=800&q=80"; }}
-            />
-            <div className="absolute -bottom-4 -left-4 w-32 h-32 border border-[#c9a84c]/30 pointer-events-none" />
-            <ChatWidget />
-</div>
-          <ChatWidget />
-</div>
+            <img src={CHEF} className="w-full h-[580px] object-cover" onError={e=>{e.target.src="https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?w=800&q=80"}}/>
+            <div className="absolute -bottom-4 -left-4 w-32 h-32 border border-[#c9a84c]/30 pointer-events-none"/>
+          </div>
+        </div>
       </section>
-
-      {/* Philosophy */}
       <section className="py-28 px-6 bg-[#0d0d0d]">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-4">THE PHILOSOPHY</p>
             <h2 className="text-3xl md:text-4xl font-light">What Drives Every Decision</h2>
-            <ChatWidget />
-</div>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {[
-              { icon: "🍽️", title: "Food as Connection", text: "Avicam believes food is the most powerful way to experience a place and connect with the people around you. Every menu tells a story — of the land, the season, and those gathered." },
-              { icon: "✦", title: "Bespoke by Nature", text: "No two events are the same, because no two clients are the same. Avicam's approach is deeply personal: he wants to understand how you live, what you love, and what will make your event unmistakably yours." },
-              { icon: "🌍", title: "The World as Your Venue", text: "A dining room can be a Tuscan hillside at sunset, a yacht deck, or a lantern-lit courtyard in Marrakech. The world's most beautiful places are available — you just need the right person to open the door." }
-            ].map((p, i) => (
+            {[{icon:"✦",title:"Bespoke by Nature",text:"No two events are the same, because no two clients are the same. Every event is built from scratch around your vision, your story, and your guests."},{icon:"◆",title:"No Compromises",text:"Every detail is held to the highest standard — from the grandest gesture to the smallest touch. Nothing generic. Nothing off-the-shelf. Everything intentional."},{icon:"🌍",title:"The World as Your Venue",text:"A Tuscan hillside at sunset, a yacht deck, a lantern-lit courtyard in Marrakech — the world's most beautiful places are available. You just need the right person to open the door."}].map((p,i)=>(
               <div key={i} className="text-center px-4">
-                <div className="text-4xl mb-6">{p.icon}  <ChatWidget />
-</div>
+                <div className="text-4xl mb-6">{p.icon}</div>
                 <h3 className="text-lg font-light mb-4 text-[#c9a84c] tracking-wide">{p.title}</h3>
-                <div className="w-8 h-px bg-[#c9a84c]/30 mx-auto mb-4" />
+                <div className="w-8 h-px bg-[#c9a84c]/30 mx-auto mb-4"/>
                 <p className="text-gray-400 font-light leading-relaxed text-sm">{p.text}</p>
-                <ChatWidget />
-</div>
+              </div>
             ))}
-            <ChatWidget />
-</div>
-          <ChatWidget />
-</div>
+          </div>
+        </div>
       </section>
-
-      {/* Quote */}
       <section className="py-28 px-6 text-center">
         <div className="max-w-3xl mx-auto">
-          <div className="text-[#c9a84c] text-6xl font-light mb-6">"  <ChatWidget />
-</div>
-          <p className="text-2xl md:text-3xl font-light leading-relaxed text-gray-300 italic mb-10">
-            I am excited to provide people with the opportunity to experience cuisine and culture
-            in the most extraordinary settings. Each event is a new opportunity to explore,
-            to create, and to share something genuinely unforgettable.
-          </p>
-          <div className="w-10 h-px bg-[#c9a84c] mx-auto mb-6" />
+          <div className="text-[#c9a84c] text-6xl font-light mb-6">"</div>
+          <p className="text-2xl md:text-3xl font-light leading-relaxed text-gray-300 italic mb-10">I am excited to provide people with the opportunity to experience the world in the most extraordinary settings. Each event is a new opportunity to explore, to create, and to share something genuinely unforgettable.</p>
+          <div className="w-10 h-px bg-[#c9a84c] mx-auto mb-6"/>
           <p className="text-[#c9a84c] tracking-[0.4em] text-xs">— AVICAM GITLIN</p>
-          <ChatWidget />
-</div>
+        </div>
       </section>
-
-      {/* Second photo + expertise */}
       <section className="py-24 px-6 bg-[#0d0d0d]">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div>
             <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-4">EXPERTISE & REACH</p>
-            <h2 className="text-3xl font-light mb-10">Built Over a Decade.<br />Refined Through Every Event.</h2>
-            <div className="space-y-0">
-              <div className="mb-8">
-                <h3 className="text-lg font-light mb-5 text-[#c9a84c] tracking-wide">Culinary Mastery</h3>
-                <ul className="space-y-4">
-                  {["Private chef specialising in international cuisine","Custom menu design for every occasion and guest","Experience from intimate dinners to grand celebrations","Deep knowledge of seasonal, local ingredients","Expertise across all dietary requirements"].map((item, i) => (
-                    <li key={i} className="flex items-start gap-4 text-gray-400 text-sm font-light border-b border-gray-800 pb-4">
-                      <span className="text-[#c9a84c] mt-0.5">→</span>{item}
-                    </li>
-                  ))}
-                </ul>
-                <ChatWidget />
-</div>
-              <div>
-                <h3 className="text-lg font-light mb-5 text-[#c9a84c] tracking-wide">Event Curation</h3>
-                <ul className="space-y-4">
-                  {["15+ years producing private events worldwide","Destination celebrations & family milestones","Private villa programs & multi-week event stays","Global network of venues, vendors & local partners","Personal, hands-on approach from concept to execution"].map((item, i) => (
-                    <li key={i} className="flex items-start gap-4 text-gray-400 text-sm font-light border-b border-gray-800 pb-4">
-                      <span className="text-[#c9a84c] mt-0.5">→</span>{item}
-                    </li>
-                  ))}
-                </ul>
-                <ChatWidget />
-</div>
-              <ChatWidget />
-</div>
-            <ChatWidget />
-</div>
+            <h2 className="text-3xl font-light mb-10">Built Over a Decade.<br/>Refined Through Every Event.</h2>
+            <ul className="space-y-4">
+              {["15+ years producing private events worldwide","Destination celebrations & family milestones","Private villa programs & multi-week event stays","Global network of venues, vendors & local partners","Personal, hands-on approach from concept to execution","Relationships with extraordinary venues in 30+ countries","Sailing & charter event production across the Mediterranean","Corporate & VIP event management at the highest level"].map((item,i)=>(
+                <li key={i} className="flex items-start gap-4 text-gray-400 text-sm font-light border-b border-gray-800 pb-4">
+                  <span className="text-[#c9a84c] mt-0.5">→</span>{item}
+                </li>
+              ))}
+            </ul>
+          </div>
           <div className="relative">
-            <img
-              src={AVICAM_PHOTO}
-              alt="Avicam Gitlin"
-              className="w-full h-[640px] object-cover object-top"
-              onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?w=800&q=80"; }}
-            />
-            <div className="absolute top-4 right-4 border border-[#c9a84c]/30 w-24 h-24 pointer-events-none" />
-            <ChatWidget />
-</div>
-          <ChatWidget />
-</div>
+            <img src={AVICAM} className="w-full h-[640px] object-cover object-top" onError={e=>{e.target.src="https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?w=800&q=80"}}/>
+            <div className="absolute top-4 right-4 border border-[#c9a84c]/30 w-24 h-24 pointer-events-none"/>
+          </div>
+        </div>
       </section>
-
-      {/* CTA */}
-      <section className="py-28 px-6 text-center">
-        <div className="max-w-xl mx-auto">
-          <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-6">WORK WITH AVICAM</p>
-          <h2 className="text-4xl font-light mb-8">Let's Create Something Together</h2>
-          <div className="w-10 h-px bg-[#c9a84c] mx-auto mb-8" />
-          <p className="text-gray-400 font-light mb-10">Whether you have a clear vision or just a feeling, Avicam would love to hear from you.</p>
-          <Link to="/contact" className="inline-block px-12 py-5 bg-[#c9a84c] text-black text-xs tracking-[0.3em] hover:bg-[#e0c070] transition-colors font-semibold">GET IN TOUCH</Link>
-          <ChatWidget />
-</div>
+      <section className="relative py-28 px-6 text-center" style={{backgroundImage:"url('https://images.unsplash.com/photo-1510076857177-7470076d4098?w=1920&q=80')",backgroundSize:"cover",backgroundPosition:"center"}}>
+        <div className="absolute inset-0 bg-black/75"/>
+        <div className="relative z-10 max-w-xl mx-auto">
+          <p className="text-[#c9a84c] tracking-[0.5em] text-xs mb-6">LET'S WORK TOGETHER</p>
+          <h2 className="text-4xl font-light mb-6">Begin Your Journey</h2>
+          <div className="w-10 h-px bg-[#c9a84c] mx-auto mb-8"/>
+          <Link to="/contact" className="inline-block px-12 py-4 bg-[#c9a84c] text-black text-xs tracking-[0.3em] hover:bg-[#e0c070] transition-colors font-semibold">GET IN TOUCH</Link>
+        </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-[#070707] border-t border-[#c9a84c]/15 pt-16 pb-8 px-6">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-3">
-            <img src={LOGO} alt="logo" className="h-10 w-10 object-contain" />
-            <span className="text-[#c9a84c] text-lg tracking-[0.3em] font-light">AVICAM GITLIN</span>
-            <ChatWidget />
-</div>
-          <div className="flex gap-8 text-xs text-gray-500 tracking-[0.2em]">
-            {[["How We Work", "/process"], ["Events", "/events"], ["About", "/about"], ["Contact", "/contact"]].map(([l, h]) => (
-              <Link key={l} to={h} className="hover:text-[#c9a84c] transition-colors">{l.toUpperCase()}</Link>
-            ))}
-            <ChatWidget />
-</div>
-          <p className="text-gray-600 text-xs tracking-wide">© 2025 Avicam Gitlin Private Events</p>
-          <ChatWidget />
-</div>
+      <footer className="bg-[#070707] border-t border-[#c9a84c]/15 py-8 px-6 text-center">
+        <p className="text-gray-600 text-xs">© 2025 Avicam Gitlin Private Events. All rights reserved.</p>
       </footer>
-      <ChatWidget />
-</div>
+    </div>
   );
 }

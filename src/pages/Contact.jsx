@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { sendContactEmail } from "@/functions/sendContactEmail";
 import { Link, useLocation } from "react-router-dom";
 import ChatWidget from "./ChatWidget";
 import Navbar from "../components/Navbar";
@@ -21,7 +22,7 @@ export default function Contact() {
   const handleSubmit = async e => {
     e.preventDefault();
     setLoading(true);
-    await new Promise(r => setTimeout(r, 900));
+    await sendContactEmail({ name: form.name, email: form.email, message: form.message });
     setLoading(false);
     setSubmitted(true);
   };
@@ -33,12 +34,12 @@ export default function Contact() {
 
       {/* Hero — compact */}
       <section className="relative pt-28 pb-16 px-6 text-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80')", backgroundSize: "cover", backgroundPosition: "center" }}>
-        <div className="absolute inset-0 bg-black/72" />
+        <div className="absolute inset-0 bg-black/75" />
         <div className="relative z-10 max-w-xl mx-auto">
           <p className="text-[#c9a84c] tracking-[0.5em] text-xs mb-4">LET'S TALK</p>
-          <h1 className="text-4xl md:text-5xl font-light mb-4">Begin Your Journey</h1>
+          <h1 className="text-4xl md:text-5xl font-light mb-4 text-white">Begin Your Journey</h1>
           <div className="w-10 h-px bg-[#c9a84c] mx-auto mb-4" />
-          <p className="text-gray-400 text-base font-light">Every extraordinary event starts with a conversation.</p>
+          <p className="text-white text-base font-light">Every extraordinary event starts with a conversation.</p>
         </div>
       </section>
 

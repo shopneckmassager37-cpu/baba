@@ -28,14 +28,14 @@ export default function Process() {
       <Navbar active="HOW WE WORK" />
 
       {/* Hero */}
-      <section className="relative overflow-hidden" style={{ minHeight: "55vh" }}>
+      <section className="relative overflow-hidden" style={{ minHeight: "60vh" }}>
         <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80" alt="hero" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-[#161616]" />
-        <div className="relative z-10 flex flex-col items-center justify-center text-center px-6" style={{ minHeight: "55vh" }}>
-          <p className="text-[#c9a84c] tracking-[0.6em] text-xs mb-4">THE PROCESS</p>
-          <h1 className="text-5xl md:text-6xl font-light leading-none mb-4">How We Work</h1>
-          <div className="w-12 h-px bg-[#c9a84c] mb-6" />
-          <p className="text-gray-300 text-base font-light leading-relaxed max-w-xl">
+        <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/50 to-[#161616]" />
+        <div className="relative z-10 flex flex-col items-center justify-center text-center px-6" style={{ minHeight: "60vh" }}>
+          <p className="text-[#c9a84c] tracking-[0.6em] text-xs mb-5">THE PROCESS</p>
+          <h1 className="text-5xl md:text-7xl font-light leading-[1.05] mb-6">How We <span className="italic text-[#c9a84c]">Work</span></h1>
+          <div className="w-16 h-px bg-[#c9a84c]/60 mb-6" />
+          <p className="text-gray-300 text-lg font-light leading-relaxed max-w-xl">
             From first conversation to final moment — every step, handled personally.
           </p>
         </div>

@@ -110,13 +110,13 @@ export default function Services() {
       <Navbar active="SERVICES" />
 
       {/* Hero */}
-      <section className="relative pt-32 pb-24 px-6 text-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1510076857177-7470076d4098?w=1920&q=80')", backgroundSize: "cover", backgroundPosition: "center" }}>
-        <div className="absolute inset-0 bg-black/75" />
+      <section className="relative pt-36 pb-28 px-6 text-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1510076857177-7470076d4098?w=1920&q=80')", backgroundSize: "cover", backgroundPosition: "center" }}>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-[#0f0e0c]" />
         <div className="relative z-10 max-w-3xl mx-auto">
-          <p className="text-[#c9a84c] tracking-[0.5em] text-xs mb-6">WHAT WE DO</p>
-          <h1 className="text-5xl md:text-6xl font-light mb-8">Our Services</h1>
-          <div className="w-12 h-px bg-[#c9a84c] mx-auto mb-8" />
-          <p className="text-gray-400 text-lg font-light leading-relaxed">
+          <p className="text-[#c9a84c] tracking-[0.6em] text-xs mb-6">WHAT WE DO</p>
+          <h1 className="text-5xl md:text-7xl font-light mb-8 leading-tight">Our <span className="italic text-[#c9a84c]">Services</span></h1>
+          <div className="w-16 h-px bg-[#c9a84c]/60 mx-auto mb-8" />
+          <p className="text-gray-300 text-lg font-light leading-relaxed max-w-2xl mx-auto">
             Every service we offer is built on one principle: we make the planning effortless,
             the experience extraordinary, and the memory impossible to forget.
           </p>
@@ -175,13 +175,13 @@ export default function Services() {
       </section>
 
       {/* CTA */}
-      <section className="py-28 px-6 bg-[#0d0d0d] text-center">
+      <section className="py-32 px-6 bg-[#0d0d0d] text-center">
         <div className="max-w-2xl mx-auto">
-          <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-6">READY TO START?</p>
-          <h2 className="text-4xl font-light mb-6">Let's Design Your Event</h2>
-          <div className="w-12 h-px bg-[#c9a84c] mx-auto mb-8" />
-          <p className="text-gray-400 font-light mb-10">Every great event begins with a single conversation. Share your vision with us.</p>
-          <Link to="/contact" className="inline-block px-12 py-5 bg-[#c9a84c] text-black text-xs tracking-[0.3em] hover:bg-[#e0c070] transition-colors font-semibold">GET IN TOUCH</Link>
+          <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-6">YOUR VISION AWAITS</p>
+          <h2 className="text-4xl md:text-5xl font-light mb-8 leading-tight">Let's Design Your<br />Perfect Event</h2>
+          <div className="w-16 h-px bg-[#c9a84c] mx-auto mb-8" />
+          <p className="text-gray-400 font-light mb-12 text-lg">Every great event begins with a single conversation. Share your vision — we'll make it real.</p>
+          <Link to="/contact" className="inline-block px-14 py-5 bg-[#c9a84c] text-black text-xs tracking-[0.3em] hover:bg-[#e0c070] transition-all duration-300 font-semibold hover:shadow-[0_4px_30px_rgba(201,168,76,0.3)]">GET IN TOUCH</Link>
         </div>
       </section>
 

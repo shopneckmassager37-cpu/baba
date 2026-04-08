@@ -4,8 +4,8 @@ import ChatWidget from "./ChatWidget";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-const AVICAM = "https://base44.app/api/apps/69caab40b61d6ee7c5b75332/files/mp/public/69caab40b61d6ee7c5b75332/129dab6d3_avicam_photo.jpg";
-const KITCHEN = "https://media.base44.com/images/public/69caab40b61d6ee7c5b75332/45a3420cd_image.png";
+const AVICAM = "https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?w=800&q=80";
+const KITCHEN = "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&q=80";
 
 
 function ScrollToTop() {
@@ -39,22 +39,28 @@ export default function Home() {
       <Navbar active="HOME" />
 
       {/* ─── HERO ─── */}
-      <section className="relative flex items-center justify-center overflow-hidden" style={{ minHeight: "88vh" }}>
+      <section className="relative flex items-center justify-center overflow-hidden" style={{ minHeight: "92vh" }}>
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80')` }} />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/45 to-[#0f0e0c]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/50 to-[#0f0e0c]" />
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-          <p className="text-[#c9a84c] tracking-[0.6em] text-xs mb-5 font-light">PRIVATE EVENTS · BESPOKE CELEBRATIONS · WORLDWIDE</p>
-          <h1 className="text-5xl md:text-7xl font-light leading-tight mb-6 tracking-wide">
+          <p className="text-[#c9a84c] tracking-[0.6em] text-xs mb-6 font-light uppercase">Private Events · Bespoke Celebrations · Worldwide</p>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-light leading-[1.1] mb-8 tracking-wide">
             Your Moment.<br /><span className="text-[#c9a84c] italic">Crafted to Perfection.</span>
           </h1>
-          <p className="text-gray-300 text-base font-light leading-relaxed mb-10 max-w-xl mx-auto">
-            Weddings, galas, corporate events, and VIP celebrations —
-            designed exclusively for those who demand the extraordinary.
+          <div className="w-16 h-px bg-[#c9a84c]/60 mx-auto mb-8" />
+          <p className="text-gray-300 text-lg font-light leading-relaxed mb-12 max-w-2xl mx-auto">
+            From breathtaking destination weddings to world-class galas and VIP celebrations —
+            we design once-in-a-lifetime experiences for those who refuse to settle for ordinary.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="px-10 py-4 bg-[#c9a84c] text-black text-xs tracking-[0.3em] hover:bg-[#e0c070] transition-colors font-semibold">PLAN YOUR EVENT</Link>
-            <Link to="/events" className="px-10 py-4 border border-white/40 text-white text-xs tracking-[0.3em] hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors">EXPLORE EVENTS</Link>
+            <Link to="/contact" className="px-12 py-4 bg-[#c9a84c] text-black text-xs tracking-[0.3em] hover:bg-[#e0c070] transition-all duration-300 font-semibold hover:shadow-[0_4px_30px_rgba(201,168,76,0.3)]">PLAN YOUR EVENT</Link>
+            <Link to="/events" className="px-12 py-4 border border-white/30 text-white text-xs tracking-[0.3em] hover:border-[#c9a84c] hover:text-[#c9a84c] transition-all duration-300 backdrop-blur-sm">EXPLORE EVENTS</Link>
           </div>
+        </div>
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
+          <span className="text-[#c9a84c] text-[10px] tracking-[0.4em]">SCROLL</span>
+          <div className="w-px h-8 bg-gradient-to-b from-[#c9a84c] to-transparent" />
         </div>
       </section>
 
@@ -62,15 +68,16 @@ export default function Home() {
       <Ticker />
 
       {/* ─── INTRO ─── */}
-      <section className="py-24 px-6 bg-[#0f0e0c]">
+      <section className="py-28 px-6 bg-[#0f0e0c]">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-[#c9a84c] tracking-[0.5em] text-xs mb-5">WHAT SETS US APART</p>
-          <h2 className="text-3xl md:text-4xl font-light leading-relaxed mb-5 text-[#e8e2d9]">
+          <p className="text-[#c9a84c] tracking-[0.5em] text-xs mb-6">WHAT SETS US APART</p>
+          <h2 className="text-3xl md:text-5xl font-light leading-relaxed mb-6 text-[#e8e2d9]">
             Every event is once-in-a-lifetime.<br /><span className="text-[#c9a84c] italic">We treat it that way.</span>
           </h2>
-          <div className="w-12 h-px bg-[#c9a84c] mx-auto mb-6" />
-          <p className="text-[#a09888] text-base font-light leading-relaxed max-w-2xl mx-auto">
-            Over a decade producing bespoke private events across the world's most spectacular destinations. Unmatched expertise, impeccable discretion, and a deeply personal touch — every single time.
+          <div className="w-16 h-px bg-[#c9a84c] mx-auto mb-8" />
+          <p className="text-[#a09888] text-lg font-light leading-relaxed max-w-2xl mx-auto">
+            Over fifteen years producing bespoke private events across the world's most spectacular destinations.
+            Unmatched expertise, impeccable discretion, and a deeply personal touch — every single time.
           </p>
         </div>
       </section>
@@ -110,12 +117,12 @@ export default function Home() {
       <div style={{ height: "60px", background: "linear-gradient(to bottom, #f5f0e8, #0f0e0c)" }} />
 
       {/* ─── STATS ─── */}
-      <section className="py-16 px-6 bg-[#0f0e0c] border-y border-[#c9a84c]/20">
-        <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          {[{num:"15+",label:"Years of Excellence"},{num:"500+",label:"Events Worldwide"},{num:"30+",label:"Destinations"},{num:"100%",label:"Bespoke"}].map((s,i) => (
-            <div key={i}>
-              <div className="text-5xl text-[#c9a84c] font-light mb-2">{s.num}</div>
-              <div className="text-[#a09888] text-xs tracking-[0.25em]">{s.label}</div>
+      <section className="py-20 px-6 bg-[#0f0e0c] border-y border-[#c9a84c]/15">
+        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          {[{num:"15+",label:"Years of Excellence"},{num:"500+",label:"Events Worldwide"},{num:"30+",label:"Global Destinations"},{num:"100%",label:"Fully Bespoke"}].map((s,i) => (
+            <div key={i} className="group">
+              <div className="text-5xl md:text-6xl text-[#c9a84c] font-light mb-3 group-hover:scale-105 transition-transform duration-300">{s.num}</div>
+              <div className="text-[#a09888] text-xs tracking-[0.3em] uppercase">{s.label}</div>
             </div>
           ))}
         </div>
@@ -165,7 +172,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-1">
             {[
-              { label: "Europe", sub: "Tuscany · Greek Isles · Swiss Alps", img: "https://media.base44.com/images/public/69caad387617bf1ed7d68057/19f4a9656_generated_67ef89c9.png" },
+              { label: "Europe", sub: "Tuscany · Greek Isles · Swiss Alps", img: "https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?w=600&q=80" },
               { label: "Mediterranean", sub: "Amalfi · Santorini · Croatia", img: "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=600&q=80" },
               { label: "North America", sub: "New York · California · Florida", img: "https://images.unsplash.com/photo-1518391846015-55a9cc003b25?w=600&q=80" },
               { label: "Morocco & Africa", sub: "Marrakech · Desert · Kasbahs", img: "https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=600&q=80" }
@@ -272,17 +279,17 @@ export default function Home() {
       <div style={{ height: "60px", background: "linear-gradient(to bottom, #f5f0e8, #111)" }} />
 
       {/* ─── CTA ─── */}
-      <section className="relative py-28 px-6 text-center overflow-hidden"
+      <section className="relative py-32 px-6 text-center overflow-hidden"
         style={{ backgroundImage: "url('https://images.unsplash.com/photo-1510076857177-7470076d4098?w=1920&q=80')", backgroundSize: "cover", backgroundPosition: "center" }}>
         <div className="absolute inset-0 bg-black/85" />
-        <div className="relative z-10 max-w-xl mx-auto">
-          <p className="text-[#c9a84c] tracking-[0.5em] text-xs mb-4">LET'S CREATE TOGETHER</p>
-          <h2 className="text-4xl md:text-5xl font-light mb-5">Ready to Begin?</h2>
-          <div className="w-10 h-px bg-[#c9a84c] mx-auto mb-6" />
-          <p className="text-gray-300 font-light mb-10 text-base leading-relaxed max-w-md mx-auto">Every extraordinary event starts with a single conversation. Tell us your vision — we'll do the rest.</p>
+        <div className="relative z-10 max-w-2xl mx-auto">
+          <p className="text-[#c9a84c] tracking-[0.5em] text-xs mb-5">LET'S CREATE TOGETHER</p>
+          <h2 className="text-4xl md:text-6xl font-light mb-6 leading-tight">Ready to Begin<br />Something Extraordinary?</h2>
+          <div className="w-16 h-px bg-[#c9a84c] mx-auto mb-8" />
+          <p className="text-gray-300 font-light mb-12 text-lg leading-relaxed max-w-lg mx-auto">Every unforgettable event starts with a single conversation. Share your vision — we'll bring it to life.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="inline-block px-12 py-4 bg-[#c9a84c] text-black text-xs tracking-[0.4em] hover:bg-[#e0c070] transition-colors font-semibold">START THE CONVERSATION</Link>
-            <Link to="/process" className="inline-block px-12 py-4 border border-white/40 text-white text-xs tracking-[0.4em] hover:border-[#c9a84c] hover:text-[#c9a84c] transition-colors">HOW WE WORK</Link>
+            <Link to="/contact" className="inline-block px-12 py-4 bg-[#c9a84c] text-black text-xs tracking-[0.4em] hover:bg-[#e0c070] transition-all duration-300 font-semibold hover:shadow-[0_4px_30px_rgba(201,168,76,0.3)]">START THE CONVERSATION</Link>
+            <Link to="/process" className="inline-block px-12 py-4 border border-white/30 text-white text-xs tracking-[0.4em] hover:border-[#c9a84c] hover:text-[#c9a84c] transition-all duration-300">HOW WE WORK</Link>
           </div>
         </div>
       </section>

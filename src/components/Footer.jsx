@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom";
 
-const LOGO = "https://media.base44.com/images/public/69caab40b61d6ee7c5b75332/9d7fead75_generated_image.png";
+const LOGO = null; // Text-based logo used instead
 const NAV = [["HOME","/"],["EVENTS","/events"],["HOW WE WORK","/process"],["ABOUT","/about"],["CONTACT","/contact"]];
 
 export default function Footer() {
   return (
-    <footer className="bg-[#080807] border-t border-[#c9a84c]/20 pt-14 pb-8 px-6">
+    <footer className="bg-[#080807] border-t border-[#c9a84c]/15 pt-16 pb-10 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <img src={LOGO} alt="logo" className="h-10 w-10 object-contain" />
+              <span className="w-10 h-10 flex items-center justify-center border border-[#c9a84c]/40 text-[#c9a84c] text-base font-light tracking-wider">AG</span>
               <span className="text-[#c9a84c] text-base tracking-[0.3em] font-light">AVICAM GITLIN</span>
             </div>
             <p className="text-[#a09888] text-sm font-light leading-relaxed">Bespoke private events and extraordinary celebrations, crafted for discerning individuals worldwide.</p>
@@ -41,7 +41,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-[#c9a84c]/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-2">
-          <p className="text-gray-500 text-xs">© 2026 Avicam Gitlin Private Events. All rights reserved.</p>
+          <p className="text-gray-600 text-xs tracking-wide">© 2026 Avicam Gitlin Private Events. All rights reserved.</p>
           <Link to="/terms" className="text-gray-500 text-xs hover:text-[#c9a84c] transition-colors">Terms & Cancellation Policy</Link>
         </div>
       </div>

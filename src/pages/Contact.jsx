@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { sendContactEmail } from "@/functions/sendContactEmail";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import ChatWidget from "./ChatWidget";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -22,7 +21,10 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    await sendContactEmail({ name: form.name, email: form.email, message: form.message });
+    // Open mailto with pre-filled content
+    const subject = encodeURIComponent(`Event Inquiry from ${form.name}`);
+    const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`);
+    window.open(`mailto:avicam@kosherculinarytravel.com?subject=${subject}&body=${body}`, '_self');
     setLoading(false);
     setSubmitted(true);
   };
@@ -32,14 +34,14 @@ export default function Contact() {
       <ScrollToTop />
       <Navbar active="CONTACT" />
 
-      {/* Hero — compact */}
-      <section className="relative pt-28 pb-16 px-6 text-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80')", backgroundSize: "cover", backgroundPosition: "center" }}>
-        <div className="absolute inset-0 bg-black/75" />
-        <div className="relative z-10 max-w-xl mx-auto">
-          <p className="text-[#c9a84c] tracking-[0.5em] text-xs mb-4">LET'S TALK</p>
-          <h1 className="text-4xl md:text-5xl font-light mb-4 text-white">Begin Your Journey</h1>
-          <div className="w-10 h-px bg-[#c9a84c] mx-auto mb-4" />
-          <p className="text-white text-base font-light">Every extraordinary event starts with a conversation.</p>
+      {/* Hero */}
+      <section className="relative pt-32 pb-20 px-6 text-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80')", backgroundSize: "cover", backgroundPosition: "center" }}>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-[#0f0e0c]" />
+        <div className="relative z-10 max-w-2xl mx-auto">
+          <p className="text-[#c9a84c] tracking-[0.6em] text-xs mb-5">LET'S TALK</p>
+          <h1 className="text-5xl md:text-6xl font-light mb-6 text-white leading-tight">Begin Your<br /><span className="italic text-[#c9a84c]">Journey</span></h1>
+          <div className="w-16 h-px bg-[#c9a84c]/60 mx-auto mb-6" />
+          <p className="text-gray-300 text-lg font-light max-w-lg mx-auto">Every extraordinary event starts with a conversation. We're ready when you are.</p>
         </div>
       </section>
 

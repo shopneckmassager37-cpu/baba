@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const LOGO = "https://media.base44.com/images/public/69caab40b61d6ee7c5b75332/9d7fead75_generated_image.png";
+const LOGO = null; // Text-based logo used instead
 const NAV = [["HOME","/"],["EVENTS","/events"],["HOW WE WORK","/process"],["ABOUT","/about"],["CONTACT","/contact"]];
 
 export default function Navbar({ active }) {
@@ -24,10 +24,10 @@ export default function Navbar({ active }) {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0907]/95 backdrop-blur-md border-b border-[#c9a84c]/25">
-        <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0907]/90 backdrop-blur-lg border-b border-[#c9a84c]/15">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <Link to="/" className="flex items-center gap-3">
-            <img src={LOGO} alt="logo" className="h-11 w-11 object-contain" />
+            <span className="w-11 h-11 flex items-center justify-center border border-[#c9a84c]/40 text-[#c9a84c] text-lg font-light tracking-wider">AG</span>
             <span className="text-lg tracking-[0.3em] text-[#c9a84c] font-light hidden sm:block">AVICAM GITLIN</span>
           </Link>
           <div className="hidden md:flex items-center gap-8">
@@ -36,7 +36,7 @@ export default function Navbar({ active }) {
                 <Link key={l} to={h} className={`hover:text-[#c9a84c] transition-colors ${active===l?"text-[#c9a84c]":""}`}>{l}</Link>
               ))}
             </div>
-            <Link to="/contact" className="px-5 py-2 border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[0.2em] hover:bg-[#c9a84c]/10 transition-colors">INQUIRE</Link>
+            <Link to="/contact" className="px-6 py-2.5 border border-[#c9a84c] text-[#c9a84c] text-xs tracking-[0.2em] hover:bg-[#c9a84c] hover:text-black transition-all duration-300">INQUIRE</Link>
           </div>
           
           {/* Mobile hamburger */}

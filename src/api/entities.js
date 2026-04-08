@@ -1,6 +1,40 @@
-import { base44 } from './base44Client';
+// Base44 entities removed — using localStorage for persistence
 
-export const ChatbotConfig = base44.entities.ChatbotConfig;
+const STORAGE_KEY = 'chatbot_config';
 
-// auth sdk:
-export const User = base44.auth;
+function getStoredConfigs() {
+  try {
+    const data = localStorage.getItem(STORAGE_KEY);
+    return data ? JSON.parse(data) : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveConfigs(configs) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(configs));
+}
+
+export const ChatbotConfig = {
+  async list() {
+    return getStoredConfigs();
+  },
+  async create(config) {
+    const configs = getStoredConfigs();
+    const newConfig = { ...config, id: Date.now().toString() };
+    configs.push(newConfig);
+    saveConfigs(configs);
+    return newConfig;
+  },
+  async update(id, config) {
+    const configs = getStoredConfigs();
+    const index = configs.findIndex(c => c.id === id);
+    if (index !== -1) {
+      configs[index] = { ...configs[index], ...config };
+      saveConfigs(configs);
+    }
+    return configs[index];
+  }
+};
+
+export const User = null;

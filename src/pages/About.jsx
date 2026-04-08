@@ -10,8 +10,8 @@ function ScrollToTop() {
   return null;
 }
 
-const AVICAM = "https://base44.app/api/apps/69caab40b61d6ee7c5b75332/files/mp/public/69caab40b61d6ee7c5b75332/129dab6d3_avicam_photo.jpg";
-const KITCHEN_IMG = "https://media.base44.com/images/public/69caab40b61d6ee7c5b75332/45a3420cd_image.png";
+const AVICAM = "https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?w=800&q=80";
+const KITCHEN_IMG = "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&q=80";
 
 export default function About() {
   return (
@@ -20,14 +20,14 @@ export default function About() {
       <Navbar active="ABOUT" />
 
       {/* Hero */}
-      <section className="relative overflow-hidden" style={{ minHeight: "80vh" }}>
+      <section className="relative overflow-hidden" style={{ minHeight: "85vh" }}>
         <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&q=80" alt="Private event" className="absolute inset-0 w-full h-full object-cover object-center" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/40 to-[#161616]/95" />
-        <div className="relative z-10 flex flex-col items-center justify-center text-center px-6" style={{ minHeight: "80vh" }}>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/45 to-[#161616]" />
+        <div className="relative z-10 flex flex-col items-center justify-center text-center px-6" style={{ minHeight: "85vh" }}>
           <p className="text-[#c9a84c] tracking-[0.6em] text-xs mb-6">THE STORY</p>
-          <h1 className="text-5xl md:text-7xl font-light leading-none mb-6">Behind Every<br /><span className="italic text-[#c9a84c]">Extraordinary Event</span></h1>
-          <div className="w-16 h-px bg-[#c9a84c] mb-8" />
-          <p className="text-gray-300 text-lg font-light max-w-xl leading-relaxed">The person, the philosophy, and the passion that make it all possible.</p>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-light leading-[1.05] mb-8">Behind Every<br /><span className="italic text-[#c9a84c]">Extraordinary Event</span></h1>
+          <div className="w-20 h-px bg-[#c9a84c]/60 mb-8" />
+          <p className="text-gray-300 text-lg md:text-xl font-light max-w-2xl leading-relaxed">The person, the philosophy, and the unwavering passion that transform every gathering into something unforgettable.</p>
         </div>
       </section>
 
@@ -152,27 +152,28 @@ export default function About() {
       <div style={{ height: "60px", background: "linear-gradient(to bottom, #f5f0e8, #0f0e0c)" }} />
 
       {/* Quote */}
-      <section className="py-24 px-6 text-center bg-[#0f0e0c]">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-[#c9a84c] text-5xl font-light mb-6">"</div>
-          <p className="text-2xl md:text-3xl font-light leading-relaxed text-[#e8e2d9] italic mb-8">
+      <section className="relative py-28 px-6 text-center bg-[#0f0e0c] overflow-hidden">
+        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1920&q=30')", backgroundSize: "cover", backgroundPosition: "center" }} />
+        <div className="relative z-10 max-w-3xl mx-auto">
+          <div className="text-[#c9a84c] text-6xl font-light mb-8">"</div>
+          <p className="text-2xl md:text-4xl font-light leading-relaxed text-[#e8e2d9] italic mb-10">
             Each event is a new and exciting opportunity to create something extraordinary — and a privilege I never take for granted.
           </p>
-          <div className="w-10 h-px bg-[#c9a84c] mx-auto mb-6" />
-          <p className="text-[#c9a84c] tracking-[0.4em] text-xs">— AVICAM GITLIN</p>
+          <div className="w-16 h-px bg-[#c9a84c] mx-auto mb-6" />
+          <p className="text-[#c9a84c] tracking-[0.5em] text-xs">— AVICAM GITLIN</p>
         </div>
       </section>
 
       <div style={{ height: "60px", background: "linear-gradient(to bottom, #0f0e0c, #f5f0e8)" }} />
 
       {/* CTA */}
-      <section className="py-16 md:py-28 px-6 text-center bg-[#f5f0e8]">
+      <section className="py-20 md:py-32 px-6 text-center bg-[#f5f0e8]">
         <div className="max-w-xl mx-auto">
           <p className="text-[#c9a84c] tracking-[0.4em] text-xs mb-6">WORK WITH AVICAM</p>
-          <h2 className="text-4xl font-light mb-8 text-[#1a1813]">Let's Create Something Together</h2>
-          <div className="w-10 h-px bg-[#c9a84c] mx-auto mb-8" />
-          <p className="text-[#6b5f50] font-light mb-10">Whether you have a clear vision or just a feeling, Avicam would love to hear from you.</p>
-          <Link to="/contact" className="inline-block px-12 py-5 bg-[#c9a84c] text-black text-xs tracking-[0.3em] hover:bg-[#e0c070] transition-colors font-semibold">GET IN TOUCH</Link>
+          <h2 className="text-4xl md:text-5xl font-light mb-8 text-[#1a1813] leading-tight">Let's Create Something<br />Truly Remarkable</h2>
+          <div className="w-16 h-px bg-[#c9a84c] mx-auto mb-8" />
+          <p className="text-[#6b5f50] font-light mb-12 text-lg">Whether you have a clear vision or just a feeling, Avicam would love to hear from you.</p>
+          <Link to="/contact" className="inline-block px-14 py-5 bg-[#c9a84c] text-black text-xs tracking-[0.3em] hover:bg-[#e0c070] transition-all duration-300 font-semibold hover:shadow-[0_4px_30px_rgba(201,168,76,0.3)]">GET IN TOUCH</Link>
         </div>
       </section>
 

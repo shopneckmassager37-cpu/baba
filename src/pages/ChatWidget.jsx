@@ -1,42 +1,51 @@
 import { useState, useEffect, useRef } from "react";
 
-const APP_URL = "https://app-c5b75332.base44.app";
-const LOGO = "https://media.base44.com/images/public/69caab40b61d6ee7c5b75332/9d7fead75_generated_image.png";
-
 const OPENING_MESSAGE = {
   role: "assistant",
-  content: "Hi there! 👋 Welcome to Avicam Gitlin Private Events.\n\nI'm here to help — tell me about the event you're dreaming of, and I'll do my best to answer any questions you have. 🥂"
+  content: "Hi there! Welcome to Avicam Gitlin Private Events.\n\nI'm here to help — tell me about the event you're dreaming of, and I'll do my best to answer any questions you have."
 };
+
+const DEFAULT_SUGGESTIONS = [
+  "What types of events do you plan?",
+  "How do I get started?",
+  "Which destinations do you work in?",
+  "What is your minimum budget?"
+];
+
+const KNOWLEDGE_BASE = [
+  { keywords: ["event", "type", "plan", "what do you", "kinds"], answer: "We specialize in destination weddings, fundraising galas, corporate & executive events, VIP milestone celebrations, heritage & cultural journeys, and private dining experiences. Every event is fully bespoke and tailored to your vision." },
+  { keywords: ["start", "begin", "book", "get started", "how do i"], answer: "It all begins with a personal conversation. Simply reach out via our contact page, WhatsApp (+1 347-994-9284), or email avicam@kosherculinarytravel.com. Avicam reads every inquiry personally and will be in touch within 24 hours." },
+  { keywords: ["destination", "where", "country", "location", "work in"], answer: "We produce events in 30+ countries worldwide — from Tuscany and the Greek Islands to the Swiss Alps, Morocco, Croatia, the Caribbean, and beyond. If you can dream it, we can make it happen." },
+  { keywords: ["budget", "cost", "price", "minimum", "how much"], answer: "Our events typically start from $15,000 for intimate gatherings. Every event is custom-quoted based on your vision, guest count, destination, and level of detail. We'll provide a transparent proposal after our first conversation." },
+  { keywords: ["wedding", "marry", "bride", "groom"], answer: "Destination weddings are one of our signature specialties. From intimate ceremonies in Tuscan villas to grand celebrations on Greek island estates — every wedding we produce is a masterclass in beauty, precision, and emotion." },
+  { keywords: ["kosher", "dietary", "food"], answer: "Absolutely. Our roots are in kosher culinary travel, and we have deep expertise in producing exceptional kosher events worldwide. We work with top kosher caterers and chefs in every destination." },
+  { keywords: ["process", "how", "work", "steps"], answer: "Our process is simple: 1) A personal conversation to understand your vision, 2) We develop a bespoke concept and proposal, 3) Full design and production planning, 4) Flawless execution on the day. Avicam is personally involved at every stage." },
+  { keywords: ["corporate", "company", "business", "executive"], answer: "We produce executive retreats, product launches, incentive trips, and corporate galas at the highest level. Our corporate events combine impeccable production with inspiring destinations to create unforgettable experiences for your team and clients." },
+];
+
+function getResponse(message) {
+  const lower = message.toLowerCase();
+  for (const entry of KNOWLEDGE_BASE) {
+    if (entry.keywords.some(kw => lower.includes(kw))) {
+      return entry.answer;
+    }
+  }
+  return "Thank you for your interest! For the most detailed and personal answer, I'd recommend reaching out to Avicam directly. You can contact us via WhatsApp at +1 (347) 994-9284 or email avicam@kosherculinarytravel.com. We respond within 24 hours.";
+}
 
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([OPENING_MESSAGE]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [config, setConfig] = useState(null);
-  const [suggested, setSuggested] = useState([]);
+  const [suggested, setSuggested] = useState(DEFAULT_SUGGESTIONS);
   const [showBubble, setShowBubble] = useState(false);
   const messagesEndRef = useRef(null);
-  const didInit = useRef(false);
 
   useEffect(() => {
-    if (didInit.current) return;
-    didInit.current = true;
-
-    import("@/api/entities").then(({ ChatbotConfig }) => {
-      ChatbotConfig.list().then(configs => {
-        const cfg = configs?.[0];
-        if (cfg) {
-          setConfig(cfg);
-          if (cfg.suggested_questions) {
-            setSuggested(cfg.suggested_questions.split("\n").filter(Boolean).slice(0, 4));
-          }
-        }
-      }).catch(() => {});
-    }).catch(() => {});
-
-    setTimeout(() => setShowBubble(true), 4000);
-    setTimeout(() => setShowBubble(false), 12000);
+    const t1 = setTimeout(() => setShowBubble(true), 4000);
+    const t2 = setTimeout(() => setShowBubble(false), 12000);
+    return () => { clearTimeout(t1); clearTimeout(t2); };
   }, []);
 
   useEffect(() => {
@@ -50,23 +59,15 @@ export default function ChatWidget() {
     const content = text || input.trim();
     if (!content || loading) return;
     setInput("");
-    const chatHistory = messages.filter(m => m !== OPENING_MESSAGE);
-    const newMessages = [...chatHistory, { role: "user", content }];
     setMessages(prev => [...prev, { role: "user", content }]);
     setLoading(true);
     setSuggested([]);
 
-    try {
-      const res = await fetch(`${APP_URL}/functions/chatbot`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: newMessages }),
-      });
-      const data = await res.json();
-      setMessages(prev => [...prev, { role: "assistant", content: data.reply || "I'm sorry, I couldn't process that. Please try again." }]);
-    } catch {
-      setMessages(prev => [...prev, { role: "assistant", content: "Something went wrong. Please try again." }]);
-    }
+    // Simulate a brief thinking delay
+    await new Promise(r => setTimeout(r, 600 + Math.random() * 800));
+
+    const reply = getResponse(content);
+    setMessages(prev => [...prev, { role: "assistant", content: reply }]);
     setLoading(false);
   };
 
@@ -78,7 +79,7 @@ export default function ChatWidget() {
           style={{ animation: "fadeInUp 0.4s ease" }}>
           <div className="bg-white text-gray-800 px-4 py-3 shadow-2xl max-w-[210px] text-sm font-light leading-relaxed relative"
             style={{ borderRadius: "12px 12px 0 12px", fontFamily: "'Georgia', serif" }}>
-            ✨ Planning something special? I can help.
+            Planning something special? I can help.
             <div className="absolute bottom-[-7px] right-4 w-0 h-0"
               style={{ borderLeft: "7px solid transparent", borderTop: "7px solid white" }} />
           </div>
@@ -107,12 +108,12 @@ export default function ChatWidget() {
 
           {/* Header */}
           <div className="border-b border-[#c9a84c]/20 px-4 py-3 flex items-center gap-3" style={{ background: "#0d0d0d" }}>
-            <img src={LOGO} alt="logo" className="w-8 h-8 object-contain" />
+            <span className="w-8 h-8 flex items-center justify-center border border-[#c9a84c]/40 text-[#c9a84c] text-xs font-light tracking-wider">AG</span>
             <div className="flex-1">
-              <p className="text-[#c9a84c] text-xs tracking-[0.2em] font-light">{config?.bot_name || "AVICAM ASSISTANT"}</p>
+              <p className="text-[#c9a84c] text-xs tracking-[0.2em] font-light">AVICAM ASSISTANT</p>
               <div className="flex items-center gap-1.5 mt-0.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                <span className="text-gray-500 text-xs">Online · Here to help</span>
+                <span className="text-gray-500 text-xs">Online — Here to help</span>
               </div>
             </div>
           </div>

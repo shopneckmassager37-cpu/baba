@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ChatbotConfig } from "@/api/entities";
 
-const LOGO = "https://media.base44.com/images/public/69caab40b61d6ee7c5b75332/9d7fead75_generated_image.png";
-
 export default function Admin() {
   const [config, setConfig] = useState(null);
   const [configId, setConfigId] = useState(null);
@@ -12,13 +10,26 @@ export default function Admin() {
   const [testMsg, setTestMsg] = useState("");
   const [testReply, setTestReply] = useState("");
   const [testing, setTesting] = useState(false);
-  const [tab, setTab] = useState("general"); // general | qa | model | test
+  const [tab, setTab] = useState("general");
 
   useEffect(() => {
     ChatbotConfig.list().then(configs => {
       if (configs?.[0]) {
         setConfig(configs[0]);
         setConfigId(configs[0].id);
+      } else {
+        // Initialize with defaults
+        setConfig({
+          bot_name: "Avicam Assistant",
+          is_active: true,
+          welcome_message: "Hi there! Welcome to Avicam Gitlin Private Events.",
+          system_prompt: "",
+          suggested_questions: "What types of events do you plan?\nHow do I get started?\nWhich destinations do you work in?",
+          custom_qa: "",
+          model: "gpt-4o-mini",
+          temperature: 0.7,
+          max_tokens: 500
+        });
       }
     });
   }, []);
@@ -44,17 +55,9 @@ export default function Admin() {
     if (!testMsg.trim()) return;
     setTesting(true);
     setTestReply("");
-    try {
-      const res = await fetch("https://app-c5b75332.base44.app/functions/chatbot", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: [{ role: "user", content: testMsg }] }),
-      });
-      const data = await res.json();
-      setTestReply(data.reply || data.error || "No response");
-    } catch (e) {
-      setTestReply("Error: " + e.message);
-    }
+    // Simulate a local test response
+    await new Promise(r => setTimeout(r, 800));
+    setTestReply("This is a test response. The chatbot currently uses client-side responses. For a full AI-powered chatbot, connect an external API.");
     setTesting(false);
   };
 
@@ -79,7 +82,7 @@ export default function Admin() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#111]/95 backdrop-blur-md border-b border-[#c9a84c]/20">
         <div className="max-w-5xl mx-auto px-6 py-3 flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <img src={LOGO} alt="logo" className="h-9 w-9 object-contain" />
+            <span className="w-9 h-9 flex items-center justify-center border border-[#c9a84c]/40 text-[#c9a84c] text-sm font-light tracking-wider">AG</span>
             <div>
               <span className="text-[#c9a84c] text-sm tracking-[0.3em] font-light">AVICAM GITLIN</span>
               <span className="text-gray-600 text-xs ml-2 tracking-widest">/ ADMIN</span>
@@ -89,7 +92,7 @@ export default function Admin() {
             <Link to="/" className="text-gray-500 text-xs hover:text-[#c9a84c] transition-colors">← Back to site</Link>
             <button onClick={handleSave} disabled={saving}
               className="px-5 py-2 bg-[#c9a84c] text-black text-xs tracking-[0.2em] hover:bg-[#e0c070] transition-colors font-semibold disabled:opacity-50">
-              {saving ? "SAVING..." : saved ? "✓ SAVED" : "SAVE CHANGES"}
+              {saving ? "SAVING..." : saved ? "SAVED" : "SAVE CHANGES"}
             </button>
           </div>
         </div>
@@ -102,7 +105,7 @@ export default function Admin() {
           <p className="text-gray-500 text-sm font-light">Manage your AI assistant's behaviour, knowledge, and custom answers.</p>
         </div>
 
-        {/* Active toggle — always visible */}
+        {/* Active toggle */}
         <div className="bg-[#1d1d1d] border border-[#c9a84c]/15 p-5 mb-6 flex items-center justify-between">
           <div>
             <h3 className="text-white font-light text-sm mb-0.5">Chatbot Status</h3>
@@ -187,14 +190,10 @@ export default function Admin() {
                 onChange={e => set("custom_qa", e.target.value)}
                 rows={18}
                 className="w-full bg-[#252525] border border-[#333] text-white px-4 py-3 focus:outline-none focus:border-[#c9a84c]/60 transition-colors font-light resize-none text-sm leading-relaxed"
-                placeholder={"Q: What is your minimum budget?\nA: Our events start from $15,000 for intimate gatherings.\n\nQ: Do you work in Israel?\nA: Yes, we produce events across Israel including Tel Aviv and Jerusalem.\n\nQ: How quickly do you respond?\nA: Avicam personally responds to every inquiry within 24 hours."}
+                placeholder={"Q: What is your minimum budget?\nA: Our events start from $15,000 for intimate gatherings.\n\nQ: Do you work in Israel?\nA: Yes, we produce events across Israel including Tel Aviv and Jerusalem."}
               />
-              <p className="text-gray-600 text-xs mt-3">
-                💡 Tip: The more specific your questions, the better the bot will match them. Use natural language as if a real client is asking.
-              </p>
             </div>
 
-            {/* Preview */}
             {config.custom_qa && (
               <div className="bg-[#1d1d1d] border border-[#c9a84c]/15 p-6">
                 <p className="text-xs tracking-[0.3em] text-gray-500 mb-4">PREVIEW — LOADED Q&A PAIRS</p>
@@ -247,7 +246,7 @@ export default function Admin() {
               <label className="block text-xs tracking-[0.3em] text-gray-500 mb-2">
                 MAX RESPONSE LENGTH — <span className="text-[#c9a84c]">{config.max_tokens ?? 500} tokens</span>
               </label>
-              <p className="text-gray-600 text-xs mb-4">~1 token ≈ 1 word. 300–600 is ideal for most responses.</p>
+              <p className="text-gray-600 text-xs mb-4">~1 token = 1 word. 300–600 is ideal for most responses.</p>
               <input type="range" min="100" max="1500" step="50" value={config.max_tokens ?? 500}
                 onChange={e => set("max_tokens", parseInt(e.target.value))}
                 className="w-full accent-[#c9a84c]" />
@@ -269,7 +268,7 @@ export default function Admin() {
                 className="w-full bg-[#252525] border border-[#333] text-white px-4 py-3 focus:outline-none focus:border-[#c9a84c]/60 transition-colors font-light resize-none text-sm mb-4" />
               <button onClick={handleTest} disabled={testing || !testMsg.trim()}
                 className="px-8 py-3 bg-[#c9a84c] text-black text-xs tracking-[0.2em] hover:bg-[#e0c070] transition-colors font-semibold disabled:opacity-40">
-                {testing ? "TESTING..." : "SEND TEST →"}
+                {testing ? "TESTING..." : "SEND TEST"}
               </button>
             </div>
 
@@ -306,7 +305,7 @@ export default function Admin() {
         <div className="mt-8 pt-6 border-t border-[#c9a84c]/10 flex justify-end">
           <button onClick={handleSave} disabled={saving}
             className="px-10 py-3 bg-[#c9a84c] text-black text-xs tracking-[0.3em] hover:bg-[#e0c070] transition-colors font-semibold disabled:opacity-50">
-            {saving ? "SAVING..." : saved ? "✓ ALL CHANGES SAVED" : "SAVE ALL CHANGES"}
+            {saving ? "SAVING..." : saved ? "ALL CHANGES SAVED" : "SAVE ALL CHANGES"}
           </button>
         </div>
       </div>

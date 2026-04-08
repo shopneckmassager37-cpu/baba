@@ -74,13 +74,13 @@ export default function Experiences() {
       <Navbar active="EXPERIENCES" />
 
       {/* Hero */}
-      <section className="relative pt-32 pb-24 px-6 text-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1920&q=80')", backgroundSize: "cover", backgroundPosition: "center" }}>
-        <div className="absolute inset-0 bg-black/72" />
+      <section className="relative pt-36 pb-28 px-6 text-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1920&q=80')", backgroundSize: "cover", backgroundPosition: "center" }}>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/55 to-[#0f0e0c]" />
         <div className="relative z-10 max-w-3xl mx-auto">
-          <p className="text-[#c9a84c] tracking-[0.5em] text-xs mb-6">WHERE WE GO</p>
-          <h1 className="text-5xl md:text-6xl font-light mb-8">Destinations & Experiences</h1>
-          <div className="w-12 h-px bg-[#c9a84c] mx-auto mb-8" />
-          <p className="text-gray-400 text-lg font-light leading-relaxed">
+          <p className="text-[#c9a84c] tracking-[0.6em] text-xs mb-6">WHERE WE GO</p>
+          <h1 className="text-5xl md:text-7xl font-light mb-8 leading-tight">Destinations &<br /><span className="italic text-[#c9a84c]">Experiences</span></h1>
+          <div className="w-16 h-px bg-[#c9a84c]/60 mx-auto mb-8" />
+          <p className="text-gray-300 text-lg font-light leading-relaxed max-w-2xl mx-auto">
             Each destination is chosen not only for its beauty, but for what it awakens —
             a sense of wonder, connection, and the pleasure of being fully alive in a magnificent place.
           </p>

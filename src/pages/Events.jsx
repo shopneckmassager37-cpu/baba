@@ -44,11 +44,11 @@ const events = [
     bg: "#180f18", border: "#c47ab5", accent: "#c47ab5"
   },
   {
-    title: "Heritage & Cultural Journeys",
-    tagline: "Meaningful travel. Shared stories. Lasting bonds.",
-    description: "A powerful group event built around history, memory, and renewal. Participants visit historic sites and cultural landmarks with expert educators — creating a shared experience that goes far beyond the ordinary. Thoughtfully paced, deeply meaningful, and beautifully produced.",
-    highlights: ["Expert historian & educator guides","Historic sites & cultural landmarks","Curated group programs & ceremonies","Meaningful and educational pacing","Comfortable accommodation & logistics","Ideal for families & heritage groups"],
-    img: "https://images.unsplash.com/photo-1548013146-72479768bada?w=1200&q=80",
+    title: "Private Dining & Culinary Events",
+    tagline: "Exceptional cuisine. Unforgettable atmosphere.",
+    description: "From intimate candlelit dinners for twelve to grand seated affairs for hundreds — we produce private dining events that combine world-class cuisine, stunning venues, and seamless service. Bespoke menus crafted by private chefs, paired wines, and every detail designed to delight.",
+    highlights: ["Bespoke private dining experiences","Private chef & sommelier services","Venue sourcing & full production","Custom multi-course menus","Indoor & outdoor event design","Ideal for celebrations, corporate dinners & intimate gatherings"],
+    img: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80",
     bg: "#16130c", border: "#d4a84c", accent: "#d4a84c"
   }
 ];

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e0c070;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#c9a84c;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a8872e;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="200" cy="200" r="195" fill="#0f0e0c"/>
+  <circle cx="200" cy="200" r="190" fill="none" stroke="url(#goldGrad)" stroke-width="1.5"/>
+
+  <!-- Inner decorative ring -->
+  <circle cx="200" cy="200" r="172" fill="none" stroke="#c9a84c" stroke-width="0.5" opacity="0.25"/>
+
+  <!-- Diamond ornament top -->
+  <polygon points="200,34 207,50 200,66 193,50" fill="url(#goldGrad)"/>
+  <!-- Diamond ornament bottom -->
+  <polygon points="200,334 207,350 200,366 193,350" fill="url(#goldGrad)"/>
+  <!-- Diamond ornament left -->
+  <polygon points="34,200 50,193 66,200 50,207" fill="url(#goldGrad)" opacity="0.6"/>
+  <!-- Diamond ornament right -->
+  <polygon points="334,200 350,193 366,200 350,207" fill="url(#goldGrad)" opacity="0.6"/>
+
+  <!-- Monogram "AG" -->
+  <text x="200" y="210" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="110" font-weight="400" letter-spacing="-2" fill="url(#goldGrad)">AG</text>
+
+  <!-- Decorative horizontal lines flanking -->
+  <line x1="80" y1="235" x2="148" y2="235" stroke="#c9a84c" stroke-width="0.8" opacity="0.45"/>
+  <line x1="252" y1="235" x2="320" y2="235" stroke="#c9a84c" stroke-width="0.8" opacity="0.45"/>
+
+  <!-- Small diamond center ornament -->
+  <polygon points="200,247 204,253 200,259 196,253" fill="#c9a84c" opacity="0.6"/>
+
+  <!-- "PRIVATE EVENTS" text -->
+  <text x="200" y="285" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="15" letter-spacing="7" fill="#c9a84c" opacity="0.75">PRIVATE EVENTS</text>
+
+  <!-- Subtle star/sparkle accents -->
+  <text x="108" y="130" text-anchor="middle" font-family="serif" font-size="12" fill="#c9a84c" opacity="0.2">&#10022;</text>
+  <text x="292" y="130" text-anchor="middle" font-family="serif" font-size="12" fill="#c9a84c" opacity="0.2">&#10022;</text>
+  <text x="108" y="290" text-anchor="middle" font-family="serif" font-size="12" fill="#c9a84c" opacity="0.2">&#10022;</text>
+  <text x="292" y="290" text-anchor="middle" font-family="serif" font-size="12" fill="#c9a84c" opacity="0.2">&#10022;</text>
+</svg>

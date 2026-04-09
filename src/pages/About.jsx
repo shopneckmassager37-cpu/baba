@@ -101,7 +101,7 @@ export default function About() {
             {[
               { icon: "✦", title: "Every Event is Personal", text: "Avicam's approach starts from who you are, not a template. He wants to understand how you live, what you love, and what this event means to you — then build something unmistakably yours." },
               { icon: "◆", title: "Bespoke by Nature", text: "No two events are the same, because no two clients are the same. Every venue, every design direction, every piece of programming is chosen specifically for you." },
-              { icon: "✦", title: "The World is Your Venue", text: "The finest venues in the world are available — a Tuscan hillside, a yacht deck, a lantern-lit courtyard in Marrakech. You just need the right person to open the door." }
+              { icon: "✦", title: "The World is Your Venue", text: "The finest venues in the world are available — a Tuscan hillside, a grand estate, a lantern-lit courtyard in Marrakech. You just need the right person to open the door." }
             ].map((p,i) => (
               <div key={i} className="text-center px-8 py-12 bg-[#141210] hover:bg-[#1a1813] transition-colors">
                 <div className="text-3xl mb-6 text-[#c9a84c]">{p.icon}</div>
@@ -124,7 +124,7 @@ export default function About() {
               onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?w=800&q=80"; }} />
             <div className="absolute bottom-6 left-6 bg-black/80 backdrop-blur-sm border border-[#c9a84c]/40 px-5 py-3">
               <p className="text-[#c9a84c] text-xs tracking-[0.3em]">AVICAM GITLIN</p>
-              <p className="text-gray-400 text-xs mt-1">Event Producer · Travel Curator</p>
+              <p className="text-gray-400 text-xs mt-1">Private Event Producer</p>
             </div>
           </div>
           <div>
@@ -132,10 +132,10 @@ export default function About() {
             <h2 className="text-3xl md:text-4xl font-light leading-tight mb-8 text-[#1a1813]">Avicam Gitlin</h2>
             <div className="w-10 h-px bg-[#c9a84c]/50 mb-8" />
             <p className="text-[#6b5f50] font-light leading-relaxed mb-6">
-              Avicam Gitlin is a private event producer and travel curator with over 15 years of experience creating bespoke celebrations across the world's most spectacular destinations.
+              Avicam Gitlin is a private event producer with over 15 years of experience creating bespoke celebrations across the world's most spectacular destinations.
             </p>
             <p className="text-[#6b5f50] font-light leading-relaxed mb-10">
-              He has produced weddings, fundraising galas, corporate retreats, and milestone celebrations — from New York ballrooms to Greek island estates, from Moroccan riads to Alpine chalets.
+              He has produced weddings, fundraising galas, corporate events, and milestone celebrations — from New York ballrooms to Greek island estates, from Moroccan riads to Alpine chalets.
             </p>
             <div className="space-y-0">
               {["15+ years producing private events worldwide","Weddings, galas & corporate events","Trusted network in 30+ countries","Personally involved in every event","Complete discretion, always"].map((item,i) => (

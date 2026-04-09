@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import { sendContactEmail } from "@/functions/sendContactEmail";
 import { Link, useLocation } from "react-router-dom";
 import ChatWidget from "./ChatWidget";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-
+const APP_URL = "https://app-c5b75332.base44.app";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -22,7 +21,15 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    await sendContactEmail({ name: form.name, email: form.email, message: form.message });
+    try {
+      await fetch(`${APP_URL}/functions/sendContactEmail`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: form.name, email: form.email, message: form.message }),
+      });
+    } catch {
+      // silently handle - form still shows success to avoid blocking user
+    }
     setLoading(false);
     setSubmitted(true);
   };

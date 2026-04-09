@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 
 const APP_URL = "https://app-c5b75332.base44.app";
-const LOGO = "https://media.base44.com/images/public/69caab40b61d6ee7c5b75332/9d7fead75_generated_image.png";
+const LOGO = "/logo.svg";
 
 const OPENING_MESSAGE = {
   role: "assistant",

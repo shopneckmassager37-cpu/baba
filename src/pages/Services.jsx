@@ -72,32 +72,32 @@ const services = [
     img: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80"
   },
   {
-    id: "villa-programs",
-    title: "Private Villa Programs",
-    tagline: "Weeks crafted around your rhythm and vision.",
-    description: "Our private villa programs are the ultimate expression of luxury travel and private events combined. We take over a stunning estate — in Tuscany, Greece, Morocco, the Caribbean — and build an entire week or more around your group. Morning cooking sessions, afternoon excursions, evening feasts under the stars.",
+    id: "villa-events",
+    title: "Private Villa Events",
+    tagline: "Exclusive estates. Extraordinary celebrations.",
+    description: "We take over stunning private estates and transform them into the setting for your celebration. From Tuscan villas to Greek island properties and Caribbean retreats — every detail of the event is curated to create an unforgettable experience for you and your guests.",
     details: [
-      "Full villa buyout & staffing",
-      "Daily programmed experiences",
+      "Full estate buyout & event staffing",
+      "Complete event design & production",
       "In-residence private chef & team",
-      "Curated local excursions",
+      "Entertainment & programming",
       "Celebration dinners & special evenings",
-      "Families, multi-generational groups & friend gatherings"
+      "Ideal for multi-day celebrations & reunions"
     ],
     img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80"
   },
   {
-    id: "chef-retreats",
-    title: "Chef-Led Culinary Retreats",
-    tagline: "Travel. Cook. Taste. Connect.",
-    description: "Avicam personally leads immersive culinary retreats that blend the joy of cooking with the pleasure of discovery. Groups travel together, visit local markets, cook with regional ingredients, and sit down each evening to share meals that celebrate the culture around them.",
+    id: "culinary-events",
+    title: "Private Culinary Events",
+    tagline: "Exceptional dining. Unforgettable evenings.",
+    description: "Avicam produces bespoke culinary events that bring world-class cuisine into extraordinary settings. From intimate private dinners to grand culinary celebrations, every menu is crafted to reflect the occasion and delight every guest.",
     details: [
-      "Market visits & ingredient sourcing",
-      "Hands-on cooking workshops",
-      "Wine pairings & local tastings",
-      "Cultural destination excursions",
-      "Chef-curated multi-course dinners",
-      "Intimate groups of 8–20 guests"
+      "Bespoke multi-course menus",
+      "Private chef & sommelier services",
+      "Wine pairings & tasting events",
+      "Chef-curated themed dinners",
+      "Indoor & outdoor dining production",
+      "Intimate gatherings of 8–200 guests"
     ],
     img: "https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?w=1200&q=80"
   }

@@ -14,7 +14,7 @@ function ScrollToTop() {
   return null;
 }
 
-const TICKER_ITEMS = ["Weddings","Fundraising Galas","Corporate Events","VIP Experiences","Milestone Celebrations","Sailing Journeys","Heritage Journeys","Destination Celebrations","Private Events"];
+const TICKER_ITEMS = ["Weddings","Fundraising Galas","Corporate Events","VIP Experiences","Milestone Celebrations","Destination Celebrations","Private Dinners","Anniversary Parties","Private Events"];
 
 function Ticker() {
   const items = [...TICKER_ITEMS, ...TICKER_ITEMS];
@@ -131,8 +131,8 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#c9a84c]/10">
             {[
               { title: "Destination Weddings", sub: "Italy · Greece · Switzerland · Caribbean", img: "https://images.unsplash.com/photo-1519741497674-611481863552?w=900&q=80", desc: "From intimate ceremonies in Tuscan villas to grand celebrations on Greek island estates, every destination wedding we produce is a masterclass in beauty, precision, and emotion." },
-              { title: "Sailing Journeys", sub: "Mediterranean · Adriatic · Caribbean", img: "https://images.unsplash.com/photo-1540946485063-a40da27545f8?w=900&q=80", desc: "Wake up somewhere extraordinary every day aboard a private charter. We produce exclusive sailing events through the Mediterranean and beyond — combining breathtaking destinations and seamless service." },
-              { title: "Heritage & Cultural Journeys", sub: "Europe · Israel · North Africa", img: "https://images.unsplash.com/photo-1548013146-72479768bada?w=900&q=80", desc: "Meaningful group journeys that combine history, culture, and connection. Expert educators, iconic destinations, and a deeply personal touch — creating shared experiences beyond the ordinary." },
+              { title: "Milestone Celebrations", sub: "Worldwide · Intimate & Grand", img: "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=900&q=80", desc: "Landmark birthdays, anniversaries, and once-in-a-lifetime celebrations — designed to honour the moment with elegance, warmth, and impeccable attention to every detail." },
+              { title: "Private Dining Events", sub: "Villas · Estates · Exclusive Venues", img: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=80", desc: "Extraordinary private dining experiences in stunning settings — from candlelit villa courtyards to grand estate halls. Bespoke menus, world-class service, and unforgettable atmosphere." },
               { title: "Fundraising Galas", sub: "New York · Los Angeles · London · Worldwide", img: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=900&q=80", desc: "High-impact galas that combine compelling storytelling, world-class production, and the atmosphere that inspires generosity. We help organisations raise more by creating events people genuinely want to attend." }
             ].map((exp, i) => (
               <div key={i} className="group bg-[#141210] overflow-hidden hover:bg-[#1a1813] transition-colors">
@@ -221,7 +221,7 @@ export default function Home() {
             <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-black/60 to-transparent" />
             <div className="absolute bottom-5 left-5 bg-black/75 backdrop-blur-sm border border-[#c9a84c]/30 px-4 py-2">
               <p className="text-[#c9a84c] text-xs tracking-[0.3em]">AVICAM GITLIN</p>
-              <p className="text-[#a09888] text-xs mt-0.5">Event Producer · Travel Curator</p>
+              <p className="text-[#a09888] text-xs mt-0.5">Private Event Producer</p>
             </div>
           </div>
           <div>
@@ -229,7 +229,7 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-light leading-tight mb-5 text-[#e8e2d9]">The person behind<br />every extraordinary event.</h2>
             <div className="w-10 h-px bg-[#c9a84c]/50 mb-6" />
             <p className="text-[#a09888] font-light leading-relaxed mb-4">
-              Avicam Gitlin is a private event producer with over 15 years of experience creating bespoke celebrations across the world's most spectacular destinations — from weddings in Tuscany to galas in New York, sailing journeys in the Mediterranean to cultural heritage tours in Europe.
+              Avicam Gitlin is a private event producer with over 15 years of experience creating bespoke celebrations across the world's most spectacular destinations — from weddings in Tuscany to galas in New York, milestone celebrations in the Caribbean to corporate retreats in the Swiss Alps.
             </p>
             <p className="text-[#a09888] font-light leading-relaxed mb-8">
               His philosophy: every event is personal, every detail matters, and the world's most extraordinary places are available to anyone with the right partner to open the door.

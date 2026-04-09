@@ -37,7 +37,7 @@ export default function Contact() {
         <div className="absolute inset-0 bg-black/75" />
         <div className="relative z-10 max-w-xl mx-auto">
           <p className="text-[#c9a84c] tracking-[0.5em] text-xs mb-4">LET'S TALK</p>
-          <h1 className="text-4xl md:text-5xl font-light mb-4 text-white">Begin Your Journey</h1>
+          <h1 className="text-4xl md:text-5xl font-light mb-4 text-white">Plan Your Event</h1>
           <div className="w-10 h-px bg-[#c9a84c] mx-auto mb-4" />
           <p className="text-white text-base font-light">Every extraordinary event starts with a conversation.</p>
         </div>
